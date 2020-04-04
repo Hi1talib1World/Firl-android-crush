@@ -1,51 +1,72 @@
 package com.Denzo.firl.Chat;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.Denzo.firl.R;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.scaledrone.lib.Listener;
+import com.scaledrone.lib.Member;
 import com.scaledrone.lib.Room;
 import com.scaledrone.lib.RoomListener;
 import com.scaledrone.lib.Scaledrone;
 
 import java.util.Random;
 
-public class chatRealtime extends Fragment implements RoomListener {
+class MainActivity extends AppCompatActivity implements RoomListener {
 
-
-    public chatRealtime() {
-        // Required empty public constructor
-    }
-
+    // replace this with a real channelID from Scaledrone dashboard
     private String channelID = "USsSBWToshzLQ0aF";
     private String roomName = "observable-room";
     private EditText editText;
     private Scaledrone scaledrone;
-
-    // TODO: Rename and change types and number of parameters
-    public static chatRealtime newInstance(String param1, String param2) {
-        chatRealtime fragment = new chatRealtime();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private MessageAdapter messageAdapter;
+    private ListView messagesView;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+        setContentView(R.layout.activity_main);
+
+        editText = (EditText) findViewById(R.id.editText);
+
+        messageAdapter = new MessageAdapter(this);
+        messagesView = (ListView) findViewById(R.id.messages_view);
+        messagesView.setAdapter(messageAdapter);
+
+        MemberData data = new MemberData(getRandomName(), getRandomColor());
+
+        scaledrone = new Scaledrone(channelID, data);
+        scaledrone.connect(new Listener() {
+            @Override
+            public void onOpen() {
+                System.out.println("Scaledrone connection open");
+                scaledrone.subscribe(roomName, MainActivity.this);
+            }
+
+            @Override
+            public void onOpenFailure(Exception ex) {
+                System.err.println(ex);
+            }
+
+            @Override
+            public void onFailure(Exception ex) {
+                System.err.println(ex);
+            }
+
+            @Override
+            public void onClosed(String reason) {
+                System.err.println(reason);
+            }
+        });
     }
+
     public void sendMessage(View view) {
         String message = editText.getText().toString();
         if (message.length() > 0) {
@@ -130,8 +151,4 @@ class MemberData {
                 ", color='" + color + '\'' +
                 '}';
     }
-}
-
-
-
 }
