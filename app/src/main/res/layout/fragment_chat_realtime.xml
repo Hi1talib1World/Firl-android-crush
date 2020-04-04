@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Chat.chatRealtime">
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    android:focusableInTouchMode="true"
+    tools:context="com.example.scaledrone.chat.MainActivity">
 
     <ListView
         android:layout_width="match_parent"
@@ -39,5 +42,4 @@
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/ic_send_black_24dp"/>
     </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>
