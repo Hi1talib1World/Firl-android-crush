@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
 
 
-        for(ContactsContract.Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
             mSwipeView.addView(new Card(mContext, profile, mSwipeView));
         }
 
