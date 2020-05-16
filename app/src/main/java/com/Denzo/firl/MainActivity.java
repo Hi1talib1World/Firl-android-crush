@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 
 import com.Denzo.firl.Utils.Utils;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
 
 
-        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+        for(ContactsContract.Profile profile : Utils.loadProfiles(this.getApplicationContext())){
             mSwipeView.addView(new Card(mContext, profile, mSwipeView));
         }
 
