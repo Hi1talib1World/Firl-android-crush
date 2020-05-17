@@ -7,5 +7,6 @@
 
     <string name="input_placeholder">Write a message</string>
     <string name="title_activity_teeeeeest">teeeeeest</string>
+    <string name="title_activity_statistic">statisticActivity</string>
 
 </resources>
