@@ -9,11 +9,12 @@ import android.provider.ContactsContract;
 import android.view.View;
 
 import com.Denzo.firl.Utils.Utils;
+import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends  LocalizationActivity {
 
     private FloatingActionButton fab;
     private SwipePlaceHolderView mSwipeView;
