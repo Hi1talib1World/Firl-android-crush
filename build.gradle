@@ -20,6 +20,9 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
         maven { url "https://s3-us-west-2.amazonaws.com/openlocate-android/" }
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
 
     }
 }
