@@ -8,5 +8,8 @@
     <string name="input_placeholder">Write a message</string>
     <string name="title_activity_teeeeeest">teeeeeest</string>
     <string name="title_activity_statistic">statisticActivity</string>
+    <string name="title_activity_tabbs">TabbsActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 </resources>
