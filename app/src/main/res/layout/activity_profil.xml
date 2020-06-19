@@ -28,6 +28,7 @@
                     android:layout_height="140dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="21dp"
+                    android:id="@+id/img1"
                     android:src="@drawable/jahleel" />
 
                 <TextView
