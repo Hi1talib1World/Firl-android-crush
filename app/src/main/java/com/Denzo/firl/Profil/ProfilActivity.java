@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.Denzo.firl.R;
+
 public class ProfilActivity extends AppCompatActivity {
 
     @Override
