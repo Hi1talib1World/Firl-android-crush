@@ -20,7 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="325dp"
-                android:background="@drawable/interview_bg"
+                android:background="@drawable/jahleel"
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
