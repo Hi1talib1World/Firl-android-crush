@@ -28,7 +28,7 @@
                     android:layout_height="140dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="21dp"
-                    android:src="@drawable/yogi2" />
+                    android:src="@drawable/jahleel" />
 
                 <TextView
                     android:layout_marginTop="20dp"
