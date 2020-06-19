@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.akexorcist:localization:1.2.5'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
+    implementation 'jp.wasabeef:blurry:3.x.x'
     implementation 'com.openlocate:openlocate:2.+'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
