@@ -5,8 +5,6 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.Denzo.firl.MainActivity;
 import com.Denzo.firl.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -31,7 +29,7 @@ import android.widget.TextView;
 
 import com.Denzo.firl.feed.ui.main.SectionsPagerAdapter;
 
-public class TabbsActivity extends AppCompatActivity {
+public class TabbsActivity extends BaseActivity<MainView, MainPresenter> implements MainView {
 
 
     private PostsAdapter postsAdapter;
