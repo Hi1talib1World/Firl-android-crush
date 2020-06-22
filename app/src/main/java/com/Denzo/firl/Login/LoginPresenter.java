@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.BasePresenter;
 import com.facebook.appevents.internal.Constants;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
