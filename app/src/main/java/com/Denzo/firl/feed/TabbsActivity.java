@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import com.Denzo.firl.feed.ui.main.SectionsPagerAdapter;
 
-public class TabbsActivity extends BaseActivity<MainView, MainPresenter> implements MainView {
+public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, MainPresenter> implements MainView {
 
 
     private PostsAdapter postsAdapter;
