@@ -212,7 +212,7 @@ public class TabbsActivity extends BaseActivity<MainView, MainPresenter> impleme
     @SuppressLint("RestrictedApi")
     @Override
     public void openPostDetailsActivity(Post post, View v) {
-        Intent intent = new Intent(MainActivity.this, PostDetailsActivity.class);
+        Intent intent = new Intent(TabbsActivity.this, PostDetailsActivity.class);
         intent.putExtra(PostDetailsActivity.POST_ID_EXTRA_KEY, post.getId());
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -244,7 +244,7 @@ public class TabbsActivity extends BaseActivity<MainView, MainPresenter> impleme
     @SuppressLint("RestrictedApi")
     @Override
     public void openProfileActivity(String userId, View view) {
-        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        Intent intent = new Intent(TabbsActivity.this, ProfileActivity.class);
         intent.putExtra(ProfileActivity.USER_ID_EXTRA_KEY, userId);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && view != null) {
