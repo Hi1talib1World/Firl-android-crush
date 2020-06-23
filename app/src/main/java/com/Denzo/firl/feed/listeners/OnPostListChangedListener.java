@@ -1,4 +1,8 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnPostListChangedListener {
+public interface OnPostListChangedListener<Post> {
+
+    public void onListChanged(PostListResult result);
+
+    void onCanceled(String message);
 }
