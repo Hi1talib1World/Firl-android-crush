@@ -53,4 +53,15 @@ dependencies {
 
     // MVP
     implementation 'com.hannesdorfmann.mosby3:mvp:3.1.0' // Plain MVP
+
+
+    // Social
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.facebook.android:facebook-android-sdk:4.17.0'
+
+    // Images
+    implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.6.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
