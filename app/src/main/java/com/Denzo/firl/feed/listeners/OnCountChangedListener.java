@@ -1,4 +1,6 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnCountChangedListener {
+public interface OnCountChangedListener<T> {
+
+    void onCountChanged(long count);
 }
