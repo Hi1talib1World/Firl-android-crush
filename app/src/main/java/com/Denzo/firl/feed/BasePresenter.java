@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 
 import com.Denzo.firl.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 public class BasePresenter <T extends BaseView & MvpView> extends MvpBasePresenter<T> {
 
