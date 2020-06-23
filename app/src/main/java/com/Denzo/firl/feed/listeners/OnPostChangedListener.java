@@ -1,4 +1,7 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnPostChangedListener {
+public interface OnPostChangedListener {
+    public void onObjectChanged(Post obj);
+
+    public void onError(String errorText);
 }
