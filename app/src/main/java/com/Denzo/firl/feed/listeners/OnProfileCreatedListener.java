@@ -1,4 +1,6 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnProfileCreatedListener {
+public interface OnProfileCreatedListener {
+
+    public void onProfileCreated(boolean success);
 }
