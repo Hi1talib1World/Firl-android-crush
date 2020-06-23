@@ -1,4 +1,6 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnPostCreatedListener {
+public interface OnPostCreatedListener {
+
+    public void onPostSaved(boolean success);
 }
