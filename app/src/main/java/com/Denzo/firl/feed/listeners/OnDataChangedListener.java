@@ -1,4 +1,8 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnDataChangedListener {
+import java.util.List;
+
+public interface OnDataChangedListener<T> {
+
+    public void onListChanged(List<T> list);
 }
