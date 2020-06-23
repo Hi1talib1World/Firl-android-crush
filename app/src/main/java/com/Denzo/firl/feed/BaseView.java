@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.annotation.StringRes;
 
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+
 public interface BaseView extends MvpView {
 
     void showProgress();
