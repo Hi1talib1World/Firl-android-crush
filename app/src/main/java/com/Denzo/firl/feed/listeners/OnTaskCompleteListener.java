@@ -1,4 +1,6 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnTaskCompleteListener {
+public interface OnTaskCompleteListener {
+
+    public void onTaskComplete(boolean success);
 }
