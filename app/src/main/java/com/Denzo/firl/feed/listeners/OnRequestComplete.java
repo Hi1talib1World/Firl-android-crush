@@ -1,4 +1,5 @@
 package com.Denzo.firl.feed.listeners;
 
-public class OnRequestComplete {
+public interface OnRequestComplete {
+    void onComplete(boolean success);
 }
