@@ -20,7 +20,7 @@ import com.Denzo.firl.R;
 import com.Denzo.firl.feed.BaseActivity;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 
-class FollowingPostsActivity extends BaseActivity<FollowPostsView, FollowingPostsPresenter> implements FollowPostsView {
+public class FollowingPostsActivity extends BaseActivity<FollowPostsView, FollowingPostsPresenter> implements FollowPostsView {
 
     private FollowPostsAdapter postsAdapter;
     private RecyclerView recyclerView;
