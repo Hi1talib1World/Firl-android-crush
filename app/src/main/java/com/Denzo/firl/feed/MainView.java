@@ -2,6 +2,8 @@ package com.Denzo.firl.feed;
 
 import android.view.View;
 
+import com.Denzo.firl.feed.model.Post;
+
 public class MainView extends BaseView {
     void openCreatePostActivity();
     void hideCounterView();
