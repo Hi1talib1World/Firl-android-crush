@@ -1,10 +1,14 @@
 package com.Denzo.firl.feed;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.View;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.enums.PostStatus;
+import com.Denzo.firl.feed.model.Post;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
