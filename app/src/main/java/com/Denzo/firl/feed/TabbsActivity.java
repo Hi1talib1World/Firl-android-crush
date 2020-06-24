@@ -5,8 +5,11 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.postDetails.PostDetailsActivity;
 import com.Denzo.firl.search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -246,8 +249,8 @@ public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, Main
     @SuppressLint("RestrictedApi")
     @Override
     public void openProfileActivity(String userId, View view) {
-        Intent intent = new Intent(TabbsActivity.this, ProfileActivity.class);
-        intent.putExtra(ProfileActivity.USER_ID_EXTRA_KEY, userId);
+        Intent intent = new Intent(TabbsActivity.this, ProfilActivity.class);
+        intent.putExtra(ProfilActivity.USER_ID_EXTRA_KEY, userId);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && view != null) {
 
@@ -256,9 +259,9 @@ public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, Main
             ActivityOptions options = ActivityOptions.
                     makeSceneTransitionAnimation(TabbsActivity.this,
                             new android.util.Pair<>(authorImageView, getString(R.string.post_author_image_transition_name)));
-            startActivityForResult(intent, ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST, options.toBundle());
+            startActivityForResult(intent, ProfilActivity.CREATE_POST_FROM_PROFILE_REQUEST, options.toBundle());
         } else {
-            startActivityForResult(intent, ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST);
+            startActivityForResult(intent, ProfilActivity.CREATE_POST_FROM_PROFILE_REQUEST);
         }
     }
 
