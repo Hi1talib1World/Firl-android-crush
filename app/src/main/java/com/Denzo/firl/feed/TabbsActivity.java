@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.model.Post;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -221,7 +222,7 @@ public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, Main
             View authorImageView = v.findViewById(R.id.authorImageView);
 
             ActivityOptions options = ActivityOptions.
-                    makeSceneTransitionAnimation(MainActivity.this,
+                    makeSceneTransitionAnimation(TabbsActivity.this,
                             new android.util.Pair<>(imageView, getString(R.string.post_image_transition_name)),
                             new android.util.Pair<>(authorImageView, getString(R.string.post_author_image_transition_name))
                     );
@@ -252,7 +253,7 @@ public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, Main
             View authorImageView = view.findViewById(R.id.authorImageView);
 
             ActivityOptions options = ActivityOptions.
-                    makeSceneTransitionAnimation(MainActivity.this,
+                    makeSceneTransitionAnimation(TabbsActivity.this,
                             new android.util.Pair<>(authorImageView, getString(R.string.post_author_image_transition_name)));
             startActivityForResult(intent, ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST, options.toBundle());
         } else {
