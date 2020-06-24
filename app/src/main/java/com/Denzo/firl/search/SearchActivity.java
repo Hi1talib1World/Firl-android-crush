@@ -16,9 +16,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.TabsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class SearchActivity extends AppCompatActivity, BaseActivity<SearchView, SearchPresenter> implements SearchView {
+public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> implements SearchView {
     private static final String TAG = SearchActivity.class.getSimpleName();
     private TabsPagerAdapter tabsAdapter;
     private ViewPager viewPager;
