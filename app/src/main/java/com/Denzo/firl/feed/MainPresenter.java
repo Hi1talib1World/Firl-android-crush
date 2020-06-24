@@ -8,6 +8,7 @@ import android.view.View;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.enums.PostStatus;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.postDetails.PostDetailsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainPresenter extends BasePresenter<MainView> {
