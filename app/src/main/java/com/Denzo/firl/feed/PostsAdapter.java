@@ -8,6 +8,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.enums.ItemType;
+import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
+import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.feed.model.PostListResult;
+
+import java.util.List;
 
 public class PostsAdapter extends BasePostsAdapter {
     public static final String TAG = PostsAdapter.class.getSimpleName();
@@ -17,7 +23,7 @@ public class PostsAdapter extends BasePostsAdapter {
     private boolean isMoreDataAvailable = true;
     private long lastLoadedItemCreatedDate;
     private SwipeRefreshLayout swipeContainer;
-    private MainActivity mainActivity;
+    private TabbsActivity mainActivity;
 
     public PostsAdapter(final TabbsActivity activity, SwipeRefreshLayout swipeContainer) {
         super(activity);
