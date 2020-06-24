@@ -3,6 +3,8 @@ package com.Denzo.firl.feed;
 
 import android.net.Uri;
 
+import com.Denzo.firl.feed.pickImageBase.PickImageView;
+
 public interface BaseCreatePostView extends PickImageView {
     void setDescriptionError(String error);
 
