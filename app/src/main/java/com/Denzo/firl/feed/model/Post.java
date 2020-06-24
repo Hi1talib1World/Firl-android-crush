@@ -1,5 +1,7 @@
 package com.Denzo.firl.feed.model;
 
+import com.Denzo.firl.feed.enums.ItemType;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
