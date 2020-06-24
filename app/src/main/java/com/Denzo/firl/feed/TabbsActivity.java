@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
+
 import com.Denzo.firl.feed.followPosts.FollowingPostsActivity;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
