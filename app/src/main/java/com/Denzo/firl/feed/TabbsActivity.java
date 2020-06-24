@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
