@@ -1,17 +1,25 @@
 package com.Denzo.firl.postDetails;
 
+import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.transition.Transition;
 import android.view.ActionMode;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.ViewTreeObserver;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,12 +27,18 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.enums.PostStatus;
+import com.Denzo.firl.feed.model.Post;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.w3c.dom.Comment;
 
@@ -297,8 +311,8 @@ public class PostDetailsActivity extends AppCompatActivity,BaseActivity<PostDeta
 
     @Override
     public void openProfileActivity(String userId, View view) {
-        Intent intent = new Intent(PostDetailsActivity.this, ProfileActivity.class);
-        intent.putExtra(ProfileActivity.USER_ID_EXTRA_KEY, userId);
+        Intent intent = new Intent(PostDetailsActivity.this, ProfilActivity.class);
+        intent.putExtra(ProfilActivity.USER_ID_EXTRA_KEY, userId);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && view != null) {
 
