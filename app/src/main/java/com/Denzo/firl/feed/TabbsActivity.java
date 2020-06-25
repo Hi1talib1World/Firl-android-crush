@@ -36,7 +36,7 @@ import android.widget.TextView;
 
 import com.Denzo.firl.feed.ui.main.SectionsPagerAdapter;
 
-public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, MainPresenter> implements MainView {
+public class TabbsActivity extends BaseActivity<MainView, MainPresenter> implements MainView {
 
 
     private PostsAdapter postsAdapter;
@@ -81,7 +81,7 @@ public class TabbsActivity extends AppCompatActivity,BaseActivity<MainView, Main
 
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case ProfileActivity.CREATE_POST_FROM_PROFILE_REQUEST:
+                case ProfilActivity.CREATE_POST_FROM_PROFILE_REQUEST:
                     refreshPostList();
                     break;
                 case CreatePostActivity.CREATE_NEW_POST_REQUEST:
