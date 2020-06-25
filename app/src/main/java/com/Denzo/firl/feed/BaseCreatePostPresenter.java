@@ -9,6 +9,7 @@ import androidx.annotation.StringRes;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
+import com.Denzo.firl.feed.pickImageBase.PickImagePresenter;
 
 import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
