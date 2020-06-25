@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.Denzo.firl.feed.model.Post;
 
-public class MainView extends BaseView {
+public interface  MainView extends BaseView {
     void openCreatePostActivity();
     void hideCounterView();
     void openPostDetailsActivity(Post post, View v);
