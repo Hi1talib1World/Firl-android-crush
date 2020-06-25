@@ -11,7 +11,7 @@ import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainPresenter extends BasePresenter<MainView> {
+ class MainPresenter extends BasePresenter<MainView> {
 
     private PostManager postManager;
 
