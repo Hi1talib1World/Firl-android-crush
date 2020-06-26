@@ -38,6 +38,7 @@ import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.BaseActivity;
 import com.Denzo.firl.feed.CreatePostActivity;
+import com.Denzo.firl.feed.PostsByUserAdapter;
 import com.Denzo.firl.feed.TabbsActivity;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.managers.ProfileManager;
