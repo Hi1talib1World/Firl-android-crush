@@ -1,9 +1,12 @@
 package com.Denzo.firl.Profil;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
@@ -30,10 +33,20 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.Denzo.firl.Login.LoginActivity;
+import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.BaseActivity;
 import com.Denzo.firl.feed.CreatePostActivity;
+import com.Denzo.firl.feed.TabbsActivity;
+import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.managers.ProfileManager;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,8 +56,8 @@ import jp.wasabeef.blurry.Blurry;
 
 import static android.app.Activity.RESULT_OK;
 
-public class ProfileActivity extends BaseActivity<ProfileView, ProfilePresenter> implements ProfileView, GoogleApiClient.OnConnectionFailedListener, UnfollowConfirmationDialog.Callback {
-    private static final String TAG = ProfileActivity.class.getSimpleName();
+public class ProfilActivity extends BaseActivity<ProfileView, ProfilePresenter> implements ProfileView, GoogleApiClient.OnConnectionFailedListener, UnfollowConfirmationDialog.Callback {
+    private static final String TAG = ProfilActivity.class.getSimpleName();
     public static final int CREATE_POST_FROM_PROFILE_REQUEST = 22;
     public static final String USER_ID_EXTRA_KEY = "ProfileActivity.USER_ID_EXTRA_KEY";
 
@@ -71,7 +84,7 @@ public class ProfileActivity extends BaseActivity<ProfileView, ProfilePresenter>
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profil);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         actionBar = getSupportActionBar();
@@ -223,7 +236,7 @@ public class ProfileActivity extends BaseActivity<ProfileView, ProfilePresenter>
     @SuppressLint("RestrictedApi")
     @Override
     public void openPostDetailsActivity(Post post, View v) {
-        Intent intent = new Intent(ProfileActivity.this, PostDetailsActivity.class);
+        Intent intent = new Intent(ProfilActivity.this, PostDetailsActivity.class);
         intent.putExtra(PostDetailsActivity.POST_ID_EXTRA_KEY, post.getId());
         intent.putExtra(PostDetailsActivity.AUTHOR_ANIMATION_NEEDED_EXTRA_KEY, true);
 
@@ -232,7 +245,7 @@ public class ProfileActivity extends BaseActivity<ProfileView, ProfilePresenter>
             View imageView = v.findViewById(R.id.postImageView);
 
             ActivityOptions options = ActivityOptions.
-                    makeSceneTransitionAnimation(ProfileActivity.this,
+                    makeSceneTransitionAnimation(ProfilActivity.this,
                             new android.util.Pair<>(imageView, getString(R.string.post_image_transition_name))
                     );
             startActivityForResult(intent, PostDetailsActivity.UPDATE_POST_REQUEST, options.toBundle());
@@ -253,14 +266,14 @@ public class ProfileActivity extends BaseActivity<ProfileView, ProfilePresenter>
     }
 
     private void startMainActivity() {
-        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+        Intent intent = new Intent(ProfilActivity.this, TabbsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
     @Override
     public void startEditProfileActivity() {
-        Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+        Intent intent = new Intent(ProfilActivity.this, EditProfileActivity.class);
         startActivity(intent);
     }
 
