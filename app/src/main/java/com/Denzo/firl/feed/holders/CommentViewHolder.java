@@ -16,9 +16,13 @@ import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.CommentsAdapter;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
+import com.Denzo.firl.feed.model.Comment;
+import com.Denzo.firl.feed.utils.FormatterUtil;
+import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.managers.ProfileManager;
+import com.Denzo.firl.views.ExpandableTextView;
 
-import org.w3c.dom.Comment;
+
 
 public class CommentViewHolder extends RecyclerView.ViewHolder {
 
