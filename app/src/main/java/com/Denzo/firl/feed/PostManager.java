@@ -17,6 +17,8 @@ import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
 import com.Denzo.firl.feed.listeners.OnTaskCompleteListener;
+import com.Denzo.firl.feed.model.FollowingPost;
+import com.Denzo.firl.feed.model.Like;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.managers.FirebaseListenersManager;
 import com.bumptech.glide.load.DataSource;
