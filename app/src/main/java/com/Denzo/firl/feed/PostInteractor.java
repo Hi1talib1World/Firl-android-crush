@@ -15,6 +15,7 @@ import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
 import com.Denzo.firl.feed.listeners.OnTaskCompleteListener;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.model.PostListResult;
+import com.Denzo.firl.feed.utils.LogUtil;
 import com.facebook.appevents.internal.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
