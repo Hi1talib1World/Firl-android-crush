@@ -19,7 +19,7 @@
     <color name="custom_divider_color">#dfdfdf</color>
     <color name="highlight_text">#17a1d7</color>
 
-    <color name="send_button_color">@color/primary</color>
+    <color name="send_button_color">#FF5252</color>
 
     <color name="light_gray">#d8d6d5</color>
     <color name="white">#ffffff</color>
