@@ -20,6 +20,7 @@ import com.Denzo.firl.feed.listeners.OnTaskCompleteListener;
 import com.Denzo.firl.feed.model.FollowingPost;
 import com.Denzo.firl.feed.model.Like;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.managers.FirebaseListenersManager;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
