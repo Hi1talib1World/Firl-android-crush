@@ -6,6 +6,7 @@ import android.content.Context;
 import com.Denzo.firl.ApplicationHelper;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnTaskCompleteListener;
+import com.Denzo.firl.feed.model.Comment;
 import com.Denzo.firl.feed.utils.LogUtil;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,7 +17,7 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Comment;
+
 
 import java.util.ArrayList;
 import java.util.Collections;
