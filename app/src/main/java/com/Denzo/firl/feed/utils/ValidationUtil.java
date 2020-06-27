@@ -5,7 +5,8 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.net.Uri;
 
-import com.facebook.appevents.internal.Constants;
+import com.Denzo.firl.Constants;
+
 
 public class ValidationUtil {
     private static final String [] IMAGE_TYPE = new String[]{"jpg", "png", "jpeg", "bmp", "jp2", "psd", "tif", "gif"};
