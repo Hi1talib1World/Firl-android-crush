@@ -1,4 +1,6 @@
 package com.Denzo.firl.feed;
 
-public class CreatePostView extends BaseCreatePostView {
+import com.Denzo.firl.feed.BaseCreatePostView;
+
+public interface CreatePostView extends BaseCreatePostView {
 }
