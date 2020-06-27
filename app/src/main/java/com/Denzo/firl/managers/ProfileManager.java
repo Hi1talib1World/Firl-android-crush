@@ -2,9 +2,16 @@ package com.Denzo.firl.managers;
 
 import android.content.Context;
 import android.net.Uri;
+import com.google.firebase.database.ValueEventListener;
 
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.feed.ProfileInteractor;
+import com.Denzo.firl.feed.enums.ProfileStatus;
+import com.Denzo.firl.feed.listeners.OnDataChangedListener;
+import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
+import com.Denzo.firl.feed.listeners.OnObjectExistListener;
+import com.Denzo.firl.feed.listeners.OnProfileCreatedListener;
+import com.Denzo.firl.feed.utils.PreferencesUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
