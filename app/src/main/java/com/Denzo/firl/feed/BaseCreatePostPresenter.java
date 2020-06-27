@@ -11,6 +11,7 @@ import com.Denzo.firl.R;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.pickImageBase.PickImagePresenter;
 import com.Denzo.firl.feed.utils.LogUtil;
+import com.Denzo.firl.feed.utils.ValidationUtil;
 
 import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
