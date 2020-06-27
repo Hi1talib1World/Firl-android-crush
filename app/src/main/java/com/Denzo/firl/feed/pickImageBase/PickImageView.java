@@ -1,4 +1,12 @@
 package com.Denzo.firl.feed.pickImageBase;
 
-public class PickImageView {
+
+import android.net.Uri;
+
+import com.Denzo.firl.feed.BaseView;
+
+public interface PickImageView extends BaseView {
+    void hideLocalProgress();
+
+    void loadImageToImageView(Uri imageUri);
 }
