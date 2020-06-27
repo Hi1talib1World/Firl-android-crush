@@ -4,6 +4,9 @@ package com.Denzo.firl.feed.followPosts;
 import android.view.View;
 
 import com.Denzo.firl.feed.BaseView;
+import com.Denzo.firl.feed.model.FollowingPost;
+
+import java.util.List;
 
 public interface FollowPostsView extends BaseView {
     void openPostDetailsActivity(String postId, View v);
