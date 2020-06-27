@@ -10,6 +10,7 @@ import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnProfileCreatedListener;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.feed.utils.LogUtil;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
