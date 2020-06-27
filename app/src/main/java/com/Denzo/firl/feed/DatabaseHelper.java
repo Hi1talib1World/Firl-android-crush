@@ -5,6 +5,8 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.Denzo.firl.R;
+import android.util.Log;
+
 import com.facebook.appevents.internal.Constants;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
