@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.enums.ProfileStatus;
