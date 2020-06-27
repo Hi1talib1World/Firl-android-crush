@@ -10,6 +10,7 @@ import androidx.annotation.StringRes;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.pickImageBase.PickImagePresenter;
+import com.Denzo.firl.feed.utils.LogUtil;
 
 import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
