@@ -22,6 +22,8 @@ import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.utils.FormatterUtil;
 import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.managers.ProfileManager;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class PostViewHolder extends RecyclerView.ViewHolder {
