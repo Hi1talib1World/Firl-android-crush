@@ -1,55 +1,92 @@
 package com.Denzo.firl;
 
+import com.Denzo.firl.feed.enums.ItemType;
+import com.Denzo.firl.feed.model.LazyLoading;
+import com.google.firebase.database.IgnoreExtraProperties;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Profile {
 
-    @SerializedName("name")
-    @Expose
-    private String name;
+import java.io.Serializable;
 
-    @SerializedName("url")
-    @Expose
-    private String imageUrl;
+@IgnoreExtraProperties
+public class Profile implements Serializable, LazyLoading {
 
-    @SerializedName("age")
-    @Expose
-    private Integer age;
+    private String id;
+    private String username;
+    private String email;
+    private String photoUrl;
+    private long likesCount;
+    private String registrationToken;
+    private ItemType itemType;
 
-    @SerializedName("location")
-    @Expose
-    private String location;
-
-    public String getName() {
-        return name;
+    public Profile() {
+        // Default constructor required for calls to DataSnapshot.getValue(Profile.class)
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Profile(String id) {
+        this.id = id;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Profile(ItemType load) {
+        itemType = load;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public String getId() {
+        return id;
     }
 
-    public Integer getAge() {
-        return age;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public String getUsername() {
+        return username;
     }
 
-    public String getLocation() {
-        return location;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public long getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(long likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public String getRegistrationToken() {
+        return registrationToken;
+    }
+
+    public void setRegistrationToken(String registrationToken) {
+        this.registrationToken = registrationToken;
+    }
+
+    @Override
+    public ItemType getItemType() {
+        return itemType;
+    }
+
+    @Override
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
     }
 }
