@@ -18,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.FollowPostsAdapter;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 
 public class FollowingPostsActivity extends BaseActivity<FollowPostsView, FollowingPostsPresenter> implements FollowPostsView {
