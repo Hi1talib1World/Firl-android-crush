@@ -3,6 +3,7 @@ package com.Denzo.firl.managers;
 
 import android.content.Context;
 
+import com.Denzo.firl.ApplicationHelper;
 import com.Denzo.firl.feed.DatabaseHelper;
 import com.google.firebase.database.ValueEventListener;
 
