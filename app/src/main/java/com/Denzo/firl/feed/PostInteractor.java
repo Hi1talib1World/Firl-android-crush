@@ -6,6 +6,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
+import com.Denzo.firl.ApplicationHelper;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
@@ -13,8 +14,10 @@ import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
 import com.Denzo.firl.feed.listeners.OnTaskCompleteListener;
+import com.Denzo.firl.feed.model.Like;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.model.PostListResult;
+import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.feed.utils.LogUtil;
 import com.facebook.appevents.internal.Constants;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -371,7 +374,7 @@ public class PostInteractor {
                     .child(authorId);
             mLikesReference.push();
             String id = mLikesReference.push().getKey();
-            Like like = new Like(authorId);
+            com.Denzo.firl.feed.model.Like like = new Like(authorId);
             like.setId(id);
 
             mLikesReference.child(id).setValue(like, new DatabaseReference.CompletionListener() {
