@@ -9,6 +9,8 @@ import com.Denzo.firl.feed.listeners.OnCountChangedListener;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnRequestComplete;
+import com.Denzo.firl.feed.model.Follower;
+import com.Denzo.firl.feed.model.Following;
 import com.Denzo.firl.feed.model.FollowingPost;
 import com.Denzo.firl.feed.utils.LogUtil;
 import com.google.android.gms.tasks.Task;
