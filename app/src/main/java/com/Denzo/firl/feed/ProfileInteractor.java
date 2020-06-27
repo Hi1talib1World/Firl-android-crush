@@ -2,7 +2,6 @@ package com.Denzo.firl.feed;
 
 import android.content.Context;
 import android.net.Uri;
-
 import com.Denzo.firl.ApplicationHelper;
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.feed.enums.UploadImagePrefix;
