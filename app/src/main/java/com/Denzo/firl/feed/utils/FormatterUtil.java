@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed.model;
+package com.Denzo.firl.feed.utils;
 
 
 import android.content.Context;
