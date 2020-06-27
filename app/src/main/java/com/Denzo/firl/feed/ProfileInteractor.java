@@ -3,13 +3,16 @@ package com.Denzo.firl.feed;
 import android.content.Context;
 import android.net.Uri;
 
+import com.Denzo.firl.ApplicationHelper;
 import com.Denzo.firl.Profile;
+import com.Denzo.firl.feed.enums.UploadImagePrefix;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnProfileCreatedListener;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.feed.utils.LogUtil;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
