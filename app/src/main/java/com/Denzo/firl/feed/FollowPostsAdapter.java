@@ -41,6 +41,7 @@ public class FollowPostsAdapter extends RecyclerView.Adapter<FollowPostViewHolde
         return itemsList.size();
     }
 
+
     @NonNull
     @Override
     public FollowPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
