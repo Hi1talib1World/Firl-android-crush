@@ -1,7 +1,7 @@
 package com.Denzo.firl.feed.Base;
 
 
-import android.app.ActionBar;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Denzo.firl.Constants;
@@ -40,18 +41,18 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
 
     }
 
-    @Override
+
     public void startLoginActivity() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivityForResult(intent, LoginActivity.LOGIN_REQUEST_CODE);
     }
 
-    @Override
+
     public void showProgress() {
         showProgress(R.string.loading);
     }
 
-    @Override
+
     public void showProgress(@StringRes int message) {
         hideProgress();
         progressDialog = new ProgressDialog(this);
@@ -60,7 +61,7 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         progressDialog.show();
     }
 
-    @Override
+
     public void hideProgress() {
         if (progressDialog != null) {
             progressDialog.dismiss();
@@ -68,7 +69,7 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         }
     }
 
-    @Override
+
     public void hideKeyboard() {
         // Check if no view has focus:
         View view = this.getCurrentFocus();
@@ -78,32 +79,32 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         }
     }
 
-    @Override
+
     public void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 message, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
-    @Override
+
     public void showSnackBar(@StringRes int messageId) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 messageId, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
-    @Override
+
     public void showSnackBar(View view, @StringRes int messageId) {
         Snackbar snackbar = Snackbar.make(view, messageId, Snackbar.LENGTH_LONG);
         snackbar.show();
     }
 
-    @Override
+
     public void showToast(@StringRes int messageId) {
         Toast.makeText(this, messageId, Toast.LENGTH_LONG).show();
     }
 
-    @Override
+
     public void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
@@ -122,7 +123,7 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         builder.show();
     }
 
-    @Override
+
     public void showNotCancelableWarningDialog(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
@@ -131,7 +132,7 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         builder.show();
     }
 
-    @Override
+
     public void showWarningDialog(int message, DialogInterface.OnClickListener listener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
@@ -139,7 +140,7 @@ public abstract class BaseActivity<V extends AppCompatActivity,BaseView, P exten
         builder.show();
     }
 
-    @Override
+
     public void showWarningDialog(String message, DialogInterface.OnClickListener listener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(message);
