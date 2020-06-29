@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.Denzo.firl">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -34,5 +35,6 @@
             </intent-filter>
         </activity>
     </application>
+    <meta-data android:name="com.myapp.packageName.ClassWithGridleModule" android:value="GlideModule" tools:node="remove" />
 
 </manifest>
