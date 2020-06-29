@@ -5,7 +5,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
-import com.Denzo.firl.feed.BasePresenter;
+import com.Denzo.firl.feed.Base.BasePresenter;
 
 class ImageDetailPresenter extends BasePresenter<ImageDetailView> {
 

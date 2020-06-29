@@ -1,7 +1,7 @@
 package com.Denzo.firl.Login;
 
 
-import com.Denzo.firl.feed.BaseView;
+import com.Denzo.firl.feed.Base.BaseView;
 import com.google.firebase.auth.AuthCredential;
 
 public interface LoginView extends BaseView {

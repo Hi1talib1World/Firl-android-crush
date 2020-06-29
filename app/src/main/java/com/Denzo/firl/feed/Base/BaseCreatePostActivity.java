@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Base;
 
 
 import android.annotation.SuppressLint;
@@ -10,8 +10,6 @@ import android.widget.ProgressBar;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.pickImageBase.PickImageActivity;
-
-import static android.app.Activity.RESULT_OK;
 
 public abstract class BaseCreatePostActivity<V extends BaseCreatePostView, P extends BaseCreatePostPresenter<V>>
         extends PickImageActivity<V, P> implements BaseCreatePostView {

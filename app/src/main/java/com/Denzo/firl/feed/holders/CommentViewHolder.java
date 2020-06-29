@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.CommentsAdapter;
+import com.Denzo.firl.feed.Adapter.CommentsAdapter;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
 import com.Denzo.firl.feed.model.Comment;
 import com.Denzo.firl.feed.utils.FormatterUtil;

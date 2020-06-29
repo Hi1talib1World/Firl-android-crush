@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Base;
 
 
 import android.app.ActionBar;
@@ -17,9 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.Denzo.firl.Constants;
 import com.Denzo.firl.Login.LoginActivity;
 import com.Denzo.firl.R;
-import com.facebook.appevents.internal.Constants;
 import com.google.android.material.snackbar.Snackbar;
 import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 

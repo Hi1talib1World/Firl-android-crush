@@ -2,7 +2,6 @@ package com.Denzo.firl.Profil;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,22 +22,13 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.Denzo.firl.Login.LoginActivity;
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.CreatePostActivity;
-import com.Denzo.firl.feed.PostsByUserAdapter;
+import com.Denzo.firl.feed.Adapter.PostsByUserAdapter;
 import com.Denzo.firl.feed.TabbsActivity;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.managers.ProfileManager;
@@ -51,11 +41,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import butterknife.BindView;
-import jp.wasabeef.blurry.Blurry;
-
-import static android.app.Activity.RESULT_OK;
 
 public class ProfilActivity extends BaseActivity<ProfileView, ProfilePresenter> implements ProfileView, GoogleApiClient.OnConnectionFailedListener, UnfollowConfirmationDialog.Callback {
     private static final String TAG = ProfilActivity.class.getSimpleName();

@@ -3,7 +3,7 @@ package com.Denzo.firl.feed.followPosts;
 
 import android.view.View;
 
-import com.Denzo.firl.feed.BaseView;
+import com.Denzo.firl.feed.Base.BaseView;
 import com.Denzo.firl.feed.model.FollowingPost;
 
 import java.util.List;

@@ -1,7 +1,8 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Base;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.model.Post;
 

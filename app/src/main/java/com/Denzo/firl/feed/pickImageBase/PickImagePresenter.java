@@ -6,13 +6,12 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BasePresenter;
+import com.Denzo.firl.feed.Base.BasePresenter;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
-import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
 public class PickImagePresenter<V extends PickImageView> extends BasePresenter<V> {
     protected static final int MAX_FILE_SIZE_IN_BYTES = 10485760;   //10 Mb

@@ -12,16 +12,14 @@ import android.view.View;
 
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BasePresenter;
-import com.Denzo.firl.feed.BaseView;
+import com.Denzo.firl.feed.Base.BasePresenter;
+import com.Denzo.firl.feed.Base.BaseView;
 import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.enums.PostStatus;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.managers.ProfileManager;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
-
-import static io.fabric.sdk.android.Fabric.TAG;
 
 class ProfilePresenter extends BasePresenter<ProfileView> {
 

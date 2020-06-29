@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Base;
 
 
 import android.content.Context;
@@ -8,12 +8,11 @@ import android.text.TextUtils;
 import androidx.annotation.StringRes;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.pickImageBase.PickImagePresenter;
 import com.Denzo.firl.feed.utils.LogUtil;
 import com.Denzo.firl.feed.utils.ValidationUtil;
-
-import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
 public abstract class BaseCreatePostPresenter<V extends BaseCreatePostView> extends PickImagePresenter<V> implements OnPostCreatedListener {
 

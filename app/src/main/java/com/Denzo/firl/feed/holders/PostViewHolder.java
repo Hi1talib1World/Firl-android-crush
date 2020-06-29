@@ -12,7 +12,7 @@ import com.Denzo.firl.Constants;
 import com.Denzo.firl.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.controllers.LikeController;
-import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;

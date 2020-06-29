@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.PostInteractor;
 import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.TabbsActivity;

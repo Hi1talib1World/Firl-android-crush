@@ -3,6 +3,7 @@ package com.Denzo.firl.feed;
 import android.content.Context;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.Base.BaseCreatePostPresenter;
 import com.Denzo.firl.feed.model.Post;
 import com.google.firebase.auth.FirebaseAuth;
 

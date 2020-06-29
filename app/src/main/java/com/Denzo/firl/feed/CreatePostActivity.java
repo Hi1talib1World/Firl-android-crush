@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.Base.BaseCreatePostActivity;
 
 public class CreatePostActivity extends BaseCreatePostActivity<CreatePostView, CreatePostPresenter> implements CreatePostView {
     public static final int CREATE_NEW_POST_REQUEST = 11;

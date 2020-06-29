@@ -5,7 +5,7 @@ import android.text.Spannable;
 import android.view.View;
 
 import com.Denzo.firl.Profile;
-import com.Denzo.firl.feed.BaseView;
+import com.Denzo.firl.feed.Base.BaseView;
 import com.Denzo.firl.feed.model.Post;
 
 public interface ProfileView extends BaseView {

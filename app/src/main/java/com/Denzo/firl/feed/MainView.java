@@ -2,6 +2,7 @@ package com.Denzo.firl.feed;
 
 import android.view.View;
 
+import com.Denzo.firl.feed.Base.BaseView;
 import com.Denzo.firl.feed.model.Post;
 
 public interface  MainView extends BaseView {

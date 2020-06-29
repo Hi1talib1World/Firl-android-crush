@@ -4,13 +4,11 @@ package com.Denzo.firl.feed.holders;
 import android.content.DialogInterface;
 import android.view.View;
 
-import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.model.FollowingPost;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.utils.LogUtil;
-
-import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
 /**
  * Created by Alexey on 22.05.18.

@@ -16,7 +16,7 @@ import android.widget.ProgressBar;
 import androidx.annotation.Nullable;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BaseActivity;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -24,8 +24,6 @@ import com.bumptech.glide.request.target.Target;
 import com.facebook.appevents.internal.Constants;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
-
-import static com.Denzo.firl.feed.PostsAdapter.TAG;
 
 public abstract class PickImageActivity<V extends PickImageView, P extends PickImagePresenter<V>> extends BaseActivity<V, P> implements PickImageView {
     private static final String SAVED_STATE_IMAGE_URI = "RegistrationActivity.SAVED_STATE_IMAGE_URI";

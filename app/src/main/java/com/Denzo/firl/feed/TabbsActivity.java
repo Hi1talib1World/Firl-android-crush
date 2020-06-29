@@ -9,17 +9,15 @@ import android.os.Bundle;
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
 
+import com.Denzo.firl.feed.Adapter.PostsAdapter;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.followPosts.FollowingPostsActivity;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 import com.Denzo.firl.search.SearchActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -34,17 +32,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.Denzo.firl.feed.ui.main.SectionsPagerAdapter;
 

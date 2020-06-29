@@ -8,13 +8,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.controllers.LikeController;
 import com.Denzo.firl.feed.Base.BasePostsAdapter;
 import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.TabbsActivity;
 import com.Denzo.firl.feed.enums.ItemType;
+import com.Denzo.firl.feed.holders.PostViewHolder;
 import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.model.PostListResult;
+import com.Denzo.firl.feed.utils.PreferencesUtil;
 
 import java.util.List;
 

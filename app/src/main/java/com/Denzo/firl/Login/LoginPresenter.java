@@ -5,7 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BasePresenter;
+import com.Denzo.firl.feed.Base.BasePresenter;
 import com.facebook.appevents.internal.Constants;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -15,8 +15,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.GoogleAuthProvider;
-
-import static io.fabric.sdk.android.Fabric.TAG;
 
 class LoginPresenter extends BasePresenter<LoginView> {
 

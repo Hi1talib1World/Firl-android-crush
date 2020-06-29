@@ -9,14 +9,13 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BaseActivity;
-import com.Denzo.firl.feed.TabsPagerAdapter;
+import com.Denzo.firl.feed.Base.BaseActivity;
+import com.Denzo.firl.feed.Adapter.TabsPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> implements SearchView {

@@ -14,19 +14,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.BaseActivity;
-import com.Denzo.firl.feed.FollowPostsAdapter;
+import com.Denzo.firl.feed.Base.BaseActivity;
+import com.Denzo.firl.feed.Adapter.FollowPostsAdapter;
 import com.Denzo.firl.feed.model.FollowingPost;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 

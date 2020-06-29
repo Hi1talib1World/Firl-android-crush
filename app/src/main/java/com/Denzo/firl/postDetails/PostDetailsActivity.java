@@ -36,7 +36,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.CommentsAdapter;
+import com.Denzo.firl.feed.Adapter.CommentsAdapter;
 import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.enums.PostStatus;
 import com.Denzo.firl.feed.model.Post;
@@ -45,8 +45,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import org.w3c.dom.Comment;
 
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
 
 public class PostDetailsActivity extends AppCompatActivity,BaseActivity<PostDetailsView, PostDetailsPresenter> implements PostDetailsView, EditCommentDialog.CommentDialogCallback {
     public static final String POST_ID_EXTRA_KEY = "PostDetailsActivity.POST_ID_EXTRA_KEY";
