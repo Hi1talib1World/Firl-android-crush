@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Adapter;
 
 import android.os.Bundle;
 
@@ -6,6 +6,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+
+import com.Denzo.firl.feed.Searchable;
+import com.Denzo.firl.feed.SmartFragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 

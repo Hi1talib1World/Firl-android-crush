@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Adapter;
 
 
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.controllers.LikeController;
+import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.holders.FollowPostViewHolder;
 import com.Denzo.firl.feed.holders.PostViewHolder;
 import com.Denzo.firl.feed.model.FollowingPost;

@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Adapter;
 
 
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.feed.Base.BaseActivity;
+import com.Denzo.firl.feed.Base.BasePostsAdapter;
+import com.Denzo.firl.feed.PostManager;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.model.Post;
 

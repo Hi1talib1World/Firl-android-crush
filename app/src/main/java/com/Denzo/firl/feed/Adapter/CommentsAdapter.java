@@ -1,4 +1,4 @@
-package com.Denzo.firl.feed;
+package com.Denzo.firl.feed.Adapter;
 
 
 import android.view.LayoutInflater;
