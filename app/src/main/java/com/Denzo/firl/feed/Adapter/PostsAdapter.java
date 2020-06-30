@@ -11,7 +11,7 @@ import com.Denzo.firl.R;
 import com.Denzo.firl.controllers.LikeController;
 import com.Denzo.firl.feed.Base.BasePostsAdapter;
 import com.Denzo.firl.feed.managers.PostManager;
-import com.Denzo.firl.feed.TabbsActivity;
+import com.Denzo.firl.feed.main.TabbsActivity;
 import com.Denzo.firl.feed.enums.ItemType;
 import com.Denzo.firl.feed.holders.PostViewHolder;
 import com.Denzo.firl.feed.listeners.OnPostListChangedListener;
