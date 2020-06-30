@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.PostInteractor;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.TabbsActivity;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
