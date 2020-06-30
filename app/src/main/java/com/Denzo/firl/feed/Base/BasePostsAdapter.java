@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.model.Post;
+import com.Denzo.firl.feed.utils.LogUtil;
 
 import java.util.LinkedList;
 import java.util.List;
