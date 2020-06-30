@@ -1,6 +1,7 @@
 package com.Denzo.firl.feed.Adapter;
 
 
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -49,7 +50,7 @@ public class FollowPostsAdapter extends RecyclerView.Adapter<FollowPostViewHolde
     public FollowPostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.post_item_list_view, parent, false);
-        return new FollowPostViewHolder(view, createOnClickListener(), activity, true);
+        return new FollowPostViewHolder(view, (DialogInterface.OnClickListener) createOnClickListener(), activity, true);
     }
 
     @Override
