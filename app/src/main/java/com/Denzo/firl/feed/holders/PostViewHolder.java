@@ -13,7 +13,7 @@ import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.controllers.LikeController;
 import com.Denzo.firl.feed.Base.BaseActivity;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
@@ -21,7 +21,7 @@ import com.Denzo.firl.feed.model.Like;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.utils.FormatterUtil;
 import com.Denzo.firl.feed.utils.ImageUtil;
-import com.Denzo.firl.managers.ProfileManager;
+import com.Denzo.firl.feed.managers.ProfileManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

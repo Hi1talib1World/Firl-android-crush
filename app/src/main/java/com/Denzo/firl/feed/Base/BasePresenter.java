@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.enums.ProfileStatus;
-import com.Denzo.firl.managers.ProfileManager;
+import com.Denzo.firl.feed.managers.ProfileManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;

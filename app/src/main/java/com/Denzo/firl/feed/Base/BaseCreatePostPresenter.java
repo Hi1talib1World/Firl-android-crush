@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import androidx.annotation.StringRes;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.listeners.OnPostCreatedListener;
 import com.Denzo.firl.feed.pickImageBase.PickImagePresenter;
 import com.Denzo.firl.feed.utils.LogUtil;

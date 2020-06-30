@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BasePresenter;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
 import com.Denzo.firl.feed.model.Post;
 
