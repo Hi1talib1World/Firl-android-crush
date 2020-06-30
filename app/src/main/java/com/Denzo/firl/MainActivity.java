@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 
-import com.Denzo.firl.feed.utils.Utils;
+import com.Denzo.firl.Utils.Utils;
 import com.Denzo.firl.feed.model.Profile;
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

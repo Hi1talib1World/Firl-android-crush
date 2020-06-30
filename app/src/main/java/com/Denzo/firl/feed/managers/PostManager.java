@@ -9,6 +9,8 @@ import android.widget.ImageView;
 
 import com.Denzo.firl.feed.FollowInteractor;
 import com.Denzo.firl.feed.PostInteractor;
+import com.Denzo.firl.feed.utils.Utils;
+import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -18,7 +20,7 @@ import com.google.firebase.storage.StorageReference;
 import androidx.annotation.Nullable;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.feed.utils.Utils;
+
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
@@ -146,7 +148,6 @@ public class PostManager extends FirebaseListenersManager {
         ValueEventListener valueEventListener = postInteractor.filterPostsByLikes(limit, onDataChangedListener);
         addListenerToMap(context, valueEventListener);
     }
-
     public void loadImageMediumSize(GlideRequests request, String imageTitle, ImageView imageView, @Nullable OnImageRequestListener onImageRequestListener) {
         int width = Utils.getDisplayWidth(context);
         int height = (int) context.getResources().getDimension(R.dimen.post_detail_image_height);
