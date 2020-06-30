@@ -31,7 +31,7 @@ import com.Denzo.firl.feed.CreatePostActivity;
 import com.Denzo.firl.feed.Adapter.PostsByUserAdapter;
 import com.Denzo.firl.feed.TabbsActivity;
 import com.Denzo.firl.feed.model.Post;
-import com.Denzo.firl.managers.ProfileManager;
+import com.Denzo.firl.feed.managers.ProfileManager;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
