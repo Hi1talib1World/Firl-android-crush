@@ -37,7 +37,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Denzo.firl.Profil.ProfilActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Adapter.CommentsAdapter;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.enums.PostStatus;
 import com.Denzo.firl.feed.model.Post;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
