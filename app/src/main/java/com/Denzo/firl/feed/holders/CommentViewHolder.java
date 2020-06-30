@@ -11,9 +11,8 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.module.AppGlideModule;
-import com.Denzo.firl.Profile;
+
+import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Adapter.CommentsAdapter;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListener;

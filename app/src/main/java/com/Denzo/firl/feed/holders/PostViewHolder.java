@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.Constants;
-import com.Denzo.firl.Profile;
+import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.controllers.LikeController;
 import com.Denzo.firl.feed.Base.BaseActivity;
