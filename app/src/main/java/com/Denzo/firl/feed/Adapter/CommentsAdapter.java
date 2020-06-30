@@ -29,7 +29,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentViewHolder> {
     @Override
     public void onBindViewHolder(CommentViewHolder holder, int position) {
         holder.itemView.setLongClickable(true);
-        holder.bindData(getItemByPosition(position));
+        holder.bindData((com.Denzo.firl.feed.model.Comment) getItemByPosition(position));
     }
 
     public Comment getItemByPosition(int position) {
