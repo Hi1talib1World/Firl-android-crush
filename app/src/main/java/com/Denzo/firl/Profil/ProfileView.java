@@ -4,7 +4,7 @@ package com.Denzo.firl.Profil;
 import android.text.Spannable;
 import android.view.View;
 
-import com.Denzo.firl.Profile;
+import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.feed.Base.BaseView;
 import com.Denzo.firl.feed.model.Post;
 
