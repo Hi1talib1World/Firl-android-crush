@@ -1,14 +1,11 @@
 package com.Denzo.firl;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 
-import com.Denzo.firl.Utils.Utils;
+import com.Denzo.firl.feed.utils.Utils;
+import com.Denzo.firl.feed.model.Profile;
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mindorks.placeholderview.SwipeDecor;

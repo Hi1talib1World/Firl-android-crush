@@ -10,7 +10,7 @@ import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
 import android.view.View;
 
-import com.Denzo.firl.Profile;
+import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BasePresenter;
 import com.Denzo.firl.feed.Base.BaseView;

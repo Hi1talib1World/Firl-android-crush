@@ -24,7 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.Denzo.firl.Login.LoginActivity;
-import com.Denzo.firl.Profile;
+import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.CreatePostActivity;
