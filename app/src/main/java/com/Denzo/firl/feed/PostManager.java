@@ -7,12 +7,6 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
-
-import android.util.Log;
-import android.widget.ImageView;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
@@ -21,12 +15,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import androidx.annotation.Nullable;
 
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.Denzo.firl.R;
-import com.Denzo.firl.Utils.Utils;
+import com.Denzo.firl.feed.utils.Utils;
 import com.Denzo.firl.feed.listeners.OnDataChangedListener;
 import com.Denzo.firl.feed.listeners.OnObjectExistListener;
 import com.Denzo.firl.feed.listeners.OnPostChangedListener;
@@ -38,12 +28,8 @@ import com.Denzo.firl.feed.model.Like;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.utils.ImageUtil;
 import com.Denzo.firl.managers.FirebaseListenersManager;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
+import com.Denzo.firl.feed.utils.*;
+
 
 public class PostManager extends FirebaseListenersManager {
 
