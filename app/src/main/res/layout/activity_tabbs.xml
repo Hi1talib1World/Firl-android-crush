@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".feed.TabbsActivity">
+    tools:context=".feed.main.TabbsActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -33,12 +33,47 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        <com.rozdoum.socialcomponents.views.SwipeRefreshPreLollyPop
+            android:id="@+id/swipeContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:paddingBottom="@dimen/intrinsic_padding" />
+
+        </com.rozdoum.socialcomponents.views.SwipeRefreshPreLollyPop>
+
+        <TextView
+            android:id="@+id/newPostsCounterTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:padding="@dimen/intrinsic_padding"
+            android:background="@drawable/ic_launcher_foreground"
+            android:textColor="@android:color/white"
+            android:gravity="center_vertical"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addNewPostFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:layout_margin="@dimen/large_intrinsic_padding"
+        android:clickable="true"
+        android:src="@drawable/ic_add_white_48dp"
+        android:layout_gravity="bottom|right" />
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
