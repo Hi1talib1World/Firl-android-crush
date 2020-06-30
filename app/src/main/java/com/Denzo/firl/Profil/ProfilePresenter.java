@@ -14,11 +14,11 @@ import com.Denzo.firl.feed.model.Profile;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BasePresenter;
 import com.Denzo.firl.feed.Base.BaseView;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.Denzo.firl.feed.enums.PostStatus;
 import com.Denzo.firl.feed.listeners.OnObjectChangedListenerSimple;
 import com.Denzo.firl.feed.model.Post;
-import com.Denzo.firl.managers.ProfileManager;
+import com.Denzo.firl.feed.managers.ProfileManager;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
 
 class ProfilePresenter extends BasePresenter<ProfileView> {
