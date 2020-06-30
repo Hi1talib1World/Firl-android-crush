@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".feed.TabbsActivity"
+            android:name=".feed.main.TabbsActivity"
             android:label="@string/title_activity_tabbs"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Profil.ProfilActivity" />
