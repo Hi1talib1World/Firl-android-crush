@@ -29,7 +29,7 @@ import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.CreatePostActivity;
 import com.Denzo.firl.feed.Adapter.PostsByUserAdapter;
-import com.Denzo.firl.feed.TabbsActivity;
+import com.Denzo.firl.feed.main.TabbsActivity;
 import com.Denzo.firl.feed.model.Post;
 import com.Denzo.firl.feed.managers.ProfileManager;
 import com.Denzo.firl.postDetails.PostDetailsActivity;
