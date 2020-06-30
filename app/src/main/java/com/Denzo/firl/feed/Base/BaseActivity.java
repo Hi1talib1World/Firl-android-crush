@@ -28,8 +28,7 @@ import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 /**
  * Created by alexey on 05.12.16.
  */
-
-public abstract class BaseActivity<V extends AppCompatActivity & com.Denzo.firl.feed.Base.BaseView,BaseView, P extends BasePresenter<V>> extends MvpActivity<V, P> implements BaseView {
+public abstract class BaseActivity<V extends BaseView, P extends BasePresenter<V>> extends MvpActivity<V, P> implements BaseView {
     public final String TAG = this.getClass().getSimpleName();
     public ProgressDialog progressDialog;
     public ActionBar actionBar;
