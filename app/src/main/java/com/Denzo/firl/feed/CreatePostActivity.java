@@ -5,7 +5,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-
+import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseCreatePostActivity;
 
@@ -18,7 +18,7 @@ public class CreatePostActivity extends BaseCreatePostActivity<CreatePostView, C
         if (presenter == null) {
             return new CreatePostPresenter(this);
         }
-        return presenter;
+        return (CreatePostPresenter) presenter;
     }
 
     @Override
