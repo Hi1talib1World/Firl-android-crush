@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseActivity;
-import com.Denzo.firl.feed.PostManager;
+import com.Denzo.firl.feed.managers.PostManager;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 
