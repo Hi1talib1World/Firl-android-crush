@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;
 
@@ -90,7 +92,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
                     fillComment(userName, comment, expandableTextView, dateTextView);
 
                     if (obj.getPhotoUrl() != null) {
-                        ImageUtil.loadImage(GlideApp.with(context), obj.getPhotoUrl(), avatarImageView);
+                        ImageUtil.loadImage(Glide.with(context), obj.getPhotoUrl(), avatarImageView);
                     }
                 }
             }
