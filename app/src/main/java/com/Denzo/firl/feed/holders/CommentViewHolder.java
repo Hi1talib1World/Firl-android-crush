@@ -92,7 +92,7 @@ public class CommentViewHolder extends RecyclerView.ViewHolder {
                     fillComment(userName, comment, expandableTextView, dateTextView);
 
                     if (obj.getPhotoUrl() != null) {
-                        ImageUtil.loadImage(Glide.with(context), obj.getPhotoUrl(), avatarImageView);
+                        ImageUtil.loadImage(GlideApp.with(context), obj.getPhotoUrl(), avatarImageView);
                     }
                 }
             }
