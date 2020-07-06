@@ -2,10 +2,10 @@ package com.Denzo.firl;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 
 import com.Denzo.firl.Utils.Utils;
-import com.Denzo.firl.feed.model.Profile;
 import com.akexorcist.localizationactivity.ui.LocalizationActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mindorks.placeholderview.SwipeDecor;
@@ -35,7 +35,7 @@ public class MainActivity extends  LocalizationActivity {
                         .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
 
 
-        for(Profile profile : Utils.loadProfiles(this.getApplicationContext())){
+        for(ContactsContract.Profile profile : Utils.loadProfiles(this.getApplicationContext())){
             mSwipeView.addView(new Card(mContext, profile, mSwipeView));
         }
 
