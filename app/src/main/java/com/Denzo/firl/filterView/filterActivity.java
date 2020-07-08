@@ -2,6 +2,7 @@ package com.Denzo.firl.filterView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,12 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.filterView.db.TagsManager;
 
 import me.gujun.android.taggroup.TagGroup;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class filterActivity extends ActionBarActivity {
+public class filterActivity extends AppCompatActivity {
     private TextView mPromptText;
 
     private TagGroup mDefaultTagGroup;
