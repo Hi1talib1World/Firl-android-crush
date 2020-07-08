@@ -1,16 +1,18 @@
 package com.Denzo.firl.filterView;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.Denzo.firl.R;
+import com.Denzo.firl.filterView.db.TagsManager;
 
 import me.gujun.android.taggroup.TagGroup;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class TagEditorActivity extends ActionBarActivity {
+public class TagEditorActivity extends AppCompatActivity {
     private TagGroup mTagGroup;
     private TagsManager mTagsManager;
 
