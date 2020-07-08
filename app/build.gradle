@@ -86,6 +86,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0-SNAPSHOT'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.github.hgayan7:FilterLibrary:0.1.0'
+    implementation 'me.gujun.android.taggroup:library:1.4@aar'
+
 
 
 }
