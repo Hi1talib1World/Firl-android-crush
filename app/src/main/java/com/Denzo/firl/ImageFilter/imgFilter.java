@@ -21,7 +21,7 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_imgFilter);
         imageView=(ImageView)findViewById(R.id.imageView);
         iBitmap= BitmapFactory.decodeResource(getResources(),R.drawable.photo);
         photoFilter=new PhotoFilter();
