@@ -115,6 +115,49 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
                 imageView.setImageBitmap(photoFilter.sixteen(this, iBitmap));
                 Toast.makeText(this, "Filter 16", Toast.LENGTH_SHORT).show();
                 break;
+
+            case 17:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GRAY);
+            case 18:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.RELIEF);
+            case 19:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.AVERAGE_BLUR,9);
+            case 20:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.OIL,10);
+            case 21:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.NEON,200, 50, 100);
+            case 22:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.PIXELATE,9);
+            case 23:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.TV);
+            case 24:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.INVERT);
+            case 25:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.BLOCK);
+            case 26:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.OLD);
+            case 27:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SHARPEN);
+            case 28:
+                int width = bitmap.getWidth();
+                int height = bitmap.getHeight();
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.LIGHT,width / 2, height / 2, Math.min(width / 2, height / 2));
+            case 29:
+                double radius = (bitmap.getWidth() / 2) * 95 / 100;
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.LOMO,radius);
+            case 30:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.HDR);
+            case 31:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GAUSSIAN_BLUR,1.2);
+            case 32:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SOFT_GLOW,0.6);
+            case 33:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SKETCH);
+            case 34:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.MOTION_BLUR,5,1);
+            case 35:
+                return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GOTHAM);
+            default:
         }
         if(count==16)
             count=0;
