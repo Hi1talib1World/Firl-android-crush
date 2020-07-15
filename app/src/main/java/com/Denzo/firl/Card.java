@@ -42,7 +42,7 @@ public class Card {
     @Resolve
     private void onResolved(){
         Glide.with(mContext).load(mProfile.getPhotoUrl()).into(profileImageView);
-        nameAgeTxt.setText(mProfile.getUsername() + ", " + mProfile.getAge());
+        nameAgeTxt.setText(mProfile.getUsername() + ", " + mProfile.getage());
         locationNameTxt.setText(mProfile.getLocation());
     }
 
