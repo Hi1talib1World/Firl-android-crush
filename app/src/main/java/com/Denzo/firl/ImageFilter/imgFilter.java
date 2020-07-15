@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.Denzo.firl.R;
@@ -18,6 +19,11 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
     Bitmap iBitmap,oBitmap;
     PhotoFilter photoFilter;
     int count=0;
+    private Bitmap bitmap;
+    private ImageView originalImage,filteredImage;
+    private Spinner filterSpiner;
+    private String currentDate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +34,19 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
         imageView.setOnClickListener(this);
 
     }
+    private void initView() {
+
+        originalImage = (ImageView) findViewById(R.id.originalImageView);
+        filteredImage = (ImageView) findViewById(R.id.filteredImageView);
+        filterSpiner = (Spinner) findViewById(R.id.filtersSpiner);
+        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.image);
+        originalImage.setImageBitmap(bitmap);
+        filteredImage.setImageBitmap(ImageFilter.applyFilter(bitmap, ImageFilter.Filter.AVERAGE_BLUR));
+        filterSpiner.setOnItemSelectedListener(this);
+
+
+    }
+
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
