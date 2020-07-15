@@ -88,6 +88,8 @@ dependencies {
     implementation 'com.github.hgayan7:FilterLibrary:0.1.0'
     implementation 'me.gujun.android.taggroup:library:1.4@aar'
     implementation 'com.android.support:appcompat-v7:+'
+    implementation 'net.alhazmy13.ImageFilters:library:0.1.2-beta'
+
 
 
 
