@@ -16,6 +16,7 @@ public class Profile implements Serializable, LazyLoading {
     private String username;
     private String email;
     private String photoUrl;
+    private String age;
     private long likesCount;
     private String registrationToken;
     private ItemType itemType;
@@ -54,6 +55,14 @@ public class Profile implements Serializable, LazyLoading {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getage() {
+        return age;
+    }
+
+    public void setage(String age) {
+        this.age = age;
     }
 
     public String getPhotoUrl() {
