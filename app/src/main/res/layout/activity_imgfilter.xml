@@ -1,32 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:weightSum="1">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="net.alhazmy13.example.MainActivity"
+    android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/gallery"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Select a photo from Gallery" />
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
-    <ImageView
-        android:id="@+id/original_image"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="0.72" />
+        <Spinner
+            android:entries="@array/style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/filtersSpiner" />
 
-    <Button
-        android:id="@+id/effects_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="Select an Effect" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal">
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/originalImageView"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/filteredImageView"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
