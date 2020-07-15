@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,7 +15,7 @@ import android.widget.Toast;
 import com.Denzo.firl.R;
 import com.uvstudio.him.photofilterlibrary.PhotoFilter;
 
-public class imgFilter extends AppCompatActivity implements View.OnClickListener{
+public class imgFilter extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
     ImageView imageView;
     Bitmap iBitmap,oBitmap;
     PhotoFilter photoFilter;
@@ -28,15 +29,12 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imgfilter);
-        imageView=(ImageView)findViewById(R.id.imageView);
-        iBitmap= BitmapFactory.decodeResource(getResources(),R.drawable.photo);
-        photoFilter=new PhotoFilter();
-        imageView.setOnClickListener(this);
+        initView();
 
     }
     private void initView() {
 
-        originalImage = (ImageView) findViewById(R.id.originalImageView);
+        originalImage = (ImageView) findViewById(R.id.imageView);
         filteredImage = (ImageView) findViewById(R.id.filteredImageView);
         filterSpiner = (Spinner) findViewById(R.id.filtersSpiner);
         bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.image);
