@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.Denzo.firl.R;
 import com.uvstudio.him.photofilterlibrary.PhotoFilter;
 
+import net.alhazmy13.imagefilter.ImageFilter;
+
 public class imgFilter extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener{
     ImageView imageView;
     Bitmap iBitmap,oBitmap;
@@ -118,45 +120,64 @@ public class imgFilter extends AppCompatActivity implements View.OnClickListener
 
             case 17:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GRAY);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 18:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.RELIEF);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 19:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.AVERAGE_BLUR,9);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 20:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.OIL,10);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 21:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.NEON,200, 50, 100);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 22:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.PIXELATE,9);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 23:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.TV);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 24:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.INVERT);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 25:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.BLOCK);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 26:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.OLD);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 27:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SHARPEN);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 28:
                 int width = bitmap.getWidth();
                 int height = bitmap.getHeight();
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.LIGHT,width / 2, height / 2, Math.min(width / 2, height / 2));
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 29:
                 double radius = (bitmap.getWidth() / 2) * 95 / 100;
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.LOMO,radius);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 30:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.HDR);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 31:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GAUSSIAN_BLUR,1.2);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 32:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SOFT_GLOW,0.6);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 33:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.SKETCH);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 34:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.MOTION_BLUR,5,1);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             case 35:
                 return ImageFilter.applyFilter(bitmap, ImageFilter.Filter.GOTHAM);
+            Toast.makeText(this, "Filter 15", Toast.LENGTH_SHORT).show();
             default:
         }
         if(count==16)
