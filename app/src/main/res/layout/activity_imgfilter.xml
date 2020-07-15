@@ -1,19 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="1">
 
+
+    <Button
+        android:id="@+id/gallery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select a photo from Gallery" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/original_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="20dp"
-        android:padding="5dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        app:srcCompat="@drawable/photo" />
-</RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.72" />
+
+    <Button
+        android:id="@+id/effects_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Select an Effect" />
+
+</LinearLayout>
