@@ -145,4 +145,8 @@ public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> im
     }
 
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
 }
