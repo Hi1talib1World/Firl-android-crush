@@ -16,6 +16,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.Denzo.firl.R;
 import com.Denzo.firl.feed.Base.BaseActivity;
 import com.Denzo.firl.feed.Adapter.TabsPagerAdapter;
+import com.Denzo.firl.feed.Searchable;
+import com.Denzo.firl.feed.utils.LogUtil;
 import com.google.android.material.tabs.TabLayout;
 
 public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> implements SearchView {
@@ -23,7 +25,7 @@ public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> im
     private TabsPagerAdapter tabsAdapter;
     private ViewPager viewPager;
     private TabLayout tabLayout;
-    private android.support.v7.widget.SearchView searchView;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +98,13 @@ public class SearchActivity extends BaseActivity<SearchView, SearchPresenter> im
     private void initSearch(MenuItem searchMenuItem) {
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (android.support.v7.widget.SearchView) searchMenuItem.getActionView();
+        searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setMaxWidth(Integer.MAX_VALUE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
         searchMenuItem.expandActionView();
 
-        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 search(query);
