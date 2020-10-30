@@ -1,5 +1,7 @@
 package com.Denzo.firl.dao;
 
+import android.database.sqlite.SQLiteStatement;
+
 import androidx.room.Database;
 
 public class MyTrendingLanguageDao extends AbstractDao<MyTrendingLanguage, String> {
