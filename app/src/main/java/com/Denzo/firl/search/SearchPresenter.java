@@ -1,6 +1,8 @@
 package com.Denzo.firl.search;
 
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class SearchPresenter extends BasePresenter<ISearchContract.View>
