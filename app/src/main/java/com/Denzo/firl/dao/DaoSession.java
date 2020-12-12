@@ -1,6 +1,8 @@
 package com.Denzo.firl.dao;
 
 
+import androidx.room.Database;
+
 import java.util.Map;
 
 import org.greenrobot.greendao.AbstractDao;
