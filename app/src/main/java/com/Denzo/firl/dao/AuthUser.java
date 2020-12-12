@@ -1,5 +1,9 @@
 package com.Denzo.firl.dao;
 
+import androidx.room.Entity;
+
+import com.google.firebase.database.annotations.NotNull;
+
 @Entity
 public class AuthUser implements Parcelable {
 
