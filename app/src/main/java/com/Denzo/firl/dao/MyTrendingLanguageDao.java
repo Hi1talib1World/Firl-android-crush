@@ -1,5 +1,7 @@
 package com.Denzo.firl.dao;
 
+import androidx.room.Database;
+
 public class MyTrendingLanguageDao extends AbstractDao<MyTrendingLanguage, String> {
 
     public static final String TABLENAME = "MY_TRENDING_LANGUAGE";
