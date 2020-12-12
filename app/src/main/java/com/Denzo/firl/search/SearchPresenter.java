@@ -3,6 +3,8 @@ package com.Denzo.firl.search;
 
 import androidx.annotation.NonNull;
 
+import com.Denzo.firl.model.SearchModel;
+
 import java.util.ArrayList;
 
 public class SearchPresenter extends BasePresenter<ISearchContract.View>
