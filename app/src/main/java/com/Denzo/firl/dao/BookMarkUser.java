@@ -1,5 +1,7 @@
 package com.Denzo.firl.dao;
 
+import com.google.firebase.database.annotations.NotNull;
+
 @Entity
 public class BookMarkUser {
 
