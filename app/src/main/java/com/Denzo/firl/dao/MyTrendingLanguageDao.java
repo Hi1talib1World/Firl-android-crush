@@ -1,6 +1,7 @@
 package com.Denzo.firl.dao;
 
 import android.database.sqlite.SQLiteStatement;
+import android.util.Property;
 
 import androidx.room.Database;
 
