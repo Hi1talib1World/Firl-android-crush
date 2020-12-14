@@ -1,5 +1,13 @@
 package com.Denzo.firl.extra;
 
+import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.Denzo.firl.R
+import com.rbddevs.splashy.Splashy
+import java.util.logging.Handler
+
 class SplashActivity : AppCompatActivity() {
 
                          override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
 
                              Splashy.onComplete(object : Splashy.OnComplete {
                                  override fun onComplete() {
-                                     Toast.makeText(this@MainActivity, "Welcome", Toast.LENGTH_SHORT).show()
+                                         Toast.makeText(this@SplashActivity, "Welcome", Toast.LENGTH_SHORT).show()
                                  }
 
                              })
