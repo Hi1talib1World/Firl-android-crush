@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
                          private fun setSplashy() {
                              Splashy(this)
-                                 .setLogo(R.drawable.splashy)
+                                 .setLogo(R.drawable.ic_email_white_18dp)
                                  .setAnimation(Splashy.Animation.GROW_LOGO_FROM_CENTER)
                                  .setBackgroundResource(R.color.black)
                                  .setTitleColor(R.color.white)
