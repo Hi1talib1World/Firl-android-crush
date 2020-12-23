@@ -7,7 +7,6 @@
     <string name="title_activity_tabbs">TabbsActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-
     <string name="label_create_post_activity">Create post</string>
     <string name="label_post_detail_activity">Post detail</string>
     <string name="label_image_detail_activity">Image</string>
@@ -125,7 +124,6 @@
         <item quantity="one">following</item>
         <item quantity="other">followings</item>
     </plurals>
-
     <string name="posts_label">Posts:</string>
     <string name="complain_sent">Complain was sent successfully</string>
     <string name="now_time_range">now</string>
@@ -158,12 +156,10 @@
     <string name="button_title_unfollow">Unfollow</string>
     <string name="message_following_posts_empty">Follow somebody to see his new posts</string>
     <string name="following_post_menu_item">Following Posts</string>
-
     <!--Users list-->
     <string name="title_followers">Followers</string>
     <string name="title_followings">Followings</string>
     <string name="message_empty_list">You don\'t have any %1$s yet</string>
-
     <!--Search-->
     <string name="search_menu_item">Search</string>
     <string name="search_hint">Search …</string>
@@ -171,17 +167,12 @@
     <string name="users_tab_title">Users</string>
     <string name="empty_posts_search_message">No posts found</string>
     <string name="empty_user_search_message">No users found</string>
-
-
     <!--Firebase errors-->
     <string name="permission_denied_error">Please check your rules to access the Firebase Realtime Database</string>
-
     <!--Notifications-->
     <string name="new_like_channel_name">New Like</string>
     <string name="new_comment_channel_name">New Comment</string>
     <string name="storage_link">storage_link</string>
     <string name="submit">submit</string>
     <string name="splash_screen_made_easy">FIRL</string>
-
-
 </resources>
