@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
     <string name="storage_link">gs://socialcomponents.appspot.com</string>
     <string name="google_web_client_id">196433492167-vl2r7i9ciu3jr72oqpqh57l9716h85o4.apps.googleusercontent.com</string>
