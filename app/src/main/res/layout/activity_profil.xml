@@ -148,7 +148,7 @@
                 <ImageView
                     android:layout_width="36dp"
                     android:layout_height="36dp"
-                    android:src="@drawable/ic_email"/>
+                    android:src="@drawable/ic_email_white_18dp"/>
                 <TextView
                     android:textStyle="bold"
                     android:layout_gravity="center_vertical"
