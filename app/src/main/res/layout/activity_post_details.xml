@@ -154,11 +154,10 @@
 
             </RelativeLayout>
 
-            <com.rozdoum.socialcomponents.views.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/authorImageView"
                 android:layout_width="@dimen/post_author_image_side"
                 android:layout_height="@dimen/post_author_image_side"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/imageContainer"
                 android:layout_marginRight="@dimen/intrinsic_padding"
                 android:layout_marginTop="@dimen/post_author_image_margin"
@@ -177,7 +176,7 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_above="@+id/newCommentContainer"
-        android:background="@drawable/top_shadow" />
+        android:background="#000" />
 
     <LinearLayout
         android:id="@+id/newCommentContainer"
