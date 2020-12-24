@@ -204,7 +204,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/intrinsic_padding"
-            android:background="@drawable/send_comment_button_bg"
             android:enabled="false"
             android:minWidth="0dp"
             android:paddingLeft="@dimen/large_intrinsic_padding"
