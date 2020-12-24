@@ -159,7 +159,6 @@
                 android:layout_alignTop="@+id/imageContainer"
                 android:layout_marginRight="@dimen/intrinsic_padding"
                 android:layout_marginTop="@dimen/post_author_image_margin"
-                app:border="false"
                 app:shadow="true"
                 app:shadow_color="@color/circle_image_shadow"
                 app:shadow_radius="@dimen/circle_image_shadow_radius"
