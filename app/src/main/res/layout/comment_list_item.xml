@@ -56,6 +56,6 @@
 
         </RelativeLayout>
 
-    </com.rozdoum.socialcomponents.views.ExpandableTextView>
+    </com.ms.square.android.expandabletextview.ExpandableTextView>
 
 </RelativeLayout>
