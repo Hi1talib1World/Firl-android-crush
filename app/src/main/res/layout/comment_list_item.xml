@@ -7,11 +7,11 @@
     android:paddingBottom="@dimen/large_intrinsic_padding"
     android:paddingTop="@dimen/large_intrinsic_padding">
 
-    <com.rozdoum.socialcomponents.views.CircularImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatarImageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/ic_stub"
+        android:src="@drawable/ic_email_white_18dp"
         app:shadow="false"
         app:border="true"
         app:border_width="0dp" />
