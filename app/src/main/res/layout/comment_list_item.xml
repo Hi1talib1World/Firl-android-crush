@@ -12,9 +12,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_email_white_18dp"
-        app:shadow="false"
-        app:border="true"
-        app:border_width="0dp" />
+         />
 
     <com.ms.square.android.expandabletextview.ExpandableTextView
         android:id="@+id/commentText"
@@ -24,7 +22,6 @@
         android:paddingLeft="@dimen/large_intrinsic_padding"
         expandableTextView:animAlphaStart="1"
         expandableTextView:animDuration="200"
-        expandableTextView:collapseText="@string/collapse_text_label"
         expandableTextView:expandText="@string/expand_text_label"
         expandableTextView:maxCollapsedLines="3">
 
