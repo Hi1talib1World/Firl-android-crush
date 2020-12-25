@@ -22,7 +22,6 @@
         android:paddingLeft="@dimen/large_intrinsic_padding"
         expandableTextView:animAlphaStart="1"
         expandableTextView:animDuration="200"
-        expandableTextView:expandText="@string/expand_text_label"
         expandableTextView:maxCollapsedLines="3">
 
         <TextView
