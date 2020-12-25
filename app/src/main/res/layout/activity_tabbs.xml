@@ -66,13 +66,13 @@
             android:visibility="gone"/>
 
     </RelativeLayout>
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addNewPostFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/large_intrinsic_padding"
         android:clickable="true"
-        android:src="@drawable/ic_add_white_48dp"
+        android:src="@drawable/ic_email_white_18dp"
         android:layout_gravity="bottom|right" />
 
 
