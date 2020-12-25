@@ -30,18 +30,13 @@
                 android:layout_marginBottom="@dimen/intrinsic_padding"
                 android:scaleType="centerCrop" />
 
-            <com.rozdoum.socialcomponents.views.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/authorImageView"
                 android:layout_width="@dimen/post_list_item_author_image_side"
                 android:layout_height="@dimen/post_list_item_author_image_side"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@+id/postImageView"
                 android:layout_marginRight="@dimen/intrinsic_padding"
-                android:layout_marginTop="@dimen/post_list_item_author_image_margin"
-                app:border="false"
-                app:shadow="true"
-                app:shadow_radius="@dimen/circle_image_shadow_radius"
-                app:shadow_color="@color/circle_image_shadow" />
+                android:layout_marginTop="@dimen/post_list_item_author_image_margin"/>
 
             <TextView
                 android:id="@+id/titleTextView"
