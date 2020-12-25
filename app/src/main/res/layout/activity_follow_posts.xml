@@ -60,7 +60,7 @@
                 android:paddingBottom="@dimen/intrinsic_padding"
                 tools:listitem="@layout/post_item_list_view" />
 
-        </com.rozdoum.socialcomponents.views.SwipeRefreshPreLollyPop>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
