@@ -16,7 +16,7 @@
         app:border="true"
         app:border_width="0dp" />
 
-    <com.rozdoum.socialcomponents.views.ExpandableTextView
+    <com.ms.square.android.expandabletextview.ExpandableTextView
         android:id="@+id/commentText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
