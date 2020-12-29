@@ -57,12 +57,11 @@
                 android:paddingLeft="@dimen/intrinsic_padding"
                 android:paddingRight="@dimen/intrinsic_padding"
                 android:layout_below="@+id/titleTextView"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/authorImageView"
+
                 android:ellipsize="end"
                 android:maxLines="2"
                 android:textAppearance="@style/TextAppearance.Second"
-                android:layout_alignParentEnd="true" />
+                />
 
             <include
                 android:id="@+id/countersContainer"
