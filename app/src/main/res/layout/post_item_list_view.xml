@@ -47,8 +47,7 @@
                 android:layout_marginBottom="@dimen/intrinsic_padding"
                 android:layout_below="@+id/postImageView"
                 android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="@style/TextAppearance.Title" />
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/detailsTextView"
@@ -60,7 +59,6 @@
 
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:textAppearance="@style/TextAppearance.Second"
                 />
 
             <include
