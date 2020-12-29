@@ -46,8 +46,6 @@
                 android:paddingRight="@dimen/intrinsic_padding"
                 android:layout_marginBottom="@dimen/intrinsic_padding"
                 android:layout_below="@+id/postImageView"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/authorImageView"
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textAppearance="@style/TextAppearance.Title" />
