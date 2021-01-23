@@ -46,7 +46,8 @@ import org.w3c.dom.Comment;
 
 import java.util.List;
 
-public class PostDetailsActivity extends AppCompatActivity,BaseActivity<PostDetailsView, PostDetailsPresenter> implements PostDetailsView, EditCommentDialog.CommentDialogCallback {
+public class PostDetailsActivity extends AppCompatActivity,BaseActivity<PostDetailsView, PostDetailsPresenter>
+        implements PostDetailsView, EditCommentDialog.CommentDialogCallback {
     public static final String POST_ID_EXTRA_KEY = "PostDetailsActivity.POST_ID_EXTRA_KEY";
     public static final String AUTHOR_ANIMATION_NEEDED_EXTRA_KEY = "PostDetailsActivity.AUTHOR_ANIMATION_NEEDED_EXTRA_KEY";
     public static final int UPDATE_POST_REQUEST = 1;
