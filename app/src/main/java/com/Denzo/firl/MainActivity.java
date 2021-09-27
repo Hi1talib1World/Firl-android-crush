@@ -5,17 +5,20 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
 
-import com.Denzo.firl.Utils.Utils;
-import com.akexorcist.localizationactivity.ui.LocalizationActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-public class MainActivity extends  LocalizationActivity {
+import java.util.ArrayList;
 
-    private FloatingActionButton fab;
-    private SwipePlaceHolderView mSwipeView;
-    private Context mContext;
+import xute.storyview.StoryModel;
+import xute.storyview.StoryView;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    StoryView storyView;   // get the object for StoryView
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,34 +26,13 @@ public class MainActivity extends  LocalizationActivity {
 
 
 
-        mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
-        mContext = getApplicationContext();
+        storyView = findViewById(R.id.storyView); // find the XML view using findViewById
+        storyView.resetStoryVisits(); // reset the storyview
 
-        mSwipeView.getBuilder()
-                .setDisplayViewCount(3)
-                .setSwipeDecor(new SwipeDecor()
-                        .setPaddingTop(20)
-                        .setRelativeScale(0.01f)
-                        .setSwipeInMsgLayoutId(R.layout.swipe_in_msg_view)
-                        .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
-
-
-        for(ContactsContract.Profile profile : Utils.loadProfiles(this.getApplicationContext())){
-            mSwipeView.addView(new Card(mContext, profile, mSwipeView));
-        }
-
-        findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeView.doSwipe(false);
-            }
-        });
-
-        findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeView.doSwipe(true);
-            }
-        });
+        ArrayList<StoryModel> StoriesList = new ArrayList<>();  // create a Array list of Stories
+        StoriesList.add(new StoryModel("https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80","Status 1","Yesterday"));
+        StoriesList.add(new StoryModel("https://www.bigstockphoto.com/images/homepage/module-6.jpg","Status 2","10:15 PM"));
+        StoriesList.add(new StoryModel("https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg","Satus 3","Today,2:31 PM"));
+        storyView.setImageUris(StoriesList);  // finally set the stories to storyview
     }
 }

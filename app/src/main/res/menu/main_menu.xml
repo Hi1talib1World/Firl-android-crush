@@ -5,21 +5,18 @@
 
     <item
         android:id="@+id/profile"
-        android:icon="@drawable/ic_email_white_18dp"
         android:orderInCategory="2"
         android:title="@string/profile_menu_item"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/followingPosts"
-        android:icon="@drawable/ic_email_white_18dp"
         android:orderInCategory="2"
         android:title="@string/following_post_menu_item"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/search"
-        android:icon="@drawable/ic_email_white_18dp"
         android:orderInCategory="1"
         android:title="@string/search_menu_item"
         app:showAsAction="ifRoom" />

@@ -17,10 +17,6 @@
             android:label="@string/title_activity_tabbs"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".Profil.ProfilActivity" />
-        <activity
-            android:name=".statisticActivity"
-            android:label="@string/title_activity_statistic"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Chat.chat_history.history_chat" />
         <activity android:name=".interviewActivity.results.results_app" />
         <activity android:name=".interviewActivity.crtNewInterview.NewInterview" />
