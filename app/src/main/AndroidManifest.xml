@@ -5,6 +5,11 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <meta-data
+        android:name="com.myapp.packageName.ClassWithGridleModule"
+        android:value="GlideModule"
+        tools:node="remove" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,16 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".feed.main.TabbsActivity"
-            android:label="@string/title_activity_tabbs"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Profil.ProfilActivity" />
-        <activity android:name=".Chat.chat_history.history_chat" />
-        <activity android:name=".interviewActivity.results.results_app" />
-        <activity android:name=".interviewActivity.crtNewInterview.NewInterview" />
-        <activity android:name=".interviewActivity.interview" />
+            android:name=".chat.ChatActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Swipe.SwipeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Singup.SingupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Login.LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
+            android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +40,5 @@
             </intent-filter>
         </activity>
     </application>
-    <meta-data android:name="com.myapp.packageName.ClassWithGridleModule" android:value="GlideModule" tools:node="remove" />
 
 </manifest>
