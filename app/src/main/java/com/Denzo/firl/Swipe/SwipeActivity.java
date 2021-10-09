@@ -13,6 +13,7 @@ import com.Denzo.firl.Cards.arrayAdapter;
 import com.Denzo.firl.Cards.cards;
 import com.Denzo.firl.Matches.MatchesActivity;
 import com.Denzo.firl.R;
+import com.Denzo.firl.SettingsActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
