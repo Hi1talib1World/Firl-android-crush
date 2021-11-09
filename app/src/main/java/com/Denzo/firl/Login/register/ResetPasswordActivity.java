@@ -1,4 +1,4 @@
-package com.Denzo.firl.Singup;
+package com.Denzo.firl.Login.register;
 
 import android.os.Bundle;
 import android.text.TextUtils;

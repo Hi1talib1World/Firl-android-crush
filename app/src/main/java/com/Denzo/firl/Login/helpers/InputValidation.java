@@ -1,4 +1,4 @@
-package com.Denzo.firl.helpers;
+package com.Denzo.firl.Login.helpers;
 
 import android.app.Activity;
 import android.content.Context;

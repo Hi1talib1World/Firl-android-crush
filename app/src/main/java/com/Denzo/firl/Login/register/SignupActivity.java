@@ -1,4 +1,4 @@
-package com.Denzo.firl.Singup;
+package com.Denzo.firl.Login.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_singup);
+        setContentView(R.layout.activity_registration);
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 

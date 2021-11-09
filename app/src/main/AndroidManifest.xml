@@ -27,7 +27,7 @@
             android:name=".Swipe.SwipeActivity"
             android:exported="true" />
         <activity
-            android:name=".Singup.SingupActivity"
+            android:name=".Login.register.SingupActivity"
             android:exported="true" />
         <activity
             android:name=".Login.LoginActivity"
