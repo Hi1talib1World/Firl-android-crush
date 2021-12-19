@@ -213,5 +213,7 @@
     <string name="error_password_match">password is not matching</string>
     <string name="error_email_exists">Email already exist</string>
     <string name="success_message">saved successfully</string>
+    <string name="number_persons">96</string>
+    <string name="title_topic_person">title</string>
 
 </resources>

@@ -14,6 +14,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.Denzo.firl.Model.MatchPerson;
 import com.Denzo.firl.Model.MyMatchesPersons;
+import com.Denzo.firl.databinding.ActivityMainBinding;
+import com.Denzo.firl.helpers.HorizontalMarginItemDecoration;
+import com.Denzo.firl.listeners.MatchPersonClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +27,8 @@ import xute.storyview.StoryView;
 
 public class MainActivity extends AppCompatActivity implements MatchPersonClickListener {
 
-    private static final String TAG = "Matchs PersonsActivity";
-    MainActivityBinding binding;
+    private static final String TAG = "MatchsPersonsActivity";
+    ActivityMainBinding binding;
     Context mcontext;
     private List<MatchPerson> data;
     private MyMatchesPersons myMatchesPersons;
@@ -81,10 +84,10 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
     }
 
     @Override
-    public void onScrollPagerItemClick(MatchPerson courseCard, ImageView imageView) {
-        MyUtilsApp.showLog(TAG, "LogD onScrollPagerItemClick : " + courseCard.toString());
+    public void onScrollPagerItemClick(MatchPerson personCard, ImageView imageView) {
+        MyUtilsApp.showLog(TAG, "LogD onScrollPagerItemClick : " + personCard.toString());
 
-        MyUtilsApp.showToast(mcontext, courseCard.getName());
+        MyUtilsApp.showToast(mcontext, personCard.getName());
         //Now, this has dynamic data from myMatchesCourses.getData();.
         //Could use the Id as unique value for go to new activity
 //        Intent intentGetStarted;

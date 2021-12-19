@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/drawable/ic_play.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/ic_user.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/play_course.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable/result_card.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
@@ -13,9 +17,13 @@
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_singup.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_swipe.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/card_popular_persons.xml" value="0.129981884057971" />
         <entry key="app/src/main/res/layout/item.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_chat.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/item_matches.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/item_pager_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_popular_person.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_popular_person_playing.xml" value="0.1" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.15" />
       </map>
     </option>
