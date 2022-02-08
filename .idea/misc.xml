@@ -9,10 +9,10 @@
         <entry key="app/src/main/res/drawable/play_course.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/result_card.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_chat.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_matches.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_singup.xml" value="0.19322916666666667" />
