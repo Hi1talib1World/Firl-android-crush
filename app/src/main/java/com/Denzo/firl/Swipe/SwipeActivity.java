@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.Denzo.firl.Cards.arrayAdapter;
 import com.Denzo.firl.Cards.cards;
+import com.Denzo.firl.ChooseLoginRegistrationActivity;
 import com.Denzo.firl.Matches.MatchesActivity;
 import com.Denzo.firl.R;
 import com.Denzo.firl.SettingsActivity;
