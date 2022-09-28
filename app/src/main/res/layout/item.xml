@@ -9,6 +9,7 @@
     android:paddingRight="40sp"
     android:paddingTop="20sp"
     android:paddingBottom="20sp"
+
     android:outlineProvider="bounds"
     android:clipToPadding="false">
 
