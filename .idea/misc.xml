@@ -4,8 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_chat.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_choose_login_registration.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_matches.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_registration.xml" value="0.13" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_reset_password.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_settings.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/activity_swipe.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/card_popular_persons.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item_chat.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item_matches.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item_pager_card.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item_popular_person.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/hicham/Documents/GitHub/Firl-android-crush/app/src/main/res/layout/item_popular_person_playing.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/drawable/ic_play.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/ic_user.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/play_course.xml" value="0.209375" />
