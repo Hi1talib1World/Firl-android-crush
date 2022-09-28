@@ -103,6 +103,7 @@
     <color name="option4">#FF8033</color>
 
     <color name="colorPrimaryText">@android:color/white</color>
+    <color name="bg1main">#1C2736</color>
 
 
 </resources>
