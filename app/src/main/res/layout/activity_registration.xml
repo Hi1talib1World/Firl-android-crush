@@ -26,13 +26,13 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutName"
+            android:id="@+id/textName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextName"
+                android:id="@+id/titextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_name"
@@ -42,13 +42,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutEmail"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextEmail"
+                android:id="@+id/tiemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
@@ -58,13 +58,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutPassword"
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextPassword"
+                android:id="@+id/tipassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
@@ -97,10 +97,12 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/coolor"
                 android:text="Male" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/coolor"
                 android:text="Female" />
         </RadioGroup>
 
