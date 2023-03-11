@@ -19,7 +19,7 @@
         android:layout_marginEnd="@dimen/top_text_subtitle_card"
         android:layout_marginBottom="@dimen/top_text_subtitle_card"
         android:padding="12dp"
-        android:src="@drawable/ic_play"
+        android:src="@drawable/ic_user"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
