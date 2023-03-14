@@ -57,15 +57,15 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.person:
+            case R.id.swipe:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, swipeFragment).commit();
                 return true;
 
-            case R.id.home:
+            case R.id.matches:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, matchesFragment).commit();
                 return true;
 
-            case R.id.settings:
+            case R.id.chat:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, chatFragment).commit();
                 return true;
         }
