@@ -17,7 +17,12 @@
         android:layout_height="match_parent"
 
         android:orientation="vertical">
+        <androidx.core.widget.NestedScrollView
 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:padding="@dimen/nav_header_vertical_spacing">
         <xute.storyview.StoryView
             android:id="@+id/storyView"
             android:layout_width="wrap_content"
@@ -43,12 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:searchTextStyle="@style/SearchTextStyle" />
-        <androidx.core.widget.NestedScrollView
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:padding="@dimen/nav_header_vertical_spacing">
 
             <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -171,6 +171,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
 
+    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu"/>
 </LinearLayout>
