@@ -4,16 +4,18 @@ import static java.lang.Math.abs;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.Denzo.firl.Matches.MatchesFragment;
 import com.Denzo.firl.Model.MatchPerson;
 import com.Denzo.firl.Model.MyMatchesPersons;
+import com.Denzo.firl.Swipe.SwipeFragment;
+import com.Denzo.firl.chat.ChatFragment;
 import com.Denzo.firl.databinding.ActivityMainBinding;
 import com.Denzo.firl.helpers.HorizontalMarginItemDecoration;
 import com.Denzo.firl.listeners.MatchPersonClickListener;
@@ -46,6 +48,28 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
         uris.add(new StoryModel("https://picsum.photos/200/300", "Ankit Kumar", "12:00 PM"));
         uris.add(new StoryModel("https://picsum.photos/200/300", "Ankit Kumar", "12:00 PM"));
         uris.add(new StoryModel("https://picsum.photos/200/300", "Ankit Kumar", "12:00 PM"));
+    }
+    SwipeFragment swipeFragment = new SwipeFragment();
+    MatchesFragment matchesFragment = new MatchesFragment();
+    ChatFragment chatFragment = new ChatFragment();
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.person:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, swipeFragment).commit();
+                return true;
+
+            case R.id.home:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, matchesFragment).commit();
+                return true;
+
+            case R.id.settings:
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, chatFragment).commit();
+                return true;
+        }
+        return false;
     }
 
     private void setupViewpager(int currentItem, List<MatchPerson> matchCourseList) {
