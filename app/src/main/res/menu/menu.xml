@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/person"
-        android:title="Person"
-        android:icon="@drawable/ic_person_foreground"/>
+        android:id="@+id/swipe"
+        android:title="Swipe"
+        android:icon="@drawable/love"/>
     <item
-        android:id="@+id/home"
-        android:title="Home"
-        android:icon="@drawable/ic_home_foreground"/>
+        android:id="@+id/matches"
+        android:title="Matches"
+        android:icon="@drawable/matches"/>
     <item
-        android:id="@+id/settings"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings_foreground"/>
+        android:id="@+id/chat"
+        android:title="Chat"
+        android:icon="@drawable/topic"/>
 </menu>
