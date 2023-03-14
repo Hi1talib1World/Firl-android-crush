@@ -21,7 +21,7 @@
             android:name=".SettingsActivity"
             android:exported="true" />
         <activity
-            android:name=".chat.ChatActivity"
+            android:name=".chat.ChatFragment"
             android:exported="true" />
         <activity
             android:name=".Swipe.SwipeActivity"
@@ -34,17 +34,17 @@
         <activity
             android:name=".Login.LoginActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
