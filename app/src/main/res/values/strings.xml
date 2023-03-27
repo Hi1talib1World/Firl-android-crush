@@ -215,5 +215,6 @@
     <string name="success_message">saved successfully</string>
     <string name="number_persons">96</string>
     <string name="title_topic_person">title</string>
+    <string name="explore">Explore</string>
 
 </resources>
