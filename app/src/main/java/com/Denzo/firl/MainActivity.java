@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
     MatchesFragment matchesFragment = new MatchesFragment();
     ChatFragment chatFragment = new ChatFragment();
 
-    @Override
+
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
