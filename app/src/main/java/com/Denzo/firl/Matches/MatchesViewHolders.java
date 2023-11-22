@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.R;
-import com.Denzo.firl.chat.ChatActivity;
+import com.Denzo.firl.chat.ChatFragment;
 
 public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
     public TextView mMatchId, mMatchName;
@@ -27,7 +27,7 @@ public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(view.getContext(), ChatActivity.class);
+        Intent intent = new Intent(view.getContext(), ChatFragment.class);
         Bundle b = new Bundle();
         b.putString("matchId", mMatchId.getText().toString());
         intent.putExtras(b);
