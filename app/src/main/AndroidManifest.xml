@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".chat.ChatActivity"
+            android:name=".chat.ChatFragment"
             android:exported="false" />
         <activity
             android:name=".Matches.MatchesActivity"
