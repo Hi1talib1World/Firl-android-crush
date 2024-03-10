@@ -4,61 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity"
 
-    android:padding="5dp"
-    android:background="@color/bg1main"
+    android:background="@color/bg1main">
 
-    android:orientation="horizontal">
-
-
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
 
-        android:orientation="vertical">
-        <androidx.core.widget.NestedScrollView
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:padding="@dimen/nav_header_vertical_spacing">
-        <xute.storyview.StoryView
-            android:id="@+id/storyView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            app:spaceBetweenImageAndIndicator="1dp"
-            app:storyImageRadius="8dp"
-            app:storyItemIndicatorWidth="1dp" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="100dp"
-            android:text="@string/explore"
-            android:textColor="@color/coolor"
-            android:textSize="32sp"
-            android:textStyle="bold" />
-
-        <com.iammert.library.ui.multisearchviewlib.MultiSearchView
-            android:id="@+id/multiSearchView"
+        <!-- Wrap all your content inside a single layout -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:searchTextStyle="@style/SearchTextStyle" />
+            android:orientation="vertical">
+
+            <!-- Your StoryView -->
+            <xute.storyview.StoryView
+                android:id="@+id/storyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                app:spaceBetweenImageAndIndicator="1dp"
+                app:storyImageRadius="8dp"
+                app:storyItemIndicatorWidth="1dp" />
 
 
+            <!-- ConstraintLayout with its content -->
             <androidx.constraintlayout.widget.ConstraintLayout
-
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/normalPadding"
-                android:background="@color/bg1main"
+                android:paddingRight="@dimen/normalPadding"
+                android:background="@color/bg1main">
 
-                android:paddingRight="@dimen/normalPadding">
-
+                <!-- Your ConstraintLayout content -->
 
                 <TextView
                     android:id="@+id/tv_find_title"
@@ -66,10 +48,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:textColor="#fff"
+                    android:textColor="@color/coolor"
                     android:text="Find your \nmatches persons"
                     android:textSize="28sp"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,24 +70,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/normalPadding"
                     android:layout_marginBottom="@dimen/normalPadding"
-                    android:text="10 matchs available"
+                    android:text="10 matches available"
                     android:textColor="#fff"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_find_title" />
 
-                <!--            <com.yarolegovich.discretescrollview.DiscreteScrollView-->
-                <!--                android:id="@+id/item_picker"-->
-                <!--                android:layout_width="match_parent"-->
-                <!--                android:layout_height="wrap_content"-->
-                <!--                android:layout_marginTop="@dimen/normalPadding"-->
-                <!--                android:layout_marginBottom="@dimen/normalPadding"-->
-                <!--                app:layout_constraintEnd_toEndOf="parent"-->
-
-                <!--                app:layout_constraintStart_toStartOf="parent"-->
-                <!--                app:layout_constraintTop_toBottomOf="@+id/textView3"-->
-                <!--                tools:listitem="@layout/item_shop_card" />-->
-                <!--            &lt;!&ndash; orientation is optional, default is horizontal &ndash;&gt;-->
-
+                <!-- Your ViewPager2 -->
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/view_pager"
                     android:layout_width="0dp"
@@ -114,13 +83,12 @@
                     android:layout_marginTop="@dimen/normalPadding"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
-
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
+                <!-- Your LinearLayout with popular items -->
                 <LinearLayout
-
                     android:id="@+id/ll_popular"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -132,6 +100,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_pager">
 
+                    <!-- Your popular items -->
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -144,7 +113,7 @@
                             android:textColor="#fff"
                             android:layout_marginTop="@dimen/activity_horizontal_margin"
                             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:text="Latest match's" />
+                            android:text="Latest matches" />
 
                         <TextView
                             style="@style/viewParent.headerText"
@@ -157,29 +126,37 @@
                             android:text=". ." />
                     </RelativeLayout>
 
+                    <!-- Include your item_popular_person layouts -->
                     <include layout="@layout/item_popular_person_playing" />
-
+                    <include layout="@layout/item_popular_person" />
+                    <include layout="@layout/item_popular_person" />
                     <include layout="@layout/item_popular_person" />
 
-                    <include layout="@layout/item_popular_person" />
+                    <TextView
+                        android:id="@+id/tv_find_title2"
+                        style="@style/viewParent.headerText"
+                        android:layout_marginTop="24dp"
+                        android:textColor="@color/white"
+                        android:text="Meet"
+                        android:textSize="28sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <include layout="@layout/item_popular_person" />
+                    <include layout="@layout/item_meet" />
 
                 </LinearLayout>
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
+    <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"/>
+        android:layout_height="wrap_content"
+        android:background="@color/coolor"
+        app:itemIconTint="@color/bg1main"
+        app:itemTextColor="@color/bg1main"
+        app:menu="@menu/bottom_nav_menu" />
+
 </LinearLayout>
