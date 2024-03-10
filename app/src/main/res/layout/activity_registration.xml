@@ -8,8 +8,7 @@
     android:paddingBottom="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:paddingTop="20dp"
-    >
+    android:paddingTop="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,10 +19,7 @@
             android:layout_width="162dp"
             android:layout_height="162dp"
             android:layout_gravity="center_horizontal"
-
             android:src="@drawable/logo" />
-
-
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textName"
@@ -35,10 +31,11 @@
                 android:id="@+id/titextName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_name"
+                android:hint="Name"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,10 +48,11 @@
                 android:id="@+id/tiemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_email"
+                android:hint="Email"
                 android:inputType="text"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,10 +65,11 @@
                 android:id="@+id/tipassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_password"
+                android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -83,27 +82,33 @@
                 android:id="@+id/textInputEditTextConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:hint="@string/hint_confirm_password"
+                android:hint="Confirm Password"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radioGroup">
+            android:layout_marginTop="20dp">
+
             <RadioButton
+                android:id="@+id/radioButtonMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/coolor"
-                android:text="Male" />
+                android:text="Male"
+                android:textColor="@android:color/white" />
+
             <RadioButton
+                android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/coolor"
-                android:text="Female" />
+                android:text="Female"
+                android:textColor="@android:color/white" />
+
         </RadioGroup>
 
         <Button
@@ -112,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:background="@color/coolor"
-            android:text="@string/text_register" />
+            android:text="Register" />
 
         <TextView
             android:id="@+id/appCompatTextViewLoginLink"
@@ -120,8 +125,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:textColor="@color/white"
             android:text="Already a member? Login"
+            android:textColor="@android:color/white"
             android:textSize="16dp" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
