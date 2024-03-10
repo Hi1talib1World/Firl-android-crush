@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.Fragment;
 
 import com.Denzo.firl.Matches.MatchesFragment;
 import com.Denzo.firl.Model.MatchPerson;
@@ -19,6 +20,7 @@ import com.Denzo.firl.chat.ChatFragment;
 import com.Denzo.firl.databinding.ActivityMainBinding;
 import com.Denzo.firl.helpers.HorizontalMarginItemDecoration;
 import com.Denzo.firl.listeners.MatchPersonClickListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +36,20 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
     Context mcontext;
     private List<MatchPerson> data;
     private MyMatchesPersons myMatchesPersons;
-
-
+    private SwipeFragment swipeFragment = new SwipeFragment();
+    private MatchesFragment matchesFragment = new MatchesFragment();
+    private ChatFragment chatFragment = new ChatFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Initialize fragments
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, swipeFragment).commit();
+
+        // Initialize Bottom Navigation View
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
         StoryView storyView = findViewById(R.id.storyView);
         storyView.resetStoryVisits();
         ArrayList<StoryModel> uris = new ArrayList<>();
@@ -49,28 +58,32 @@ public class MainActivity extends AppCompatActivity implements MatchPersonClickL
         uris.add(new StoryModel("https://picsum.photos/200/300", "Ankit Kumar", "12:00 PM"));
         uris.add(new StoryModel("https://picsum.photos/200/300", "Ankit Kumar", "12:00 PM"));
     }
-    SwipeFragment swipeFragment = new SwipeFragment();
-    MatchesFragment matchesFragment = new MatchesFragment();
-    ChatFragment chatFragment = new ChatFragment();
 
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
 
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.swipe:
+                            selectedFragment = swipeFragment;
+                            break;
+                        case R.id.matches:
+                            selectedFragment = matchesFragment;
+                            break;
+                        case R.id.chat:
+                            selectedFragment = chatFragment;
+                            break;
+                    }
 
-        switch (item.getItemId()) {
-            case R.id.swipe:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, swipeFragment).commit();
-                return true;
-
-            case R.id.matches:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, matchesFragment).commit();
-                return true;
-
-            case R.id.chat:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, chatFragment).commit();
-                return true;
-        }
-        return false;
-    }
+                    if (selectedFragment != null) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                                selectedFragment).commit();
+                    }
+                    return true;
+                }
+            };
 
     private void setupViewpager(int currentItem, List<MatchPerson> matchCourseList) {
         PersonTopicsViewPager courseTopicsViewPager = new PersonTopicsViewPager(matchCourseList, mcontext, this);
