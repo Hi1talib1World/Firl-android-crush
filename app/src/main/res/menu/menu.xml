@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/swipe"
-        android:title="Swipe"
-        android:icon="@drawable/love"/>
+        android:id="@+id/Home"
+        android:title="Home"
+        android:icon="@drawable/home" />
     <item
-        android:id="@+id/matches"
-        android:title="Matches"
-        android:icon="@drawable/matches"/>
-    <item
-        android:id="@+id/chat"
+        android:id="@+id/Chat"
         android:title="Chat"
-        android:icon="@drawable/topic"/>
+        android:icon="@drawable/chat" />
+    <item
+        android:id="@+id/Swipe"
+        android:title="Swipe"
+        android:icon="@drawable/rotate" />
 </menu>
