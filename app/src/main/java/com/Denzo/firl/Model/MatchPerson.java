@@ -6,7 +6,7 @@ public class MatchPerson {
     private String numberOfPersons;
     private final int imageResource;
 
-    public MatchPerson(int id, String name, String numberOfCourses, int imageResource) {
+    public MatchPerson(int id, String name, String numberOfPersons, int imageResource) {
         this.id = id;
         this.name = name;
         this.numberOfPersons = numberOfPersons;
@@ -15,7 +15,7 @@ public class MatchPerson {
 
     @Override
     public String toString() {
-        return "MatchCourse{" +
+        return "MatchPerson{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", numberOfPersons='" + numberOfPersons + '\'' +
