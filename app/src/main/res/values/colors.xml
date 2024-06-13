@@ -96,6 +96,7 @@
 
     <color name="colorPrimaryText">@android:color/white</color>
     <color name="bg1main">#1C2736</color>
+    <color name="bg2main">#00FF00</color>
 
 
 </resources>
