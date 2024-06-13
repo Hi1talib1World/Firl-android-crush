@@ -5,10 +5,10 @@
         android:icon="@drawable/home" />
     <item
         android:id="@+id/navigation_dashboard"
-        android:title="Dashboard"
+        android:title="Chat"
         android:icon="@drawable/chat" />
     <item
         android:id="@+id/navigation_notifications"
-        android:title="Notifications"
+        android:title="Swipe"
         android:icon="@drawable/rotate" />
 </menu>
