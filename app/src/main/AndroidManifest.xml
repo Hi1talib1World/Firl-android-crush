@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Profile.Profile_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Swipe.SwipeActivity"
             android:exported="false" />
         <activity
@@ -27,7 +30,7 @@
             android:exported="true" />
         <activity
             android:name=".Login.register.SignupActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Login.LoginActivity"
             android:exported="true" />
