@@ -5,6 +5,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="_5dp">5dp</dimen>
 
     <dimen name="small_intrinsic_padding">4dp</dimen>
     <dimen name="intrinsic_padding">8dp</dimen>
