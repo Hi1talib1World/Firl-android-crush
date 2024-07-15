@@ -19,9 +19,7 @@
         <activity
             android:name=".Profile.Profile_Activity"
             android:exported="false" />
-        <activity
-            android:name=".Swipe.SwipeActivity"
-            android:exported="false" />
+
         <activity
             android:name=".chat.ChatFragment"
             android:exported="false" />
