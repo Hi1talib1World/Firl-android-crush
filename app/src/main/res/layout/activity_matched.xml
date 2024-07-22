@@ -11,8 +11,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <!-- top navigation -->
-    <include layout="@layout/layout_top_navigation_view" />
 
     <ScrollView
         android:layout_width="match_parent"

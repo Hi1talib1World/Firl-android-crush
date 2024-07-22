@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,78 +17,77 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="162dp"
-            android:layout_height="162dp"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/logo" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textName"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            android:text="Hey, lets get started!"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/titextName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/remail"
+            android:gravity="bottom">
+
+            <EditText
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@android:color/white" />
-
+                android:background="@drawable/edit_text_focused_bg"
+                android:hint="entry your Email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/rname"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiemail"
+            <EditText
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@android:color/white" />
-
+                android:background="@drawable/edit_text_focused_bg"
+                android:hint="enter your username "
+                android:inputType="textEmailAddress"
+                android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_height="70dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom"
+            android:id="@+id/rpassword"
+            app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tipassword"
+            <EditText
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:background="@drawable/edit_text_focused_bg"
+                android:hint="enter your Password"
                 android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="@android:color/white" />
-
+                android:padding="15dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutConfirmPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:textColor="@android:color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -112,11 +112,11 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/sign_up_button"
+            android:id="@+id/rbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@color/coolor"
+            android:background="@drawable/white_rounded_button"
             android:text="Register" />
 
         <TextView

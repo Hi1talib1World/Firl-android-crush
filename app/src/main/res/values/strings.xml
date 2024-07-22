@@ -216,5 +216,6 @@
     <string name="number_persons">96</string>
     <string name="title_topic_person">title</string>
     <string name="explore">Explore</string>
+    <string name="match_notification">match</string>
 
 </resources>

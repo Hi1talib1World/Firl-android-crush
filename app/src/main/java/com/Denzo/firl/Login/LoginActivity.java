@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
-import com.Denzo.firl.Login.register.SignupActivity;
 import com.Denzo.firl.MainActivity;
 import com.Denzo.firl.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,13 +33,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // taking instance of FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
         // initialising all views through id defined above
-        emailTextView = findViewById(R.id.email);
-        passwordTextView = findViewById(R.id.password);
-        Btn = findViewById(R.id.login);
-        progressbar = findViewById(R.id.progressBar);
+        emailTextView = findViewById(R.id.lemail);
+        passwordTextView = findViewById(R.id.lpassword);
+        Btn = findViewById(R.id.llogin);
 
         // Set on Click Listener on Sign-in button
         Btn.setOnClickListener(new View.OnClickListener() {
