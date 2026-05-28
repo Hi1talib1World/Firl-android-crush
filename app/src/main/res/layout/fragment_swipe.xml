@@ -37,9 +37,12 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginEnd="12dp"
-                android:drawableStart="@drawable/ic_info"
+                app:drawableStartCompat="@drawable/ic_user"
                 android:drawablePadding="8dp"
-                app:drawableTint="@color/white" />
+                app:drawableTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
             <TextView
                 android:id="@+id/filter_age"
@@ -55,9 +58,12 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:layout_marginEnd="12dp"
-                android:drawableStart="@drawable/ic_info"
+                app:drawableStartCompat="@drawable/ic_launcher_background"
                 android:drawablePadding="8dp"
-                app:drawableTint="@color/white" />
+                app:drawableTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
             <TextView
                 android:id="@+id/filter_distance"
@@ -72,9 +78,12 @@
                 android:text="Distance: 50km"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:drawableStart="@drawable/ic_info"
+                app:drawableStartCompat="@drawable/ic_location"
                 android:drawablePadding="8dp"
-                app:drawableTint="@color/white" />
+                app:drawableTint="@color/white"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
         </LinearLayout>
     </HorizontalScrollView>
