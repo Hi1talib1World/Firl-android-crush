@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-   * DatingApp
-    * https://github.com/quintuslabs/DatingApp
-    * Created on 25-sept-2018.
-    * Created by : Santosh Kumar Dash:- http://santoshdash.epizy.com
-    -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:clipToPadding="false"
-    android:outlineProvider="bounds"
     android:paddingLeft="10sp"
     android:paddingRight="10sp"
     android:paddingBottom="10sp">
@@ -21,89 +14,97 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@drawable/white_grey_border_bottom"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="4dp">
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-            <FrameLayout
+            <ImageView
+                android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:scaleType="centerCrop" />
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop" />
+            <!-- Bottom Gradient Overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bottom_gradient" />
 
-                <TextView
-                    android:id="@+id/item_swipe_left_indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:alpha="0"
-                    android:background="@drawable/like_border"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="LIKE"
-                    android:textColor="@color/likegreen"
-                    android:textSize="35sp" />
+            <!-- Indicators -->
+            <TextView
+                android:id="@+id/item_swipe_left_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:alpha="0"
+                android:background="@drawable/like_border"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:rotation="-20"
+                android:text="LIKE"
+                android:textColor="@color/likegreen"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/item_swipe_right_indicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:alpha="0"
-                    android:background="@drawable/dislike_border"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="5dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="5dp"
-                    android:text="NOPE"
-                    android:textColor="@color/dislikered"
-                    android:textSize="35sp" />
+            <TextView
+                android:id="@+id/item_swipe_right_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_margin="20dp"
+                android:alpha="0"
+                android:background="@drawable/dislike_border"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:rotation="20"
+                android:text="NOPE"
+                android:textColor="@color/dislikered"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
-            </FrameLayout>
-
+            <!-- User Info Overlay -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:text="Victoria, 19"
-                    android:textColor="@color/textColor"
-                    android:textSize="20sp" />
+                    android:textColor="@android:color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="2"/>
 
                 <ImageButton
                     android:id="@+id/checkInfoBeforeMatched"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
-                    android:background="@color/white"
-                    android:onClick="checkInfo"
-                    android:src="@drawable/ic_info" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_info"
+                    app:tint="@android:color/white"
+                    android:scaleType="centerInside" />
 
             </LinearLayout>
 
-        </LinearLayout>
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 
