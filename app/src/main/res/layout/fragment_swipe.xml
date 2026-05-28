@@ -6,12 +6,86 @@
     android:layout_height="match_parent"
     android:background="@color/bg1main">
 
+    <HorizontalScrollView
+        android:id="@+id/filter_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/filter_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_layout"
+                android:backgroundTint="#33FFFFFF"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Sex: All"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginEnd="12dp"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="8dp"
+                app:drawableTint="@color/white" />
+
+            <TextView
+                android:id="@+id/filter_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_layout"
+                android:backgroundTint="#33FFFFFF"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Age: 18-35"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:layout_marginEnd="12dp"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="8dp"
+                app:drawableTint="@color/white" />
+
+            <TextView
+                android:id="@+id/filter_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_layout"
+                android:backgroundTint="#33FFFFFF"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Distance: 50km"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:drawableStart="@drawable/ic_info"
+                android:drawablePadding="8dp"
+                app:drawableTint="@color/white" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <FrameLayout
         android:id="@+id/card_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/controls_layout"
-        android:layout_marginTop="10dp">
+        android:layout_below="@+id/filter_bar"
+        android:layout_marginTop="0dp">
 
         <com.lorentzos.flingswipe.SwipeFlingAdapterView
             android:id="@+id/frame"
