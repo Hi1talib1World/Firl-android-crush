@@ -114,10 +114,22 @@
         android:paddingBottom="10dp">
 
         <ImageButton
+            android:id="@+id/rewindbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ripple_white"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rotate"
+            app:tint="@color/orange" />
+
+        <ImageButton
             android:id="@+id/dislikebtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/ripple_white"
             android:elevation="4dp"
             android:padding="12dp"
@@ -126,27 +138,39 @@
             app:tint="@color/dislikered" />
 
         <ImageButton
-            android:id="@+id/commentbtn"
+            android:id="@+id/superlikebtn"
             android:layout_width="54dp"
             android:layout_height="54dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/ripple_white"
             android:elevation="4dp"
             android:padding="12dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_comment"
+            android:src="@drawable/love"
             app:tint="@color/link_blue" />
 
         <ImageButton
             android:id="@+id/likebtn"
             android:layout_width="64dp"
             android:layout_height="64dp"
+            android:layout_marginEnd="20dp"
             android:background="@drawable/ripple_white"
             android:elevation="4dp"
             android:padding="12dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_like1"
             app:tint="@color/likegreen" />
+
+        <ImageButton
+            android:id="@+id/commentbtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_white"
+            android:elevation="4dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_comment"
+            app:tint="@color/colorAccent" />
 
     </LinearLayout>
 
