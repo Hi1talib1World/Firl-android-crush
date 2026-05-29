@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/bg1main"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="It's a Match!"
+        android:textColor="@color/colorAccent"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:fontFamily="cursive" />
+
+    <TextView
+        android:id="@+id/match_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You and Victoria liked each other."
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/monkey"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/love"
+            app:tint="@color/dislikered" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/match_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img1"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/send_message_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/link_blue"
+        android:text="Send a Message"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/keep_swiping"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Keep Swiping"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>
