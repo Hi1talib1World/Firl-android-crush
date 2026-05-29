@@ -102,22 +102,14 @@
                             android:layout_marginBottom="@dimen/activity_horizontal_margin"
                             android:text="Latest matches" />
 
-                        <TextView
-                            style="@style/viewParent.headerText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:textColor="@color/coolor"
-                            android:text=". ." />
                     </RelativeLayout>
 
-                    <!-- Include your item_popular_person layouts -->
-                    <include layout="@layout/item_popular_person_playing" />
-                    <include layout="@layout/item_popular_person" />
-                    <include layout="@layout/item_popular_person" />
-                    <include layout="@layout/item_popular_person" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/matches_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/matched_user_item" />
 
                     <TextView
                         android:id="@+id/tv_find_title2"
