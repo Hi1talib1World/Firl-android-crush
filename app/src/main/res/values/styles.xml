@@ -57,8 +57,8 @@
         <item name="cardElevation">2dp</item>
     </style>
 
-    <style name="BottomNavigationStyle" parent="Widget.Material3.NavigationBar">
-        <item name="containerColor">@color/bg1main</item>
+    <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">@color/bg1main</item>
         <item name="itemIconTint">@color/white</item>
         <item name="itemTextColor">@color/white</item>
     </style>
