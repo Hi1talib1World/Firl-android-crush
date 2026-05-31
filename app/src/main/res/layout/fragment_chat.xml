@@ -1,43 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/bg1main"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
-    <androidx.core.widget.NestedScrollView
+    android:background="@color/bg1main">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#22FFFFFF"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_chevron_left_black_24dp"
+            app:tint="@color/white" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chat_user_image"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/backBtn"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/monkey"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@+id/chat_user_image"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/chat_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Victoria"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online"
+                android:textColor="@color/likegreen"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_settings"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <!-- Chat Messages -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/sendLayout">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyclerView"
-            android:scrollbars="vertical">
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.core.widget.NestedScrollView>
+        android:layout_above="@+id/inputLayout"
+        android:layout_below="@+id/topBar"
+        android:padding="15dp"
+        android:clipToPadding="false" />
+
+    <!-- Input Bar -->
     <LinearLayout
-        android:id="@+id/sendLayout"
+        android:id="@+id/inputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:background="#11FFFFFF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_add_circle_black_24dp"
+            app:tint="@color/white"
+            android:alpha="0.6"/>
+
         <EditText
-            android:layout_weight="0.8"
+            android:id="@+id/messageInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="message..."
-            android:id="@+id/message"
-            />
-        <Button
-            android:layout_weight="0.2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/message"
-            android:id="@+id/send"/>
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_layout"
+            android:backgroundTint="#33FFFFFF"
+            android:hint="Type a message..."
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:textColorHint="#66FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageButton
+            android:id="@+id/sendBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_white"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_send_black_24dp"
+            app:tint="@color/link_blue" />
+
     </LinearLayout>
 
 </RelativeLayout>
