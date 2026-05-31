@@ -66,4 +66,16 @@
         android:text="Share Profile"
         android:textColor="@color/bg1main" />
 
+    <TextView
+        android:id="@+id/report_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Report and Block Victoria"
+        android:textColor="@color/dislikered"
+        android:textSize="12sp"
+        android:alpha="0.7" />
+
 </LinearLayout>
