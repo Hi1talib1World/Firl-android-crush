@@ -96,4 +96,54 @@
         android:textColor="@color/white"
         style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#22FFFFFF" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Safety &amp; Privacy"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_layout"
+        android:backgroundTint="#11FFFFFF"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Never share financial information"
+            android:textColor="@color/white"
+            android:alpha="0.7"
+            android:textSize="13sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Report any suspicious behavior immediately"
+            android:textColor="@color/white"
+            android:alpha="0.7"
+            android:layout_marginTop="5dp"
+            android:textSize="13sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="• Meet in public places for the first few times"
+            android:textColor="@color/white"
+            android:alpha="0.7"
+            android:layout_marginTop="5dp"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
 </LinearLayout>
