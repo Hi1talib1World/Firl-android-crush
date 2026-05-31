@@ -79,7 +79,4 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <dimen name="headerTextSize">24sp</dimen>
-    <dimen name="normalPadding">16dp</dimen>
-
 </resources>
