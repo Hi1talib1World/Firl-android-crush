@@ -10,82 +10,57 @@
         android:id="@+id/filter_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:scrollbars="none"
         android:clipToPadding="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp">
 
-        <LinearLayout
+        <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            app:singleLine="true">
 
-            <TextView
+            <com.google.android.material.chip.Chip
                 android:id="@+id/filter_sex"
+                style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_layout"
-                android:backgroundTint="#33FFFFFF"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
                 android:text="Sex: All"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
-                app:drawableStartCompat="@drawable/ic_user"
-                android:drawablePadding="8dp"
-                app:drawableTint="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+                app:chipIcon="@drawable/ic_user"
+                app:chipIconTint="@color/white"
+                app:chipBackgroundColor="#33FFFFFF"
+                app:chipStrokeWidth="0dp" />
 
-            <TextView
+            <com.google.android.material.chip.Chip
                 android:id="@+id/filter_age"
+                style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_layout"
-                android:backgroundTint="#33FFFFFF"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:layout_marginStart="8dp"
                 android:text="Age: 18-35"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
-                app:drawableStartCompat="@drawable/ic_launcher_background"
-                android:drawablePadding="8dp"
-                app:drawableTint="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+                app:chipIcon="@drawable/ic_launcher_background"
+                app:chipIconTint="@color/white"
+                app:chipBackgroundColor="#33FFFFFF"
+                app:chipStrokeWidth="0dp" />
 
-            <TextView
+            <com.google.android.material.chip.Chip
                 android:id="@+id/filter_distance"
+                style="@style/Widget.Material3.Chip.Assist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_corner_layout"
-                android:backgroundTint="#33FFFFFF"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:layout_marginStart="8dp"
                 android:text="Distance: 50km"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-                app:drawableStartCompat="@drawable/ic_location"
-                android:drawablePadding="8dp"
-                app:drawableTint="@color/white"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+                app:chipIcon="@drawable/ic_location"
+                app:chipIconTint="@color/white"
+                app:chipBackgroundColor="#33FFFFFF"
+                app:chipStrokeWidth="0dp" />
 
-        </LinearLayout>
+        </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
     <FrameLayout
