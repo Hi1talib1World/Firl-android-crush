@@ -34,6 +34,42 @@
                 android:layout_gravity="bottom"
                 android:background="@drawable/bottom_gradient" />
 
+            <!-- Top Overlay for Match Score & Verified Badge -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/compatibility_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corners"
+                    android:backgroundTint="#80000000"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="6dp"
+                    android:text="95% Match"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/verified_badge"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_check_select"
+                    app:tint="#4CAF50"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
             <!-- Indicators -->
             <TextView
                 android:id="@+id/item_swipe_left_indicator"
