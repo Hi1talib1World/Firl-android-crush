@@ -79,11 +79,23 @@
             android:id="@+id/send_message_btn"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="32dp"
             android:text="Send a Message"
             android:textColor="@color/bg1main"
             android:backgroundTint="@color/colorAccent"
             app:cornerRadius="16dp" />
+
+        <TextView
+            android:id="@+id/ice_breaker_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ice Breaker: You both love Travel!"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontStyle="italic"
+            android:alpha="0.7"
+            android:gravity="center" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/keep_swiping"
