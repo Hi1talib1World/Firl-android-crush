@@ -9,6 +9,6 @@
         android:icon="@drawable/chat" />
     <item
         android:id="@+id/navigation_notifications"
-        android:title="Swipe"
+        android:title="Likes"
         android:icon="@drawable/rotate" />
 </menu>
