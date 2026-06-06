@@ -2,14 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/Home"
-        android:title="Home"
+        android:title="Likes"
         android:icon="@drawable/home" />
+    <item
+        android:id="@+id/Discover"
+        android:title="Discover"
+        android:icon="@drawable/ic_search" />
+    <item
+        android:id="@+id/Swipe"
+        android:title="Swipe"
+        android:icon="@drawable/rotate" />
     <item
         android:id="@+id/Chat"
         android:title="Chat"
         android:icon="@drawable/chat" />
     <item
-        android:id="@+id/Swipe"
-        android:title="Swipe"
-        android:icon="@drawable/rotate" />
+        android:id="@+id/Profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_profile" />
 </menu>
