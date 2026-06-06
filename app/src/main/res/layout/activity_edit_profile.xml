@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bg1main"
     android:orientation="vertical">
     <include layout="@layout/layout_top_navigation_back" />
 
@@ -24,8 +24,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/backgroungColor"
-                    android:orientation="vertical">
+                    android:background="#10FFFFFF"
+                    android:orientation="vertical"
+                    android:paddingBottom="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -37,11 +38,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
                             android:layout_weight="4"
-                            app:cardCornerRadius="4dp"
+                            app:cardCornerRadius="12dp"
                             app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true">
+                            app:cardUseCompatPadding="true"
+                            app:cardBackgroundColor="#20FFFFFF">
                             <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-                                <ImageView android:id="@+id/image_view_1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" />
+                                <ImageView android:id="@+id/image_view_1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
                             </RelativeLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -50,11 +52,11 @@
                             android:layout_height="match_parent"
                             android:layout_weight="6"
                             android:orientation="vertical">
-                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="4dp" app:cardElevation="4dp" app:cardUseCompatPadding="true">
-                                <ImageView android:id="@+id/image_view_2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" />
+                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="12dp" app:cardElevation="4dp" app:cardUseCompatPadding="true" app:cardBackgroundColor="#20FFFFFF">
+                                <ImageView android:id="@+id/image_view_2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
                             </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="4dp" app:cardElevation="4dp" app:cardUseCompatPadding="true">
-                                <ImageView android:id="@+id/image_view_3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="fitXY" />
+                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="12dp" app:cardElevation="4dp" app:cardUseCompatPadding="true" app:cardBackgroundColor="#20FFFFFF">
+                                <ImageView android:id="@+id/image_view_3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
                             </androidx.cardview.widget.CardView>
                         </LinearLayout>
                     </LinearLayout>
@@ -64,12 +66,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Interests &amp; Goals"
+                        android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -77,16 +80,17 @@
                         android:id="@+id/edit_interests_chip_group"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         app:chipSpacingHorizontal="8dp" />
 
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16dp" android:background="@color/colorAccent" />
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="20dp" android:background="@color/white" android:alpha="0.1" />
 
                     <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="20dp"
                         android:text="About You"
+                        android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -94,13 +98,21 @@
                         android:id="@+id/about_me"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tell us about yourself" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/card_bg_dark"
+                        android:padding="16dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#80FFFFFF"
+                        android:hint="Tell us about yourself"
+                        android:minLines="3"
+                        android:gravity="top" />
 
                     <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:text="Job Title"
+                        android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -108,13 +120,20 @@
                         android:id="@+id/job_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Add job title" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/card_bg_dark"
+                        android:padding="16dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#80FFFFFF"
+                        android:hint="Add job title"
+                        android:singleLine="true" />
 
                     <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:text="Company"
+                        android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -122,13 +141,20 @@
                         android:id="@+id/company"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Add company" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/card_bg_dark"
+                        android:padding="16dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#80FFFFFF"
+                        android:hint="Add company"
+                        android:singleLine="true" />
 
                     <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="24dp"
                         android:text="School"
+                        android:textColor="@color/white"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
@@ -136,15 +162,39 @@
                         android:id="@+id/school"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Add school" />
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/card_bg_dark"
+                        android:padding="16dp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#80FFFFFF"
+                        android:hint="Add school"
+                        android:singleLine="true" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:orientation="horizontal">
-                        <Button android:id="@+id/man_button" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Man" />
-                        <Button android:id="@+id/woman_button" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Woman" />
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/man_button"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_weight="1"
+                            android:text="Man"
+                            android:layout_marginEnd="8dp"
+                            app:cornerRadius="12dp"
+                            style="@style/Widget.Material3.Button.TonalButton" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/woman_button"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            android:layout_weight="1"
+                            android:text="Woman"
+                            android:layout_marginStart="8dp"
+                            app:cornerRadius="12dp"
+                            style="@style/Widget.Material3.Button.TonalButton" />
                     </LinearLayout>
 
                 </LinearLayout>
