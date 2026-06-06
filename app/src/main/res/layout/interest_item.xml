@@ -5,9 +5,10 @@
     android:layout_width="160dp"
     android:layout_height="220dp"
     android:layout_marginEnd="16dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="4dp"
-    app:strokeWidth="0dp">
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +24,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bottom_gradient" />
+            android:background="@drawable/bottom_gradient"
+            android:alpha="0.85" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,18 +38,21 @@
                 android:id="@+id/interest_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lifestyle"
+                android:text="GOAL"
                 android:textColor="@color/colorAccent"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:alpha="0.9" />
 
             <TextView
                 android:id="@+id/interest_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Long Term"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
