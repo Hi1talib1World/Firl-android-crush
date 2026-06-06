@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="style">one</string-array>
+    <array name="initial_age_range">
+        <item>18.0</item>
+        <item>50.0</item>
+    </array>
 </resources>
