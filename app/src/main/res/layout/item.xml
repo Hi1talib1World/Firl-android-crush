@@ -111,32 +111,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                android:padding="20dp"
-                android:gravity="center_vertical">
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:background="@drawable/bottom_gradient">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Victoria, 19"
+                        android:textColor="@android:color/white"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#BF000000"
+                        android:shadowDx="0"
+                        android:shadowDy="4"
+                        android:shadowRadius="8"/>
+
+                    <ImageButton
+                        android:id="@+id/checkInfoBeforeMatched"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/circle_background"
+                        android:backgroundTint="#60FFFFFF"
+                        android:src="@drawable/ic_down_arrow"
+                        app:tint="@android:color/white"
+                        android:padding="12dp"
+                        android:scaleType="centerInside"
+                        android:elevation="4dp" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/name"
-                    android:layout_width="0dp"
+                    android:id="@+id/card_job_school"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Victoria, 19"
-                    android:textColor="@android:color/white"
-                    android:textSize="28sp"
-                    android:textStyle="bold"
-                    android:shadowColor="#000000"
-                    android:shadowDx="2"
-                    android:shadowDy="2"
-                    android:shadowRadius="2"/>
+                    android:text="Software Engineer at Google"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:alpha="0.9"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="sans-serif-medium" />
 
-                <ImageButton
-                    android:id="@+id/checkInfoBeforeMatched"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@android:color/transparent"
-                    android:src="@drawable/ic_info"
-                    app:tint="@android:color/white"
-                    android:scaleType="centerInside" />
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/card_lifestyle_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:chipSpacingHorizontal="10dp"
+                    app:chipSpacingVertical="0dp" />
 
             </LinearLayout>
 
