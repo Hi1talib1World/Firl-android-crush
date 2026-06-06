@@ -24,6 +24,10 @@
         <activity
             android:name=".Profile.Profile_Activity"
             android:exported="false" />
+        <activity
+            android:name=".Profile.EditProfileActivity"
+            android:label="@string/title_activity_edit_profile"
+            android:exported="false" />
 
         <activity
             android:name=".chat.ChatFragment"
