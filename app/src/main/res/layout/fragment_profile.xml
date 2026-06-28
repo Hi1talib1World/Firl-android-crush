@@ -75,6 +75,18 @@
             android:alpha="0.6"
             android:textSize="15sp" />
 
+        <TextView
+            android:id="@+id/profile_bio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Tell us about yourself..."
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:fontFamily="sans-serif"
+            android:alpha="0.8" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,15 +107,17 @@
                     android:textStyle="bold"
                     android:alpha="0.9" />
                 <TextView
+                    android:id="@+id/profile_strength_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="75%"
+                    android:text="0%"
                     android:textColor="@color/colorAccent"
                     android:textStyle="bold" />
             </RelativeLayout>
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/profile_strength_progress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -111,7 +125,7 @@
                 app:trackColor="#20FFFFFF"
                 app:trackThickness="10dp"
                 app:trackCornerRadius="5dp"
-                android:progress="75" />
+                android:progress="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -133,6 +147,7 @@
             android:textStyle="bold" />
 
         <GridLayout
+            android:id="@+id/media_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -141,30 +156,42 @@
             android:useDefaultMargins="true">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/media_card_1"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp">
-                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img1" android:scaleType="centerCrop"/>
+                app:strokeWidth="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <ImageView android:id="@+id/media_img_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img1" android:scaleType="centerCrop"/>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/media_card_2"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp">
-                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img2" android:scaleType="centerCrop"/>
+                app:strokeWidth="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <ImageView android:id="@+id/media_img_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img2" android:scaleType="centerCrop"/>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/media_card_3"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp">
-                <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img3" android:scaleType="centerCrop"/>
+                app:strokeWidth="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+                <ImageView android:id="@+id/media_img_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img3" android:scaleType="centerCrop"/>
             </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
@@ -191,6 +218,16 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/pref_save_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            app:indicatorColor="@color/colorAccent"
+            app:trackColor="?attr/colorSurfaceVariant"
+            android:indeterminate="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -231,6 +268,15 @@
             android:layout_marginTop="48dp"
             android:text="Account Settings"
             app:cornerRadius="16dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout_btn"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="8dp"
+            android:text="Logout"
+            android:textColor="@color/dislikered" />
 
         <View android:layout_width="match_parent" android:layout_height="64dp" />
 
