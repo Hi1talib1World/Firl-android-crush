@@ -63,6 +63,16 @@
                         android:text="Online"
                         android:textColor="@color/likegreen"
                         android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/typing_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="typing..."
+                        android:textColor="@color/likegreen"
+                        android:textSize="11sp"
+                        android:textStyle="italic"
+                        android:visibility="gone" />
                 </LinearLayout>
 
                 <ImageButton
@@ -108,6 +118,7 @@
             android:padding="4dp">
 
             <ImageButton
+                android:id="@+id/plusBtn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
