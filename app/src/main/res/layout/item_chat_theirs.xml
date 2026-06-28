@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        android:background="@drawable/rounded_corner_layout"
-        android:backgroundTint="#33FFFFFF"
-        android:padding="12dp"
+        android:background="@drawable/chat_bubble_theirs"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
         android:text="I'm doing great, thanks!"
         android:textColor="@color/white"
         android:textSize="14sp" />
