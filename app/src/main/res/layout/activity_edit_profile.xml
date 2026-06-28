@@ -1,204 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main"
-    android:orientation="vertical">
-    <include layout="@layout/layout_top_navigation_back" />
+    android:background="@color/bg1main">
 
-    <ScrollView
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/edit_profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Edit Profile"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_chevron_left_black_24dp"
+            app:navigationIconTint="@color/white">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_profile_btn"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:text="Done"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <!-- Media Grid -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_weight="1.2"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:strokeWidth="0dp"
+                    app:cardBackgroundColor="#1AFFFFFF">
+                    <ImageView
+                        android:id="@+id/image_view_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/logo"
+                        android:alpha="0.5" />
+                </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#10FFFFFF"
-                    android:orientation="vertical"
-                    android:paddingBottom="16dp">
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_weight="0.8"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="10">
-
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="match_parent"
-                            android:layout_height="260dp"
-                            android:layout_weight="4"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="4dp"
-                            app:cardUseCompatPadding="true"
-                            app:cardBackgroundColor="#20FFFFFF">
-                            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
-                                <ImageView android:id="@+id/image_view_1" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
-                            </RelativeLayout>
-                        </androidx.cardview.widget.CardView>
-
-                        <LinearLayout
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="8dp"
+                        app:cardCornerRadius="16dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#1AFFFFFF">
+                        <ImageView
+                            android:id="@+id/image_view_2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="6"
-                            android:orientation="vertical">
-                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="12dp" app:cardElevation="4dp" app:cardUseCompatPadding="true" app:cardBackgroundColor="#20FFFFFF">
-                                <ImageView android:id="@+id/image_view_2" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
-                            </androidx.cardview.widget.CardView>
-                            <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="130dp" app:cardCornerRadius="12dp" app:cardElevation="4dp" app:cardUseCompatPadding="true" app:cardBackgroundColor="#20FFFFFF">
-                                <ImageView android:id="@+id/image_view_3" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" />
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
-                    </LinearLayout>
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/logo"
+                            android:alpha="0.3" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="16dp"
+                        app:strokeWidth="0dp"
+                        app:cardBackgroundColor="#1AFFFFFF">
+                        <ImageView
+                            android:id="@+id/image_view_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/logo"
+                            android:alpha="0.3" />
+                    </com.google.android.material.card.MaterialCardView>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Interests &amp; Goals"
-                        android:textColor="@color/white"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/edit_interests_chip_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        app:chipSpacingHorizontal="8dp" />
-
-                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="20dp" android:background="@color/white" android:alpha="0.1" />
-
-                    <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="About You"
-                        android:textColor="@color/white"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/about_me"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/card_bg_dark"
-                        android:padding="16dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#80FFFFFF"
-                        android:hint="Tell us about yourself"
-                        android:minLines="3"
-                        android:gravity="top" />
-
-                    <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="Job Title"
-                        android:textColor="@color/white"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/job_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/card_bg_dark"
-                        android:padding="16dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#80FFFFFF"
-                        android:hint="Add job title"
-                        android:singleLine="true" />
-
-                    <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="Company"
-                        android:textColor="@color/white"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/company"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/card_bg_dark"
-                        android:padding="16dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#80FFFFFF"
-                        android:hint="Add company"
-                        android:singleLine="true" />
-
-                    <com.Denzo.firl.customfonts.MyTextView_Roboto_Bold
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="School"
-                        android:textColor="@color/white"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/school"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/card_bg_dark"
-                        android:padding="16dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#80FFFFFF"
-                        android:hint="Add school"
-                        android:singleLine="true" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginBottom="32dp"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/man_button"
-                            android:layout_width="0dp"
-                            android:layout_height="56dp"
-                            android:layout_weight="1"
-                            android:text="Man"
-                            android:layout_marginEnd="8dp"
-                            app:cornerRadius="12dp"
-                            style="@style/Widget.Material3.Button.TonalButton" />
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/woman_button"
-                            android:layout_width="0dp"
-                            android:layout_height="56dp"
-                            android:layout_weight="1"
-                            android:text="Woman"
-                            android:layout_marginStart="8dp"
-                            app:cornerRadius="12dp"
-                            style="@style/Widget.Material3.Button.TonalButton" />
-                    </LinearLayout>
-
-                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+
+            <!-- Profile Content -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ABOUT ME"
+                    android:textColor="@color/white"
+                    android:alpha="0.6"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
+
+                <EditText
+                    android:id="@+id/about_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/card_bg_dark"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:hint="Write a short bio..."
+                    android:textColorHint="#4DFFFFFF"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="INTERESTS"
+                    android:textColor="@color/white"
+                    android:alpha="0.6"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/edit_interests_chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:chipSpacingHorizontal="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="JOB &amp; EDUCATION"
+                    android:textColor="@color/white"
+                    android:alpha="0.6"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
+
+                <EditText
+                    android:id="@+id/job_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/card_bg_dark"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/white"
+                    android:hint="Job Title"
+                    android:textColorHint="#4DFFFFFF"
+                    android:singleLine="true"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/school"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/card_bg_dark"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@color/white"
+                    android:hint="School"
+                    android:textColorHint="#4DFFFFFF"
+                    android:singleLine="true"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="GENDER"
+                    android:textColor="@color/white"
+                    android:alpha="0.6"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.1" />
+
+                <RadioGroup
+                    android:id="@+id/edit_gender_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <RadioButton
+                        android:id="@+id/radio_man"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="Man"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/colorAccent" />
+
+                    <RadioButton
+                        android:id="@+id/radio_woman"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="Woman"
+                        android:textColor="@color/white"
+                        android:buttonTint="@color/colorAccent" />
+
+                </RadioGroup>
+
+                <View android:layout_width="match_parent" android:layout_height="100dp" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/edit_loading_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            app:indicatorColor="@color/colorAccent" />
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
