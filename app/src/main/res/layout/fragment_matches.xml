@@ -80,75 +80,13 @@
                         android:textSize="18sp"
                         android:layout_marginBottom="10dp"/>
 
-                    <HorizontalScrollView
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/likes_you_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scrollbars="none">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <!-- Blurred placeholders for premium feature -->
-                            <FrameLayout
-                                android:layout_width="80dp"
-                                android:layout_height="100dp"
-                                android:layout_marginEnd="10dp">
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/img1"
-                                    app:civ_border_color="@color/orange"
-                                    app:civ_border_width="2dp"
-                                    android:alpha="0.4"/>
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/love"
-                                    app:tint="@color/orange"/>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="80dp"
-                                android:layout_height="100dp"
-                                android:layout_marginEnd="10dp">
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/img2"
-                                    app:civ_border_color="@color/orange"
-                                    app:civ_border_width="2dp"
-                                    android:alpha="0.4"/>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="80dp"
-                                android:layout_height="100dp"
-                                android:layout_marginEnd="10dp">
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/img3"
-                                    app:civ_border_color="@color/orange"
-                                    app:civ_border_width="2dp"
-                                    android:alpha="0.4"/>
-                            </FrameLayout>
-
-                            <FrameLayout
-                                android:layout_width="80dp"
-                                android:layout_height="100dp">
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:src="@drawable/img4"
-                                    app:civ_border_color="@color/orange"
-                                    app:civ_border_width="2dp"
-                                    android:alpha="0.4"/>
-                            </FrameLayout>
-                        </LinearLayout>
-                    </HorizontalScrollView>
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_likes_you" />
                 </LinearLayout>
 
                 <!-- Your ViewPager2 -->
@@ -192,6 +130,15 @@
 
                     </RelativeLayout>
 
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/matches_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:visibility="gone"
+                        app:indicatorColor="@color/colorAccent"
+                        android:indeterminate="true" />
+
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/matches_recycler_view"
                         android:layout_width="match_parent"
@@ -200,16 +147,87 @@
                         tools:listitem="@layout/matched_user_item" />
 
                     <TextView
-                        android:id="@+id/tv_find_title2"
+                        android:id="@+id/empty_matches_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="No matches yet. Keep swiping!"
+                        android:textColor="@color/white"
+                        android:alpha="0.4"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_find_title3"
                         style="@style/viewParent.headerText"
                         android:layout_marginTop="24dp"
                         android:textColor="@color/white"
-                        android:text="Meet"
+                        android:text="Exclusive Events"
                         android:textSize="28sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <include layout="@layout/item_meet" />
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="40dp"
+                        app:cardCornerRadius="16dp"
+                        app:strokeWidth="0dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/profile_bg"
+                                android:alpha="0.4" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/bottom_gradient" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:orientation="vertical"
+                                android:padding="20dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Firl Gold Exclusive"
+                                    android:textColor="@color/orange"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold"
+                                    android:letterSpacing="0.1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Friday Night Mixer"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Join 50+ matches in Manhattan"
+                                    android:textColor="@color/white"
+                                    android:alpha="0.7"
+                                    android:textSize="13sp" />
+
+                            </LinearLayout>
+
+                        </FrameLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
