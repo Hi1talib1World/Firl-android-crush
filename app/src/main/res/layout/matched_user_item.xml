@@ -40,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Student"
-            android:textColor="@color/gray_btn_bg_pressed_color"
+            android:textColor="@color/white"
+            android:alpha="0.6"
             android:textSize="16dp" />
 
     </LinearLayout>
