@@ -2,6 +2,7 @@ package com.Denzo.firl;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,16 @@ public class WelcomeActivity extends AppCompatActivity {
 
         Button registerBtn = findViewById(R.id.welcome_register_btn);
         Button loginBtn = findViewById(R.id.welcome_login_btn);
+        Button skipBtn = findViewById(R.id.welcome_skip_btn);
+
+        if (BuildConfig.DEBUG) {
+            skipBtn.setVisibility(View.VISIBLE);
+            skipBtn.setOnClickListener(v -> {
+                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            });
+        }
 
         registerBtn.setOnClickListener(v -> {
             Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
