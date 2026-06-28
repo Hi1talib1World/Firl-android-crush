@@ -10,12 +10,12 @@
         android:icon="@drawable/ic_search" />
     <item
         android:id="@+id/Swipe"
-        android:title="Swipe"
-        android:icon="@drawable/rotate" />
+        android:title="Messages"
+        android:icon="@drawable/chat" />
     <item
         android:id="@+id/Chat"
-        android:title="Chat"
-        android:icon="@drawable/chat" />
+        android:title="Activity"
+        android:icon="@drawable/rotate" />
     <item
         android:id="@+id/Profile"
         android:title="Profile"
