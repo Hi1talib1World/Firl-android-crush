@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:background="@drawable/rounded_corner_layout"
-        android:backgroundTint="@color/link_blue"
-        android:padding="12dp"
+        android:background="@drawable/chat_bubble_mine"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp"
         android:text="Hello! How are you?"
         android:textColor="@color/white"
         android:textSize="14sp" />
