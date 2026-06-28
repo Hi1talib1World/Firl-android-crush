@@ -28,12 +28,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="All Genders"
-                android:textColor="@color/white"
+                android:textColor="@color/m3_onSecondaryContainer"
                 app:chipIcon="@drawable/ic_user"
-                app:chipIconTint="@color/white"
-                app:chipBackgroundColor="#20FFFFFF"
-                app:chipStrokeWidth="1dp"
-                app:chipStrokeColor="#40FFFFFF" />
+                app:chipIconTint="@color/m3_onSecondaryContainer"
+                app:chipBackgroundColor="@color/m3_secondaryContainer"
+                app:chipStrokeWidth="0dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_age"
@@ -42,12 +41,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Age: 18-35"
-                android:textColor="@color/white"
+                android:textColor="@color/m3_onSecondaryContainer"
                 app:chipIcon="@drawable/ic_age"
-                app:chipIconTint="@color/white"
-                app:chipBackgroundColor="#20FFFFFF"
-                app:chipStrokeWidth="1dp"
-                app:chipStrokeColor="#40FFFFFF" />
+                app:chipIconTint="@color/m3_onSecondaryContainer"
+                app:chipBackgroundColor="@color/m3_secondaryContainer"
+                app:chipStrokeWidth="0dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_distance"
@@ -56,12 +54,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Distance: 50km"
-                android:textColor="@color/white"
+                android:textColor="@color/m3_onSecondaryContainer"
                 app:chipIcon="@drawable/ic_location"
-                app:chipIconTint="@color/white"
-                app:chipBackgroundColor="#20FFFFFF"
-                app:chipStrokeWidth="1dp"
-                app:chipStrokeColor="#40FFFFFF" />
+                app:chipIconTint="@color/m3_onSecondaryContainer"
+                app:chipBackgroundColor="@color/m3_secondaryContainer"
+                app:chipStrokeWidth="0dp" />
 
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
