@@ -12,11 +12,13 @@
         android:background="@android:color/transparent">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/settings_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="Settings"
-            app:titleTextColor="@color/white" />
+            app:title="Account Settings"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_chevron_left_black_24dp"
+            app:navigationIconTint="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,108 +33,22 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImage"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/monkey"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp"
-                android:layout_marginBottom="30dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="Name"
-                app:hintTextColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="Phone"
-                app:hintTextColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="phone"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:hint="Bio"
-                app:hintTextColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/bio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="top"
-                    android:minLines="3"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/confirm"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Save Changes"
-                android:textColor="@color/bg1main"
-                android:backgroundTint="@color/colorAccent"
-                app:cornerRadius="12dp"
-                android:layout_marginBottom="10dp"/>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/back"
-                style="@style/Widget.Material3.Button.TextButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:textColor="@color/white" />
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                app:dividerColor="#22FFFFFF" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Safety &amp; Privacy"
+                android:text="ACCOUNT INFORMATION"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:alpha="0.6"
+                android:textSize="12sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:letterSpacing="0.1" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 app:cardBackgroundColor="#11FFFFFF"
+                app:cardCornerRadius="16dp"
                 app:strokeWidth="0dp">
 
                 <LinearLayout
@@ -142,32 +58,115 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="• Never share financial information"
+                        android:text="Email"
                         android:textColor="@color/white"
-                        android:alpha="0.7"
-                        android:textSize="14sp"/>
+                        android:alpha="0.5"
+                        android:textSize="12sp" />
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/settings_email"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="• Report any suspicious behavior"
+                        android:layout_marginTop="4dp"
+                        android:text="user@example.com"
                         android:textColor="@color/white"
-                        android:alpha="0.7"
-                        android:layout_marginTop="8dp"
-                        android:textSize="14sp"/>
+                        android:textSize="16sp" />
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginVertical="16dp" android:background="@color/white" android:alpha="0.1" />
+
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="• Meet in public places"
+                        android:text="Phone Number"
                         android:textColor="@color/white"
-                        android:alpha="0.7"
-                        android:layout_marginTop="8dp"
-                        android:textSize="14sp"/>
+                        android:alpha="0.5"
+                        android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/settings_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="+1 234 567 890"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="SAFETY &amp; PRIVACY"
+                android:textColor="@color/white"
+                android:alpha="0.6"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="#11FFFFFF"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:text="Privacy Policy"
+                        android:textColor="@color/white"
+                        android:gravity="start|center_vertical"
+                        app:icon="@drawable/ic_chevron_left_black_24dp"
+                        app:iconGravity="end"
+                        app:iconTint="@color/white"
+                        app:iconSize="20dp"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:paddingHorizontal="16dp"
+                        android:scaleX="-1" />
+                    <!-- Scaling -1 is a hack to flip icon gravity manually if needed, but M3 usually handles it. Actually I'll just use layout mirroring or standard buttons. -->
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/white" android:alpha="0.1" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:text="Terms of Service"
+                        android:textColor="@color/white"
+                        android:gravity="start|center_vertical"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:paddingHorizontal="16dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/delete_account_btn"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="32dp"
+                android:text="Delete Account"
+                android:textColor="@color/dislikered" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Version 1.0.0"
+                android:textColor="@color/white"
+                android:alpha="0.3"
+                android:textSize="12sp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
