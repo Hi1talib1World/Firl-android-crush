@@ -43,15 +43,10 @@ public class SignupActivity extends AppCompatActivity {
         genderGroup = findViewById(R.id.radioGroup);
         registerBtn = findViewById(R.id.rbutton);
         loadingOverlay = findViewById(R.id.loading_overlay);
-        loginLink = findViewById(R.id.appCompatTextViewLoginLink);
+        
+        findViewById(R.id.register_back_btn).setOnClickListener(v -> finish());
 
         registerBtn.setOnClickListener(v -> registerUser());
-
-        loginLink.setOnClickListener(v -> {
-            Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        });
     }
 
     private void registerUser() {
