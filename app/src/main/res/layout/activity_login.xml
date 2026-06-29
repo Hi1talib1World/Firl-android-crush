@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg1main">
@@ -14,20 +15,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:gravity="center_horizontal">
+            android:padding="24dp">
+
+            <ImageButton
+                android:id="@+id/login_back_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_left_black_24dp"
+                app:tint="@color/white"
+                android:layout_marginBottom="24dp" />
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="60dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
                 android:src="@drawable/logo" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="40dp"
+                android:gravity="center"
                 android:text="Welcome Back"
                 android:textColor="@color/white"
                 android:textSize="32sp"
@@ -86,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:text="Login"
-                app:cornerRadius="12dp"
+                app:cornerRadius="16dp"
                 android:backgroundTint="@color/colorAccent"
                 android:textColor="@color/bg1main"
                 android:textStyle="bold"
@@ -94,9 +104,10 @@
 
             <TextView
                 android:id="@+id/link_signup"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
                 android:text="New user? Create an account"
                 android:textColor="@color/white"
                 android:alpha="0.7"
@@ -114,7 +125,6 @@
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true">
-
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,4 +133,4 @@
             app:indicatorColor="@color/colorAccent" />
     </FrameLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
