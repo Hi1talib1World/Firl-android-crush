@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.Denzo.firl.Login.LoginActivity;
 import com.Denzo.firl.MainActivity;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
