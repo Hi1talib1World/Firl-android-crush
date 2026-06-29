@@ -35,6 +35,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     private InterestAdapter interestAdapter;
     private DiscoverUserAdapter userAdapter;
     private EditText searchBar;
+    private TextView emptyText;
     private List<User> discoveredUsers = new ArrayList<>();
     private UserRepository userRepository;
     private View searchProgress;
@@ -60,6 +61,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         userRecyclerView = view.findViewById(R.id.discover_recycler_view);
         searchProgress = view.findViewById(R.id.search_progress);
         searchBar = view.findViewById(R.id.discover_search_bar);
+        emptyText = view.findViewById(R.id.discover_empty_text);
 
         setupInterestList();
         setupUserList();
@@ -116,8 +118,8 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
                     discoveredUsers.addAll(users);
                     userAdapter.notifyDataSetChanged();
                     
-                    if (users.isEmpty()) {
-                        Toast.makeText(getContext(), "No users found with interest: " + interest, Toast.LENGTH_SHORT).show();
+                    if (emptyText != null) {
+                        emptyText.setVisibility(users.isEmpty() ? View.VISIBLE : View.GONE);
                     }
                 }
             }
