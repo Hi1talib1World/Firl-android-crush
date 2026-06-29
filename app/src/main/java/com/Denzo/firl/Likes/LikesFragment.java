@@ -295,14 +295,25 @@ public class LikesFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_match);
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            // Full screen feel
+            dialog.getWindow().setDimAmount(0.9f);
         }
 
+        ImageView myImage = dialog.findViewById(R.id.my_image);
         ImageView matchImage = dialog.findViewById(R.id.match_image);
         TextView matchText = dialog.findViewById(R.id.match_text);
         TextView iceBreakerText = dialog.findViewById(R.id.ice_breaker_text);
         Button sendMessageBtn = dialog.findViewById(R.id.send_message_btn);
         TextView keepSwiping = dialog.findViewById(R.id.keep_swiping);
+
+        if (currentUserObject != null && currentUserObject.getProfileImageUrl() != null) {
+            if (currentUserObject.getProfileImageUrl().equals("default")) {
+                myImage.setImageResource(R.mipmap.ic_launcher);
+            } else {
+                Glide.with(this).load(currentUserObject.getProfileImageUrl()).into(myImage);
+            }
+        }
 
         Glide.with(this).load(card.getProfileImageUrl()).into(matchImage);
         matchText.setText("You and " + card.getName() + " liked each other.");
