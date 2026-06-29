@@ -26,7 +26,6 @@ public class SignupActivity extends AppCompatActivity {
     private RadioGroup genderGroup;
     private MaterialButton registerBtn;
     private View loadingOverlay;
-    private TextView loginLink;
     private UserRepository userRepository;
     private boolean isLoading = false;
 
