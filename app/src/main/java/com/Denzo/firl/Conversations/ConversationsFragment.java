@@ -34,6 +34,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
     private List<ActiveUser> activeUsers;
     private List<MatchPerson> conversations;
     private UserRepository userRepository;
+    private TextView emptyText;
     private String currentUid;
     private View convProgress;
     private boolean isLoading = false;
@@ -56,6 +57,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
         conversations = new ArrayList<>();
 
         convProgress = view.findViewById(R.id.conv_progress);
+        emptyText = view.findViewById(R.id.conv_empty_text);
         activeRecyclerView = view.findViewById(R.id.active_recycler_view);
         activeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         activeAdapter = new ActiveUserAdapter(activeUsers, this);
@@ -92,6 +94,10 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
                     }
                     activeAdapter.notifyDataSetChanged();
                     matchesAdapter.notifyDataSetChanged();
+
+                    if (emptyText != null) {
+                        emptyText.setVisibility(users.isEmpty() ? View.VISIBLE : View.GONE);
+                    }
                 }
             }
 
