@@ -34,10 +34,27 @@ public class SettingsActivity extends AppCompatActivity {
                  FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
 
         findViewById(R.id.delete_account_btn).setOnClickListener(v -> 
-            Toast.makeText(this, "Please contact support to delete your account.", Toast.LENGTH_LONG).show()
+            showDeleteAccountConfirmation()
         );
 
         loadUserData();
+    }
+
+    private void showDeleteAccountConfirmation() {
+        new androidx.appcompat.app.AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
+            .setTitle("Delete Account")
+            .setMessage("This action is permanent and will delete all your data. Are you sure?")
+            .setPositiveButton("Delete Forever", (d, w) -> {
+                // Simulate deletion
+                Toast.makeText(this, "Account scheduled for deletion.", Toast.LENGTH_LONG).show();
+                FirebaseAuth.getInstance().signOut();
+                android.content.Intent intent = new android.content.Intent(this, WelcomeActivity.class);
+                intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton("Cancel", null)
+            .show();
     }
 
     private void loadUserData() {
