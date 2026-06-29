@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,6 @@
     android:background="@color/bg1main">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -18,25 +17,52 @@
             android:orientation="vertical"
             android:padding="24dp">
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/logo" />
+            <ImageButton
+                android:id="@+id/register_back_btn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_chevron_left_black_24dp"
+                app:tint="@color/white"
+                android:layout_marginBottom="24dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="30dp"
-                android:text="Create Account"
+                android:text="Join Firl"
                 android:textColor="@color/white"
-                android:textSize="28sp"
+                android:textSize="32sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="40dp"
+                android:text="Find your lifestyle partner"
+                android:textColor="@color/white"
+                android:alpha="0.6"
+                android:textSize="16sp" />
+
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/remail_layout"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:hint="Full Name"
+                app:hintTextColor="@color/white"
+                app:boxStrokeColor="@color/white"
+                android:textColorHint="#99FFFFFF">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/rname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,30 +81,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/rname_layout"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:hint="Username"
-                app:hintTextColor="@color/white"
-                app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/rname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/white" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/rpassword_layout"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="32dp"
                 android:hint="Password"
                 app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
@@ -97,34 +103,38 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="I am a:"
+                android:text="GENDER"
                 android:textColor="@color/white"
-                android:textSize="16sp"
-                android:layout_marginBottom="8dp"/>
+                android:alpha="0.6"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                android:layout_marginBottom="12dp" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="48dp">
 
                 <RadioButton
                     android:id="@+id/radioButtonMale"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Male"
-                    android:textColor="@android:color/white"
-                    android:layout_marginEnd="20dp"
-                    android:buttonTint="@color/white"/>
+                    android:layout_weight="1"
+                    android:text="Man"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/colorAccent" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFemale"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:textColor="@android:color/white"
-                    android:buttonTint="@color/white"/>
+                    android:layout_weight="1"
+                    android:text="Woman"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/colorAccent" />
 
             </RadioGroup>
 
@@ -132,23 +142,11 @@
                 android:id="@+id/rbutton"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Register"
-                app:cornerRadius="12dp"
-                android:backgroundTint="@color/colorAccent"
+                android:text="Complete Sign Up"
                 android:textColor="@color/bg1main"
+                android:backgroundTint="@color/colorAccent"
                 android:textStyle="bold"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/appCompatTextViewLoginLink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:gravity="center"
-                android:text="Already a member? Login"
-                android:textColor="@android:color/white"
-                android:textSize="14sp"
-                android:padding="10dp" />
+                app:cornerRadius="16dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -161,7 +159,6 @@
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true">
-
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,4 +167,4 @@
             app:indicatorColor="@color/colorAccent" />
     </FrameLayout>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
