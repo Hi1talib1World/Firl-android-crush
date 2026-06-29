@@ -78,14 +78,64 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String query = s.toString().toLowerCase();
-                if (query.length() > 2) {
-                    onInterestClick(query);
+                String query = s.toString().trim();
+                if (query.isEmpty()) {
+                    onInterestClick("Long Term Relationship");
+                } else if (query.length() > 1) {
+                    performSearch(query);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    private void performSearch(String query) {
+        if (isSearching) return;
+        
+        isSearching = true;
+        if (searchProgress != null) searchProgress.setVisibility(View.VISIBLE);
+        discoveredUsers.clear();
+        userAdapter.notifyDataSetChanged();
+
+        // Use a generic fetch and filter locally for search
+        userRepository.getPotentialMatches("Female", new UserRepository.Callback<List<User>>() {
+            @Override
+            public void onResponse(List<User> users) {
+                isSearching = false;
+                if (isAdded()) {
+                    if (searchProgress != null) searchProgress.setVisibility(View.GONE);
+                    
+                    for (User user : users) {
+                        boolean matchName = user.getName() != null && user.getName().toLowerCase().contains(query.toLowerCase());
+                        boolean matchInterest = false;
+                        if (user.getInterests() != null) {
+                            for (String interest : user.getInterests()) {
+                                if (interest.toLowerCase().contains(query.toLowerCase())) {
+                                    matchInterest = true;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        if (matchName || matchInterest) {
+                            discoveredUsers.add(user);
+                        }
+                    }
+                    
+                    userAdapter.notifyDataSetChanged();
+                    if (emptyText != null) {
+                        emptyText.setVisibility(discoveredUsers.isEmpty() ? View.VISIBLE : View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                isSearching = false;
+                if (isAdded() && searchProgress != null) searchProgress.setVisibility(View.GONE);
+            }
         });
     }
 
