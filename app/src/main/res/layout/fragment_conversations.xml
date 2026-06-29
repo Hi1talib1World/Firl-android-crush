@@ -80,8 +80,19 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                android:overScrollMode="never" />
 
-                android:overScrollMode="never"></androidx.recyclerview.widget.RecyclerView>
+            <TextView
+                android:id="@+id/conv_empty_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="No conversations yet. Start matching!"
+                android:textColor="@color/white"
+                android:alpha="0.4"
+                android:visibility="gone" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
