@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.util.Log;
+import android.widget.TextView;
 import android.content.Intent;
 import com.Denzo.firl.chat.ChatFragment;
 
