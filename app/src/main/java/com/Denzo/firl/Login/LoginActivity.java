@@ -48,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        findViewById(R.id.login_back_btn).setOnClickListener(v -> finish());
+
         forgetPassword.setOnClickListener(v -> 
             Toast.makeText(LoginActivity.this, "Reset link sent to your email", Toast.LENGTH_SHORT).show()
         );
