@@ -90,6 +90,17 @@
             android:layout_marginTop="16dp"
             android:nestedScrollingEnabled="false" />
 
+        <TextView
+            android:id="@+id/discover_empty_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="No profiles found for this interest."
+            android:textColor="@color/white"
+            android:alpha="0.4"
+            android:visibility="gone" />
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
