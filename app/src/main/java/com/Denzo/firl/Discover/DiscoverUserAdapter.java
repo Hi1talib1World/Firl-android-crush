@@ -18,6 +18,7 @@ public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapte
     private Context context;
     private List<User> userList;
     private OnUserClickListener listener;
+    private boolean isGridView = false;
 
     public interface OnUserClickListener {
         void onUserClick(User user);
@@ -29,10 +30,16 @@ public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapte
         this.listener = listener;
     }
 
+    public void setGridView(boolean gridView) {
+        isGridView = gridView;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.matched_user_item, parent, false);
+        int layout = isGridView ? R.layout.item_discover_grid : R.layout.matched_user_item;
+        View view = LayoutInflater.from(context).inflate(layout, parent, false);
         return new ViewHolder(view);
     }
 
