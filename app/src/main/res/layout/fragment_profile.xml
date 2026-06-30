@@ -87,6 +87,14 @@
             android:fontFamily="sans-serif"
             android:alpha="0.8" />
 
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/lifestyle_badges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            app:chipSpacingHorizontal="6dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -195,6 +203,13 @@
             </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
+
+        <LinearLayout
+            android:id="@+id/prompts_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:orientation="vertical" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/lifestyle_tags"
