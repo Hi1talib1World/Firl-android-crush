@@ -47,6 +47,8 @@ public class LikesFragment extends Fragment {
     private ImageButton likeBtn, dislikeBtn, rewindBtn, superLikeBtn, commentBtn;
     private User currentUserObject;
     private String selectedGender = "All";
+    private String selectedZodiac = "Any";
+    private String selectedHabit = "Any";
     private int selectedMinAge = 18, selectedMaxAge = 100, selectedDistance = 500;
 
     public LikesFragment() {
@@ -247,7 +249,11 @@ public class LikesFragment extends Fragment {
                     if (!user.getUid().equals(currentUid)) {
                         // Apply current local filters
                         if (user.getAge() >= selectedMinAge && user.getAge() <= selectedMaxAge) {
-                            
+                        
+                        boolean matchZodiac = selectedZodiac.equals("Any") || selectedZodiac.equalsIgnoreCase(user.getZodiac());
+                        boolean matchHabit = selectedHabit.equals("Any") || selectedHabit.equalsIgnoreCase(user.getSmoking()) || selectedHabit.equalsIgnoreCase(user.getDrinking());
+                        
+                        if (matchZodiac && matchHabit) {
                             double dist = MatchingEngine.calculateDistance(currentUserObject.getLatitude(), currentUserObject.getLongitude(), 
                                                            user.getLatitude(), user.getLongitude());
                             
@@ -255,6 +261,7 @@ public class LikesFragment extends Fragment {
                                 rowItems.add(convertUserToCard(user));
                             }
                         }
+                    }
                     }
                 }
                 
@@ -348,6 +355,8 @@ public class LikesFragment extends Fragment {
         com.google.android.material.chip.Chip filterSex = view.findViewById(R.id.filter_sex);
         com.google.android.material.chip.Chip filterAge = view.findViewById(R.id.filter_age);
         com.google.android.material.chip.Chip filterDistance = view.findViewById(R.id.filter_distance);
+        com.google.android.material.chip.Chip filterZodiac = view.findViewById(R.id.filter_zodiac);
+        com.google.android.material.chip.Chip filterHabits = view.findViewById(R.id.filter_habits);
 
         filterSex.setOnClickListener(v -> {
             String[] genders = {"All", "Male", "Female"};
@@ -371,6 +380,29 @@ public class LikesFragment extends Fragment {
                 .setItems(ranges, (dialog, which) -> {
                     selectedDistance = Integer.parseInt(ranges[which].replace("km", ""));
                     filterDistance.setText("Distance: " + ranges[which]);
+                    refreshData();
+                }).show();
+        });
+
+        filterZodiac.setOnClickListener(v -> {
+            String[] zodiacs = {"Any", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"};
+            new androidx.appcompat.app.AlertDialog.Builder(getContext(), R.style.Theme_AppCompat_Dialog_Alert)
+                .setTitle("Select Zodiac")
+                .setItems(zodiacs, (dialog, which) -> {
+                    selectedZodiac = zodiacs[which];
+                    filterZodiac.setText(zodiacs[which].equals("Any") ? "Any Zodiac" : zodiacs[which]);
+                    refreshData();
+                }).show();
+        });
+
+        filterHabits.setOnClickListener(v -> {
+            String[] habits = {"Any", "Never Smokes", "Social Smoker", "Never Drinks", "Social Drinker"};
+            new androidx.appcompat.app.AlertDialog.Builder(getContext(), R.style.Theme_AppCompat_Dialog_Alert)
+                .setTitle("Select Habits")
+                .setItems(habits, (dialog, which) -> {
+                    selectedHabit = habits[which].contains("Smokes") ? "Never" : (habits[which].contains("Smoker") ? "Socially" : "Any");
+                    // Mapping habit to simple logic for now
+                    filterHabits.setText(habits[which]);
                     refreshData();
                 }).show();
         });
