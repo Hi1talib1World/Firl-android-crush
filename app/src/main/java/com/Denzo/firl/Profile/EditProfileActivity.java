@@ -6,9 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,8 +35,10 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText aboutEditText, jobEditText, schoolEditText;
     private RadioGroup genderGroup;
     private RadioButton radioMan, radioWoman;
-    private ChipGroup interestsChipGroup;
-    private View saveBtn, loadingOverlay;
+    private ChipGroup interestsChipGroup, goalChipGroup;
+    private LinearLayout promptsContainer;
+    private AutoCompleteTextView zodiacDropdown, smokingDropdown, drinkingDropdown;
+    private View saveBtn, loadingOverlay, addPromptBtn;
     
     private UserRepository userRepository;
     private String currentUid;
@@ -65,13 +71,22 @@ public class EditProfileActivity extends AppCompatActivity {
         radioWoman = findViewById(R.id.radio_woman);
         
         interestsChipGroup = findViewById(R.id.edit_interests_chip_group);
+        goalChipGroup = findViewById(R.id.goal_chip_group);
+        promptsContainer = findViewById(R.id.edit_prompts_container);
+        
+        zodiacDropdown = findViewById(R.id.zodiac_dropdown);
+        smokingDropdown = findViewById(R.id.smoking_dropdown);
+        drinkingDropdown = findViewById(R.id.drinking_dropdown);
+
         saveBtn = findViewById(R.id.save_profile_btn);
+        addPromptBtn = findViewById(R.id.add_prompt_btn);
         loadingOverlay = findViewById(R.id.edit_loading_overlay);
 
         com.google.android.material.appbar.MaterialToolbar toolbar = findViewById(R.id.edit_profile_toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
         
         saveBtn.setOnClickListener(v -> saveProfile());
+        addPromptBtn.setOnClickListener(v -> showAddPromptDialog());
     }
 
     private void loadUserData() {
@@ -98,6 +113,10 @@ public class EditProfileActivity extends AppCompatActivity {
         if (currentUser.getBio() != null) aboutEditText.setText(currentUser.getBio());
         if (currentUser.getJob() != null) jobEditText.setText(currentUser.getJob());
         if (currentUser.getSchool() != null) schoolEditText.setText(currentUser.getSchool());
+
+        setupDropdowns();
+        setupGoalChips();
+        setupEditPrompts();
 
         if ("Male".equalsIgnoreCase(currentUser.getSex())) {
             radioMan.setChecked(true);
@@ -143,15 +162,112 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    private void setupEditPrompts() {
+        promptsContainer.removeAllViews();
+        if (currentUser.getPrompts() != null) {
+            for (java.util.Map.Entry<String, String> entry : currentUser.getPrompts().entrySet()) {
+                addPromptView(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+
+    private void addPromptView(String question, String answer) {
+        View view = getLayoutInflater().inflate(R.layout.item_edit_prompt, promptsContainer, false);
+        TextView qText = view.findViewById(R.id.edit_prompt_question);
+        EditText aEdit = view.findViewById(R.id.edit_prompt_answer);
+        View deleteBtn = view.findViewById(R.id.delete_prompt);
+
+        qText.setText(question);
+        aEdit.setText(answer);
+        deleteBtn.setOnClickListener(v -> promptsContainer.removeView(view));
+        
+        promptsContainer.addView(view);
+    }
+
+    private void showAddPromptDialog() {
+        String[] questions = {
+            "My dream date is...",
+            "The most adventurous thing I've done...",
+            "A fun fact about me...",
+            "I'm looking for someone who...",
+            "My favorite weekend activity..."
+        };
+        
+        new androidx.appcompat.app.AlertDialog.Builder(this, R.style.Theme_AppCompat_Dialog_Alert)
+            .setTitle("Pick a Prompt")
+            .setItems(questions, (dialog, which) -> {
+                addPromptView(questions[which], "");
+            }).show();
+    }
+
+    private void setupDropdowns() {
+        String[] zodiacs = {"Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"};
+        String[] smokingOptions = {"Never", "Socially", "Regularly"};
+        String[] drinkingOptions = {"Never", "Socially", "Regularly"};
+
+        setupAdapter(zodiacDropdown, zodiacs, currentUser.getZodiac());
+        setupAdapter(smokingDropdown, smokingOptions, currentUser.getSmoking());
+        setupAdapter(drinkingDropdown, drinkingOptions, currentUser.getDrinking());
+    }
+
+    private void setupAdapter(AutoCompleteTextView view, String[] options, String current) {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.list_item_dropdown, options);
+        view.setAdapter(adapter);
+        if (current != null) view.setText(current, false);
+    }
+
+    private void setupGoalChips() {
+        String[] goals = {"Long Term", "Short Term", "New Friends", "Not Sure"};
+        goalChipGroup.removeAllViews();
+        for (String goal : goals) {
+            Chip chip = new Chip(this);
+            chip.setText(goal);
+            chip.setCheckable(true);
+            
+            // Apply consistent styling
+            chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(0x20FFFFFF));
+            chip.setTextColor(getColor(android.R.color.white));
+            
+            if (goal.equals(currentUser.getRelationshipGoal())) {
+                chip.setChecked(true);
+                chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(getColor(R.color.colorAccent)));
+                chip.setTextColor(getColor(R.color.bg1main));
+            }
+
+            chip.setOnCheckedChangeListener((bv, isChecked) -> {
+                if (isChecked) {
+                    chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(getColor(R.color.colorAccent)));
+                    chip.setTextColor(getColor(R.color.bg1main));
+                } else {
+                    chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(0x20FFFFFF));
+                    chip.setTextColor(getColor(android.R.color.white));
+                }
+            });
+            goalChipGroup.addView(chip);
+        }
+    }
+
     private void saveProfile() {
         if (currentUser == null) return;
 
         currentUser.setBio(aboutEditText.getText().toString());
         currentUser.setJob(jobEditText.getText().toString());
         currentUser.setSchool(schoolEditText.getText().toString());
+        
+        currentUser.setZodiac(zodiacDropdown.getText().toString());
+        currentUser.setSmoking(smokingDropdown.getText().toString());
+        currentUser.setDrinking(drinkingDropdown.getText().toString());
 
         if (radioMan.isChecked()) currentUser.setSex("Male");
         else if (radioWoman.isChecked()) currentUser.setSex("Female");
+
+        for (int i = 0; i < goalChipGroup.getChildCount(); i++) {
+            Chip chip = (Chip) goalChipGroup.getChildAt(i);
+            if (chip.isChecked()) {
+                currentUser.setRelationshipGoal(chip.getText().toString());
+                break;
+            }
+        }
 
         List<String> selectedInterests = new ArrayList<>();
         for (int i = 0; i < interestsChipGroup.getChildCount(); i++) {
@@ -161,6 +277,19 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         }
         currentUser.setInterests(selectedInterests);
+
+        java.util.Map<String, String> updatedPrompts = new java.util.HashMap<>();
+        for (int i = 0; i < promptsContainer.getChildCount(); i++) {
+            View view = promptsContainer.getChildAt(i);
+            TextView qText = view.findViewById(R.id.edit_prompt_question);
+            EditText aEdit = view.findViewById(R.id.edit_prompt_answer);
+            String q = qText.getText().toString();
+            String a = aEdit.getText().toString();
+            if (!a.isEmpty()) {
+                updatedPrompts.put(q, a);
+            }
+        }
+        currentUser.setPrompts(updatedPrompts);
 
         setLoading(true);
         userRepository.updateProfile(currentUser, new UserRepository.Callback<Boolean>() {
