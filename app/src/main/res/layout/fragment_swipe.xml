@@ -60,6 +60,32 @@
                 app:chipBackgroundColor="@color/m3_secondaryContainer"
                 app:chipStrokeWidth="0dp" />
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_zodiac"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Any Zodiac"
+                android:textColor="@color/m3_onSecondaryContainer"
+                app:chipIcon="@drawable/ic_play"
+                app:chipIconTint="@color/m3_onSecondaryContainer"
+                app:chipBackgroundColor="@color/m3_secondaryContainer"
+                app:chipStrokeWidth="0dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filter_habits"
+                style="@style/Widget.Material3.Chip.Assist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Any Habits"
+                android:textColor="@color/m3_onSecondaryContainer"
+                app:chipIcon="@drawable/topic"
+                app:chipIconTint="@color/m3_onSecondaryContainer"
+                app:chipBackgroundColor="@color/m3_secondaryContainer"
+                app:chipStrokeWidth="0dp" />
+
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
 
