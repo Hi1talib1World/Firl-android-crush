@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 
@@ -45,7 +46,8 @@ public class ProfileFragment extends Fragment {
     private CircleImageView profileImage;
     private TextView profileName, profileJobSchool, profileBio, ageRangeText, distanceText, profileStrengthText;
     private LinearProgressIndicator profileStrengthProgress;
-    private ChipGroup lifestyleTags;
+    private ChipGroup lifestyleTags, lifestyleBadges;
+    private LinearLayout promptsContainer;
     private RangeSlider ageRangeSlider;
     private Slider distanceSlider;
     private View editProfileBtn, prefSaveProgress;
@@ -70,6 +72,8 @@ public class ProfileFragment extends Fragment {
         profileJobSchool = view.findViewById(R.id.profile_job_school);
         profileBio = view.findViewById(R.id.profile_bio);
         lifestyleTags = view.findViewById(R.id.lifestyle_tags);
+        lifestyleBadges = view.findViewById(R.id.lifestyle_badges);
+        promptsContainer = view.findViewById(R.id.prompts_container);
         ageRangeText = view.findViewById(R.id.age_range_text);
         distanceText = view.findViewById(R.id.distance_text);
         profileStrengthText = view.findViewById(R.id.profile_strength_text);
@@ -202,6 +206,41 @@ public class ProfileFragment extends Fragment {
         dialog.show();
     }
 
+    private void setupPrompts(User user) {
+        promptsContainer.removeAllViews();
+        if (user.getPrompts() != null) {
+            for (java.util.Map.Entry<String, String> entry : user.getPrompts().entrySet()) {
+                View promptView = getLayoutInflater().inflate(R.layout.item_profile_prompt, promptsContainer, false);
+                TextView question = promptView.findViewById(R.id.prompt_question);
+                TextView answer = promptView.findViewById(R.id.prompt_answer);
+                question.setText(entry.getKey());
+                answer.setText(entry.getValue());
+                promptsContainer.addView(promptView);
+            }
+        }
+    }
+
+    private void setupLifestyleBadges(User user) {
+        lifestyleBadges.removeAllViews();
+        addBadge(user.getRelationshipGoal(), R.drawable.love, R.color.pink);
+        addBadge(user.getZodiac(), R.drawable.ic_play, R.color.colorAccent);
+        if (user.getSmoking() != null && !user.getSmoking().equals("Never")) addBadge("Smokes " + user.getSmoking(), R.drawable.topic, R.color.orange);
+        if (user.getDrinking() != null && !user.getDrinking().equals("Never")) addBadge("Drinks " + user.getDrinking(), R.drawable.ic_settings, R.color.link_blue);
+    }
+
+    private void addBadge(String text, int iconRes, int colorRes) {
+        if (text == null || text.isEmpty()) return;
+        Chip chip = new Chip(getContext());
+        chip.setText(text);
+        chip.setChipIcon(getContext().getDrawable(iconRes));
+        chip.setChipIconTint(android.content.res.ColorStateList.valueOf(getContext().getColor(colorRes)));
+        chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(0x1AFFFFFF));
+        chip.setTextColor(getContext().getColor(android.R.color.white));
+        chip.setChipStrokeWidth(0f);
+        chip.setTextSize(11f);
+        lifestyleBadges.addView(chip);
+    }
+
     private void logoutUser() {
         new androidx.appcompat.app.AlertDialog.Builder(getContext(), R.style.Theme_AppCompat_Dialog_Alert)
             .setTitle("Logout")
@@ -242,6 +281,9 @@ public class ProfileFragment extends Fragment {
                     int strength = (int) user.calculateProfileCompleteness();
                     profileStrengthText.setText(strength + "%");
                     profileStrengthProgress.setProgress(strength);
+
+                    setupLifestyleBadges(user);
+                    setupPrompts(user);
 
                     lifestyleTags.removeAllViews();
                     if (user.getLifestyleTags() != null) {
