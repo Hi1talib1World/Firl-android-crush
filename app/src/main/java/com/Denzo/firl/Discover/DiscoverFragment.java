@@ -25,7 +25,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.text.Editable;
+import androidx.recyclerview.widget.GridLayoutManager;
 import android.text.TextWatcher;
 import com.bumptech.glide.Glide;
 
@@ -35,8 +37,10 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     private InterestAdapter interestAdapter;
     private DiscoverUserAdapter userAdapter;
     private EditText searchBar;
+    private ImageButton viewToggleBtn;
     private TextView emptyText;
     private List<User> discoveredUsers = new ArrayList<>();
+    private boolean isGridView = false;
     private UserRepository userRepository;
     private View searchProgress;
     private boolean isSearching = false;
@@ -62,10 +66,13 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         searchProgress = view.findViewById(R.id.search_progress);
         searchBar = view.findViewById(R.id.discover_search_bar);
         emptyText = view.findViewById(R.id.discover_empty_text);
+        viewToggleBtn = view.findViewById(R.id.discover_view_toggle);
 
         setupInterestList();
         setupUserList();
         setupSearch();
+
+        viewToggleBtn.setOnClickListener(v -> toggleViewMode());
 
         // Load default interest: "Long Term Relationship"
         onInterestClick("Long Term Relationship");
@@ -89,6 +96,19 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
             @Override
             public void afterTextChanged(Editable s) {}
         });
+    }
+
+    private void toggleViewMode() {
+        isGridView = !isGridView;
+        viewToggleBtn.setImageResource(isGridView ? R.drawable.ic_main : R.drawable.ic_play);
+        
+        if (isGridView) {
+            userRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else {
+            userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+        
+        userAdapter.setGridView(isGridView);
     }
 
     private void performSearch(String query) {
