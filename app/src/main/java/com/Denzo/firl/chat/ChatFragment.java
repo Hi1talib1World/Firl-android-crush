@@ -29,7 +29,7 @@ public class ChatFragment extends AppCompatActivity {
     private ChatAdapter adapter;
     private List<ChatMessage> messageList;
     private EditText messageInput;
-    private ImageButton sendBtn, backBtn, addBtn;
+    private ImageButton sendBtn, backBtn, addBtn, micBtn;
     private ImageView userImageHeader;
     private TextView userNameTitle, typingIndicator;
     private boolean isSending = false;
@@ -76,7 +76,8 @@ public class ChatFragment extends AppCompatActivity {
 
         messageInput = findViewById(R.id.messageInput);
         sendBtn = findViewById(R.id.sendBtn);
-        addBtn = findViewById(R.id.plusBtn); // Need to add ID to XML
+        addBtn = findViewById(R.id.plusBtn); 
+        micBtn = findViewById(R.id.micBtn);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +88,34 @@ public class ChatFragment extends AppCompatActivity {
 
         addBtn.setOnClickListener(v -> showInteractionsMenu());
         
+        setupMicListener();
+        
         // Mock a typing indicator after 3 seconds
         handler.postDelayed(() -> showTypingIndicator(true), 3000);
+    }
+
+    private void setupMicListener() {
+        micBtn.setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case android.view.MotionEvent.ACTION_DOWN:
+                    messageInput.setHint("Recording...");
+                    micBtn.setColorFilter(getColor(R.color.pink));
+                    return true;
+                case android.view.MotionEvent.ACTION_UP:
+                    messageInput.setHint("Type a message...");
+                    micBtn.setColorFilter(getColor(android.R.color.white));
+                    sendVoiceNote();
+                    return true;
+            }
+            return false;
+        });
+    }
+
+    private void sendVoiceNote() {
+        // In a real app, this would be MessageType.VOICE
+        messageList.add(new ChatMessage("Voice Note (0:05)", true, System.currentTimeMillis()));
+        adapter.notifyItemInserted(messageList.size() - 1);
+        recyclerView.scrollToPosition(messageList.size() - 1);
     }
 
     private void showInteractionsMenu() {
