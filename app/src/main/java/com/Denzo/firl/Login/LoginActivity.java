@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.Denzo.firl.Login.register.SignupActivity;
 import com.Denzo.firl.MainActivity;
+import com.Denzo.firl.Utils.ActivityTracker;
+import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
@@ -79,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 setLoading(false);
                 if (user != null) {
                     Toast.makeText(LoginActivity.this, "Welcome back, " + user.getName() + "!", Toast.LENGTH_SHORT).show();
+                    ActivityTracker.getInstance().log("Login", ActivityLog.Status.SUCCESS, "User: " + user.getName());
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -90,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(Exception e) {
                 setLoading(false);
                 Toast.makeText(LoginActivity.this, "Login failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                ActivityTracker.getInstance().log("Login", ActivityLog.Status.FAILURE, e.getMessage());
             }
         });
     }
