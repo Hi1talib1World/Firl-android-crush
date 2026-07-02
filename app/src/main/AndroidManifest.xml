@@ -57,7 +57,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".chat.ChatFragment"
+            android:name=".chat.ChatActivity"
             android:exported="false" />
 
         <activity
