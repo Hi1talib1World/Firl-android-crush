@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
-
-    <!-- Background Image with Blur/Gradient -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/profile_bg"
-        android:alpha="0.4" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bottom_gradient" />
+    android:background="@drawable/welcome_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,6 +18,8 @@
             android:layout_height="120dp"
             android:src="@drawable/logo"
             android:layout_marginBottom="24dp" />
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,8 +68,7 @@
             android:layout_marginTop="4dp"
             android:text="Skip (Debug)"
             android:textColor="@color/colorAccent"
-            android:visibility="gone"
-            tools:visibility="visible" />
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="wrap_content"
