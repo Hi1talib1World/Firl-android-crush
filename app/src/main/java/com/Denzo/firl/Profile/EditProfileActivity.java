@@ -17,6 +17,8 @@ import android.widget.AutoCompleteTextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Denzo.firl.Model.User;
+import com.Denzo.firl.Utils.ActivityTracker;
+import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.Denzo.firl.R;
@@ -297,6 +299,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onResponse(Boolean response) {
                 setLoading(false);
                 Toast.makeText(EditProfileActivity.this, "Profile updated", Toast.LENGTH_SHORT).show();
+                ActivityTracker.getInstance().log("Update Profile", ActivityLog.Status.SUCCESS, "Personal details and interests updated.");
                 finish();
             }
 
@@ -304,6 +307,7 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onError(Exception e) {
                 setLoading(false);
                 Toast.makeText(EditProfileActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                ActivityTracker.getInstance().log("Update Profile", ActivityLog.Status.FAILURE, e.getMessage());
             }
         });
     }
