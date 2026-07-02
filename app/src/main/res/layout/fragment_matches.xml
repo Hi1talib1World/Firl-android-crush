@@ -93,7 +93,7 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/view_pager"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="320dp"
                     android:layout_marginTop="@dimen/normalPadding"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
@@ -228,6 +228,23 @@
                         </FrameLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        style="@style/viewParent.headerText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#fff"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="System Activity" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/activity_stream_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="40dp"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_activity_log" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
