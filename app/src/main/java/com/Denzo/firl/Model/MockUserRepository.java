@@ -88,7 +88,7 @@ public class MockUserRepository implements UserRepository {
             u1.setInterests(Arrays.asList("Long Term Relationship", "Music", "Dancing"));
             u1.setJob("Designer"); u1.setSchool("NYU");
             u1.setActivityLevel(7);
-            u1.setProfileImageUrl("https://images.unsplash.com/photo-1544005313-94ddf0286df2");
+            u1.setProfileImageUrl("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80");
             u1.setLatitude(40.7150); u1.setLongitude(-74.0080);
             u1.setVerified(true);
             
@@ -98,7 +98,7 @@ public class MockUserRepository implements UserRepository {
             u2.setInterests(Arrays.asList("Travel Partner", "Photography", "Outdoor Adventures"));
             u2.setJob("Engineer"); u2.setSchool("MIT");
             u2.setActivityLevel(10);
-            u2.setProfileImageUrl("https://images.unsplash.com/photo-1494790108377-be9c29b29330");
+            u2.setProfileImageUrl("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80");
             u2.setLatitude(42.3601); u2.setLongitude(-71.0589);
 
             // 3. Gamer / Techie
@@ -107,7 +107,7 @@ public class MockUserRepository implements UserRepository {
             u3.setInterests(Arrays.asList("Gamer", "Techie", "Short Term Fun"));
             u3.setJob("DevOps"); u3.setSchool("UCLA");
             u3.setActivityLevel(4);
-            u3.setProfileImageUrl("https://images.unsplash.com/photo-1500648767791-00dcc994a43e");
+            u3.setProfileImageUrl("https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80");
             u3.setLatitude(34.0522); u3.setLongitude(-118.2437);
 
             // 4. Fitness / Yoga
@@ -116,7 +116,7 @@ public class MockUserRepository implements UserRepository {
             u4.setInterests(Arrays.asList("Fitness Enthusiast", "Yoga", "Cooking"));
             u4.setJob("Trainer"); u4.setSchool("State College");
             u4.setActivityLevel(8);
-            u4.setProfileImageUrl("https://images.unsplash.com/photo-1438761681033-6461ffad8d80");
+            u4.setProfileImageUrl("https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80");
             u4.setLatitude(40.7306); u4.setLongitude(-73.9352);
 
             // 5. Coffee / Foodie
@@ -125,7 +125,7 @@ public class MockUserRepository implements UserRepository {
             u5.setInterests(Arrays.asList("Coffee Lover", "Foodie", "New Friends"));
             u5.setJob("Chef"); u5.setSchool("Culinary Institute");
             u5.setActivityLevel(6);
-            u5.setProfileImageUrl("https://images.unsplash.com/photo-1517841905240-472988babdf9");
+            u5.setProfileImageUrl("https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80");
             u5.setLatitude(40.7580); u5.setLongitude(-73.9855);
             
             users.add(u1); users.add(u2); users.add(u3); users.add(u4); users.add(u5);
