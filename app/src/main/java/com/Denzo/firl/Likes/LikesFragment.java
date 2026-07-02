@@ -26,6 +26,8 @@ import java.util.List;
 
 import com.Denzo.firl.Utils.MatchingEngine;
 import com.Denzo.firl.Model.User;
+import com.Denzo.firl.Utils.ActivityTracker;
+import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.google.android.material.slider.RangeSlider;
@@ -104,12 +106,15 @@ public class LikesFragment extends Fragment {
             @Override
             public void onLeftCardExit(Object dataObject) {
                 Toast.makeText(getContext(), "Dislike!", Toast.LENGTH_SHORT).show();
+                LikeCard card = (LikeCard) dataObject;
+                ActivityTracker.getInstance().log("Swipe Left", ActivityLog.Status.SUCCESS, "Disliked " + card.getName());
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
                 LikeCard card = (LikeCard) dataObject;
                 showMatchDialog(card);
+                ActivityTracker.getInstance().log("Swipe Right", ActivityLog.Status.SUCCESS, "Liked " + card.getName());
             }
 
             @Override
@@ -146,6 +151,7 @@ public class LikesFragment extends Fragment {
                 lastSwipedCard = null;
                 setSwipeState(SwipeState.IDLE);
                 Toast.makeText(getContext(), "Rewind!", Toast.LENGTH_SHORT).show();
+                ActivityTracker.getInstance().log("Rewind", ActivityLog.Status.SUCCESS, "Restored last swiped card.");
             } else if (lastSwipedCard == null) {
                 Toast.makeText(getContext(), "Nothing to rewind", Toast.LENGTH_SHORT).show();
             }
