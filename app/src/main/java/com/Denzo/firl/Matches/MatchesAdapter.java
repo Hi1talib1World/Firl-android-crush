@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.Model.MatchPerson;
 import com.Denzo.firl.R;
-import com.Denzo.firl.chat.ChatFragment;
+import com.Denzo.firl.chat.ChatActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ChatFragment.class);
+                Intent intent = new Intent(context, ChatActivity.class);
                 intent.putExtra("matchId", match.getId());
                 intent.putExtra("matchName", match.getName());
                 intent.putExtra("matchImageUrl", match.getImageUrl());
