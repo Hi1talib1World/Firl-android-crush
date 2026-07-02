@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.Denzo.firl.MainActivity;
+import com.Denzo.firl.Utils.ActivityTracker;
+import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
@@ -90,6 +92,7 @@ public class SignupActivity extends AppCompatActivity {
                 setLoading(false);
                 if (response) {
                     Toast.makeText(SignupActivity.this, "Account created successfully!", Toast.LENGTH_SHORT).show();
+                    ActivityTracker.getInstance().log("Create Account", ActivityLog.Status.SUCCESS, "New user: " + name);
                     Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -101,6 +104,7 @@ public class SignupActivity extends AppCompatActivity {
             public void onError(Exception e) {
                 setLoading(false);
                 Toast.makeText(SignupActivity.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                ActivityTracker.getInstance().log("Create Account", ActivityLog.Status.FAILURE, e.getMessage());
             }
         });
     }
