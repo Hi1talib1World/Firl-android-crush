@@ -20,20 +20,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.Denzo.firl.Model.User;
+import com.Denzo.firl.Utils.ActivityTracker;
+import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MatchesFragment extends Fragment {
 
-    private RecyclerView recyclerView, likesYouRecyclerView;
     private androidx.viewpager2.widget.ViewPager2 viewPager;
+    private RecyclerView recyclerView, likesYouRecyclerView, activityRecyclerView;
     private MatchesAdapter adapter;
     private LikesYouAdapter likesYouAdapter;
     private FeaturedAdapter featuredAdapter;
+    private ActivityLogAdapter activityAdapter;
     private List<MatchPerson> matchHistory;
     private List<User> likesYouList;
     private List<User> featuredList;
+    private List<ActivityLog> activityLogs;
     private UserRepository userRepository;
     private TextView emptyMatchesText;
     private String currentUid;
@@ -57,9 +61,11 @@ public class MatchesFragment extends Fragment {
         matchHistory = new ArrayList<>();
         likesYouList = new ArrayList<>();
         featuredList = new ArrayList<>();
+        activityLogs = new ArrayList<>(ActivityTracker.getInstance().getLogs());
         
         recyclerView = view.findViewById(R.id.matches_recycler_view);
         likesYouRecyclerView = view.findViewById(R.id.likes_you_recycler_view);
+        activityRecyclerView = view.findViewById(R.id.activity_stream_recycler_view);
         viewPager = view.findViewById(R.id.view_pager);
         progressBar = view.findViewById(R.id.matches_progress);
         emptyMatchesText = view.findViewById(R.id.empty_matches_text);
@@ -74,10 +80,20 @@ public class MatchesFragment extends Fragment {
 
         featuredAdapter = new FeaturedAdapter(featuredList);
         viewPager.setAdapter(featuredAdapter);
-        // Add some padding/peek effect
         viewPager.setOffscreenPageLimit(3);
         viewPager.setClipToPadding(false);
         viewPager.setClipChildren(false);
+
+        activityRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        activityAdapter = new ActivityLogAdapter(activityLogs);
+        activityRecyclerView.setAdapter(activityAdapter);
+
+        ActivityTracker.getInstance().setOnLogAddedListener(log -> {
+            if (isAdded()) {
+                activityLogs.add(0, log);
+                activityAdapter.notifyItemInserted(0);
+            }
+        });
 
         if (currentUid != null) {
             loadMatches();
@@ -102,7 +118,6 @@ public class MatchesFragment extends Fragment {
                     featuredList.clear();
                     
                     likesYouList.addAll(users);
-                    // Just pick a few for featured
                     if (users.size() > 2) {
                         featuredList.addAll(users.subList(0, 3));
                     } else {
@@ -127,6 +142,8 @@ public class MatchesFragment extends Fragment {
                     } else {
                         emptyMatchesText.setVisibility(View.GONE);
                     }
+                    
+                    ActivityTracker.getInstance().log("Fetch Matches", ActivityLog.Status.SUCCESS, "Found " + users.size() + " matches.");
                 }
             }
 
@@ -137,6 +154,7 @@ public class MatchesFragment extends Fragment {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     Log.e("MatchesFragment", "Error loading matches", e);
                     Toast.makeText(getContext(), "Failed to load matches", Toast.LENGTH_SHORT).show();
+                    ActivityTracker.getInstance().log("Fetch Matches", ActivityLog.Status.FAILURE, e.getMessage());
                 }
             }
         });
