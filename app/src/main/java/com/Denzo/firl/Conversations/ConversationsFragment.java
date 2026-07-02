@@ -1,9 +1,12 @@
 package com.Denzo.firl.Conversations;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,19 +16,14 @@ import com.Denzo.firl.Matches.MatchesAdapter;
 import com.Denzo.firl.Model.ActiveUser;
 import com.Denzo.firl.Model.MatchPerson;
 import com.Denzo.firl.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import android.util.Log;
-import android.widget.TextView;
-import android.content.Intent;
-import com.Denzo.firl.chat.ChatFragment;
-
+import com.Denzo.firl.chat.ChatActivity;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConversationsFragment extends Fragment implements ActiveUserAdapter.OnActiveUserClickListener {
 
@@ -115,7 +113,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
 
     @Override
     public void onUserClick(ActiveUser user) {
-        Intent intent = new Intent(getContext(), ChatFragment.class);
+        Intent intent = new Intent(getContext(), ChatActivity.class);
         intent.putExtra("matchName", user.getName());
         intent.putExtra("matchImageUrl", user.getImageUrl());
         startActivity(intent);
