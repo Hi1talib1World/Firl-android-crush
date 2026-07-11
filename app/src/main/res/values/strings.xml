@@ -217,5 +217,25 @@
     <string name="title_topic_person">title</string>
     <string name="explore">Explore</string>
     <string name="match_notification">match</string>
+    <string name="back">Back</string>
+    <string name="user_profile_picture">User profile picture</string>
+    <string name="settings">Settings</string>
+    <string name="add_attachment">Add attachment</string>
+    <string name="voice_message">Voice message</string>
+    <string name="send_message">Send message</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="profile_image">Profile image</string>
+    <string name="age_range">Age range</string>
+    <string name="distance_radius">Distance radius</string>
+    <string name="account_settings">Account settings</string>
+    <string name="logout">Logout</string>
+    <string name="media_gallery_image">Media gallery image %1$d</string>
+    <string name="chat_hint">Type a message...</string>
+    <string name="chat_recording">Recording...</string>
+    <string name="chat_online">Online</string>
+    <string name="chat_typing">typing...</string>
+    <string name="invite_accepted">Invitation Accepted!</string>
+    <string name="invite_declined">Maybe next time.</string>
+    <string name="error_loading_profile">Error loading profile</string>
 
 </resources>
