@@ -30,6 +30,7 @@
                 android:layout_height="140dp"
                 android:layout_gravity="center"
                 android:src="@drawable/logo"
+                android:contentDescription="@string/profile_image"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="3dp" />
 
@@ -43,13 +44,17 @@
                 app:cardBackgroundColor="@color/colorAccent"
                 app:cardCornerRadius="18dp"
                 app:strokeWidth="0dp"
-                app:elevation="4dp">
+                app:elevation="4dp"
+                android:contentDescription="@string/edit_profile"
+                android:clickable="true"
+                android:focusable="true">
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_edit"
-                    app:tint="@color/bg1main" />
+                    app:tint="@color/bg1main"
+                    android:importantForAccessibility="no" />
             </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
 
@@ -173,7 +178,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground">
-                <ImageView android:id="@+id/media_img_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img1" android:scaleType="centerCrop"/>
+                <ImageView android:id="@+id/media_img_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img1" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -186,7 +191,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground">
-                <ImageView android:id="@+id/media_img_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img2" android:scaleType="centerCrop"/>
+                <ImageView android:id="@+id/media_img_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img2" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
@@ -199,7 +204,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground">
-                <ImageView android:id="@+id/media_img_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img3" android:scaleType="centerCrop"/>
+                <ImageView android:id="@+id/media_img_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img3" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
@@ -248,8 +253,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Age Range" android:textColor="@color/white" android:alpha="0.8"/>
+            android:orientation="horizontal"
+            android:importantForAccessibility="noHideDescendants">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/age_range" android:textColor="@color/white" android:alpha="0.8"/>
             <TextView android:id="@+id/age_range_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18 - 35" android:textColor="@color/colorAccent" android:textStyle="bold"/>
         </LinearLayout>
         <com.google.android.material.slider.RangeSlider
@@ -258,14 +264,16 @@
             android:layout_height="wrap_content"
             android:valueFrom="18.0"
             android:valueTo="100.0"
+            android:contentDescription="@string/age_range"
             app:values="@array/initial_age_range" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Distance Radius" android:textColor="@color/white" android:alpha="0.8"/>
+            android:orientation="horizontal"
+            android:importantForAccessibility="noHideDescendants">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/distance_radius" android:textColor="@color/white" android:alpha="0.8"/>
             <TextView android:id="@+id/distance_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="50 km" android:textColor="@color/colorAccent" android:textStyle="bold"/>
         </LinearLayout>
         <com.google.android.material.slider.Slider
@@ -273,7 +281,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:valueFrom="1.0"
-            android:valueTo="500.0" />
+            android:valueTo="500.0"
+            android:contentDescription="@string/distance_radius" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/settings_btn"
@@ -281,7 +290,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="48dp"
-            android:text="Account Settings"
+            android:text="@string/account_settings"
             app:cornerRadius="16dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -290,7 +299,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="8dp"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textColor="@color/dislikered" />
 
         <View android:layout_width="match_parent" android:layout_height="64dp" />
