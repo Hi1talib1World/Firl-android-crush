@@ -20,7 +20,7 @@ import com.Denzo.firl.chat.ChatActivity;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
-import com.google.firebase.auth.FirebaseAuth;
+import com.Denzo.firl.Utils.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,8 +49,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
         View view = inflater.inflate(R.layout.fragment_conversations, container, false);
 
         userRepository = UserRepositoryProvider.get();
-        currentUid = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                     FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        currentUid = com.Denzo.firl.Utils.SessionManager.getInstance().getCurrentUserId();
 
         activeUsers = new ArrayList<>();
         conversations = new ArrayList<>();
@@ -106,6 +105,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
                 if (isAdded()) {
                     if (convProgress != null) convProgress.setVisibility(View.GONE);
                     Log.e("ConversationsFragment", "Error loading conversations", e);
+                    android.widget.Toast.makeText(getContext(), "Error loading conversations", android.widget.Toast.LENGTH_SHORT).show();
                 }
             }
         });
