@@ -135,4 +135,8 @@ public class LikeCard {
     public void setCompatibilityScore(double compatibilityScore) {
         this.compatibilityScore = compatibilityScore;
     }
+
+    public double calculateMatchScore(LikeCard other) {
+        return com.Denzo.firl.Utils.MatchingEngine.calculateScore(this, other);
+    }
 }
