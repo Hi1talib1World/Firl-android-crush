@@ -61,13 +61,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
 
         userRepository = UserRepositoryProvider.get();
 
-        interestRecyclerView = view.findViewById(R.id.interest_recycler_view);
-        userRecyclerView = view.findViewById(R.id.discover_recycler_view);
-        searchProgress = view.findViewById(R.id.search_progress);
-        searchBar = view.findViewById(R.id.discover_search_bar);
-        emptyText = view.findViewById(R.id.discover_empty_text);
-        viewToggleBtn = view.findViewById(R.id.discover_view_toggle);
-
+        initViews(view);
         setupInterestList();
         setupUserList();
         setupSearch();
@@ -76,6 +70,15 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
 
         // Load default interest: "Long Term Relationship"
         onInterestClick("Long Term Relationship");
+    }
+
+    private void initViews(View view) {
+        interestRecyclerView = view.findViewById(R.id.interest_recycler_view);
+        userRecyclerView = view.findViewById(R.id.discover_recycler_view);
+        searchProgress = view.findViewById(R.id.search_progress);
+        searchBar = view.findViewById(R.id.discover_search_bar);
+        emptyText = view.findViewById(R.id.discover_empty_text);
+        viewToggleBtn = view.findViewById(R.id.discover_view_toggle);
     }
 
     private void setupSearch() {
@@ -102,11 +105,9 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         isGridView = !isGridView;
         viewToggleBtn.setImageResource(isGridView ? R.drawable.ic_main : R.drawable.ic_play);
         
-        if (isGridView) {
-            userRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        } else {
-            userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        }
+        userRecyclerView.setLayoutManager(isGridView ? 
+                new GridLayoutManager(getContext(), 2) : 
+                new LinearLayoutManager(getContext()));
         
         userAdapter.setGridView(isGridView);
     }
@@ -114,49 +115,60 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     private void performSearch(String query) {
         if (isSearching) return;
         
-        isSearching = true;
-        if (searchProgress != null) searchProgress.setVisibility(View.VISIBLE);
+        showProgress(true);
         discoveredUsers.clear();
         userAdapter.notifyDataSetChanged();
 
-        // Use a generic fetch and filter locally for search
         userRepository.getPotentialMatches("Female", new UserRepository.Callback<List<User>>() {
             @Override
             public void onResponse(List<User> users) {
-                isSearching = false;
+                showProgress(false);
                 if (isAdded()) {
-                    if (searchProgress != null) searchProgress.setVisibility(View.GONE);
-                    
-                    for (User user : users) {
-                        boolean matchName = user.getName() != null && user.getName().toLowerCase().contains(query.toLowerCase());
-                        boolean matchInterest = false;
-                        if (user.getInterests() != null) {
-                            for (String interest : user.getInterests()) {
-                                if (interest.toLowerCase().contains(query.toLowerCase())) {
-                                    matchInterest = true;
-                                    break;
-                                }
-                            }
-                        }
-                        
-                        if (matchName || matchInterest) {
-                            discoveredUsers.add(user);
-                        }
-                    }
-                    
-                    userAdapter.notifyDataSetChanged();
-                    if (emptyText != null) {
-                        emptyText.setVisibility(discoveredUsers.isEmpty() ? View.VISIBLE : View.GONE);
-                    }
+                    filterAndDisplayUsers(users, query);
                 }
             }
 
             @Override
             public void onError(Exception e) {
-                isSearching = false;
-                if (isAdded() && searchProgress != null) searchProgress.setVisibility(View.GONE);
+                showProgress(false);
             }
         });
+    }
+
+    private void filterAndDisplayUsers(List<User> users, String query) {
+        String lowerQuery = query.toLowerCase();
+        for (User user : users) {
+            boolean matchName = user.getName() != null && user.getName().toLowerCase().contains(lowerQuery);
+            boolean matchInterest = false;
+            if (user.getInterests() != null) {
+                for (String interest : user.getInterests()) {
+                    if (interest.toLowerCase().contains(lowerQuery)) {
+                        matchInterest = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (matchName || matchInterest) {
+                discoveredUsers.add(user);
+            }
+        }
+        
+        userAdapter.notifyDataSetChanged();
+        updateEmptyState();
+    }
+
+    private void showProgress(boolean show) {
+        isSearching = show;
+        if (searchProgress != null) {
+            searchProgress.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    private void updateEmptyState() {
+        if (emptyText != null) {
+            emptyText.setVisibility(discoveredUsers.isEmpty() ? View.VISIBLE : View.GONE);
+        }
     }
 
     private void setupInterestList() {
@@ -174,31 +186,25 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     public void onInterestClick(String interest) {
         if (isSearching) return;
         
-        isSearching = true;
-        if (searchProgress != null) searchProgress.setVisibility(View.VISIBLE);
+        showProgress(true);
         discoveredUsers.clear();
         userAdapter.notifyDataSetChanged();
 
         userRepository.getUsersByInterest(interest, new UserRepository.Callback<List<User>>() {
             @Override
             public void onResponse(List<User> users) {
-                isSearching = false;
+                showProgress(false);
                 if (isAdded()) {
-                    if (searchProgress != null) searchProgress.setVisibility(View.GONE);
                     discoveredUsers.addAll(users);
                     userAdapter.notifyDataSetChanged();
-                    
-                    if (emptyText != null) {
-                        emptyText.setVisibility(users.isEmpty() ? View.VISIBLE : View.GONE);
-                    }
+                    updateEmptyState();
                 }
             }
 
             @Override
             public void onError(Exception e) {
-                isSearching = false;
+                showProgress(false);
                 if (isAdded()) {
-                    if (searchProgress != null) searchProgress.setVisibility(View.GONE);
                     Toast.makeText(getContext(), "Error loading users", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -224,11 +230,12 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         TextView bio = dialog.findViewById(R.id.preview_bio);
         Button actionBtn = dialog.findViewById(R.id.preview_action_btn);
 
-        nameAge.setText(user.getName() + ", " + user.getAge());
+        nameAge.setText(String.format(java.util.Locale.US, "%s, %d", user.getName(), user.getAge()));
         bio.setText(user.getBio() != null ? user.getBio() : "No bio provided.");
         
-        if (user.getProfileImageUrl() != null && !user.getProfileImageUrl().equals("default")) {
-            Glide.with(this).load(user.getProfileImageUrl()).into(profileImage);
+        String imgUrl = user.getProfileImageUrl();
+        if (imgUrl != null && !imgUrl.equals("default")) {
+            Glide.with(this).load(imgUrl).into(profileImage);
         } else {
             profileImage.setImageResource(R.drawable.monkey);
         }
@@ -241,4 +248,3 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         dialog.show();
     }
 }
-
