@@ -202,6 +202,7 @@
         </com.Denzo.firl.Utils.PulsatorLayout>
 
         <TextView
+            android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -210,6 +211,16 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:alpha="0.7"/>
+
+        <Button
+            android:id="@+id/reset_filters_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="60dp"
+            android:text="Reset Filters"
+            android:visibility="gone"
+            style="@style/Widget.Material3.Button.TonalButton"/>
 
     </FrameLayout>
 
