@@ -16,6 +16,9 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE sex = :sex")
     List<User> getUsersBySex(String sex);
 
+    @Query("SELECT * FROM users")
+    List<User> getAllUsers();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(User user);
 
