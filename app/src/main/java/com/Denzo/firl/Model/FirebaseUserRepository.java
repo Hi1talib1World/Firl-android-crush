@@ -12,12 +12,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+import com.Denzo.firl.App;
+
 public class FirebaseUserRepository implements UserRepository {
 
     private DatabaseReference mDatabase;
+    private UserDao userDao;
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public FirebaseUserRepository() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        userDao = AppDatabase.getInstance(App.getInstance()).userDao();
     }
 
     @Override
@@ -46,12 +54,35 @@ public class FirebaseUserRepository implements UserRepository {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                callback.onResponse(user);
+                if (user != null) {
+                    executor.execute(() -> userDao.insert(user));
+                    callback.onResponse(user);
+                } else {
+                    executor.execute(() -> {
+                        User localUser = userDao.getUserById(uid);
+                        new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                            if (localUser != null) {
+                                callback.onResponse(localUser);
+                            } else {
+                                callback.onResponse(null);
+                            }
+                        });
+                    });
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                callback.onError(databaseError.toException());
+                executor.execute(() -> {
+                    User localUser = userDao.getUserById(uid);
+                    new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                        if (localUser != null) {
+                            callback.onResponse(localUser);
+                        } else {
+                            callback.onError(databaseError.toException());
+                        }
+                    });
+                });
             }
         });
     }
@@ -59,13 +90,17 @@ public class FirebaseUserRepository implements UserRepository {
     @Override
     public void updateProfile(User user, final Callback<Boolean> callback) {
         mDatabase.child("users").child(user.getUid()).setValue(user)
-            .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnSuccessListener(aVoid -> {
+                executor.execute(() -> userDao.insert(user));
+                callback.onResponse(true);
+            })
             .addOnFailureListener(e -> callback.onError(e));
     }
 
     @Override
     public void reportUser(String reporterId, String reportedId, String reason, final Callback<Boolean> callback) {
         String reportId = mDatabase.child("reports").push().getKey();
+        if (reportId == null) return;
         Map<String, Object> report = new HashMap<>();
         report.put("reporterId", reporterId);
         report.put("reportedId", reportedId);
@@ -85,25 +120,45 @@ public class FirebaseUserRepository implements UserRepository {
         verification.put("status", "PENDING");
 
         mDatabase.child("verification").child(uid).setValue(verification)
-            .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnSuccessListener(aVoid -> {
+                executor.execute(() -> {
+                    User user = userDao.getUserById(uid);
+                    if (user != null) {
+                        user.setVerified(false); // Pending
+                        userDao.update(user);
+                    }
+                });
+                callback.onResponse(true);
+            })
             .addOnFailureListener(e -> callback.onError(e));
     }
 
     @Override
     public void getPotentialMatches(String sex, final Callback<List<User>> callback) {
-        mDatabase.child("users").orderByChild("sex").equalTo(sex).addListenerForSingleValueEvent(new ValueEventListener() {
+        com.google.firebase.database.Query query = sex.equals("All") ? mDatabase.child("users") : mDatabase.child("users").orderByChild("sex").equalTo(sex);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<User> userList = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     userList.add(snapshot.getValue(User.class));
                 }
+                executor.execute(() -> userDao.insertAll(userList));
                 callback.onResponse(userList);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                callback.onError(databaseError.toException());
+                executor.execute(() -> {
+                    List<User> localUsers = userDao.getUsersBySex(sex);
+                    new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
+                        if (!localUsers.isEmpty()) {
+                            callback.onResponse(localUsers);
+                        } else {
+                            callback.onError(databaseError.toException());
+                        }
+                    });
+                });
             }
         });
     }
@@ -169,5 +224,70 @@ public class FirebaseUserRepository implements UserRepository {
                 callback.onError(databaseError.toException());
             }
         });
+    }
+
+    @Override
+    public void resetPassword(String email, Callback<Boolean> callback) {
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+            .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnFailureListener(e -> callback.onError(e));
+    }
+
+    @Override
+    public void swipeUser(String currentUid, String targetUid, String type, Callback<Boolean> callback) {
+        long timestamp = System.currentTimeMillis();
+        Map<String, Object> swipeData = new HashMap<>();
+        swipeData.put("type", type);
+        swipeData.put("timestamp", timestamp);
+
+        mDatabase.child("swipes").child(currentUid).child(targetUid).setValue(swipeData)
+            .addOnSuccessListener(aVoid -> {
+                // If it's a like or superlike, check if the other person also liked us
+                if (type.equals("like") || type.equals("superlike")) {
+                    mDatabase.child("swipes").child(targetUid).child(currentUid).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                String otherType = dataSnapshot.child("type").getValue(String.class);
+                                if ("like".equals(otherType) || "superlike".equals(otherType)) {
+                                    // It's a match!
+                                    createMatch(currentUid, targetUid, callback);
+                                } else {
+                                    callback.onResponse(false); // Liked but no match yet
+                                }
+                            } else {
+                                callback.onResponse(false); // Liked but no match yet
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            callback.onError(databaseError.toException());
+                        }
+                    });
+                } else {
+                    callback.onResponse(false); // Disliked, definitely not a match
+                }
+            })
+            .addOnFailureListener(e -> callback.onError(e));
+    }
+
+    @Override
+    public void sendMessage(String senderUid, String receiverUid, com.Denzo.firl.Model.ChatMessage message, Callback<Boolean> callback) {
+        String chatId = senderUid.compareTo(receiverUid) < 0 ? senderUid + "_" + receiverUid : receiverUid + "_" + senderUid;
+        String messageId = mDatabase.child("chats").child(chatId).push().getKey();
+        if (messageId == null) return;
+
+        mDatabase.child("chats").child(chatId).child(messageId).setValue(message)
+            .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnFailureListener(e -> callback.onError(e));
+    }
+
+    private void createMatch(String uid1, String uid2, Callback<Boolean> callback) {
+        long timestamp = System.currentTimeMillis();
+        mDatabase.child("users").child(uid1).child("connections").child("matches").child(uid2).setValue(timestamp);
+        mDatabase.child("users").child(uid2).child("connections").child("matches").child(uid1).setValue(timestamp)
+            .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnFailureListener(e -> callback.onError(e));
     }
 }
