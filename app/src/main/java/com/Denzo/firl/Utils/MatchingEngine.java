@@ -7,20 +7,18 @@ import java.util.List;
 
 public class MatchingEngine {
 
-    /**
-     * Compatibility Score =
-     * 30% shared interests
-     * 25% location (within user's preference)
-     * 20% age preference
-     * 15% activity level
-     * 10% profile completeness
-     */
+    private static final double WEIGHT_INTERESTS = 0.30;
+    private static final double WEIGHT_LOCATION = 0.25;
+    private static final double WEIGHT_AGE = 0.20;
+    private static final double WEIGHT_ACTIVITY = 0.15;
+    private static final double WEIGHT_COMPLETENESS = 0.10;
+
     public static double calculateScore(LikeCard currentUser, LikeCard targetUser) {
-        double interestScore = calculateInterestScore(currentUser.getInterests(), targetUser.getInterests()) * 0.30;
-        double locationScore = calculateLocationScore(currentUser, targetUser) * 0.25;
-        double ageScore = calculateAgeScore(currentUser.getAge(), targetUser.getAge()) * 0.20;
-        double activityScore = calculateActivityScore(currentUser.getActivityLevel(), targetUser.getActivityLevel()) * 0.15;
-        double completenessScore = targetUser.getProfileCompleteness() * 0.10;
+        double interestScore = calculateInterestScore(currentUser.getInterests(), targetUser.getInterests()) * WEIGHT_INTERESTS;
+        double locationScore = calculateLocationScore(currentUser, targetUser) * WEIGHT_LOCATION;
+        double ageScore = calculateAgeScore(currentUser.getAge(), targetUser.getAge()) * WEIGHT_AGE;
+        double activityScore = calculateActivityScore(currentUser.getActivityLevel(), targetUser.getActivityLevel()) * WEIGHT_ACTIVITY;
+        double completenessScore = targetUser.getProfileCompleteness() * WEIGHT_COMPLETENESS;
 
         return interestScore + locationScore + ageScore + activityScore + completenessScore;
     }
