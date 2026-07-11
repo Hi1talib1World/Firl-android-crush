@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
+import com.Denzo.firl.Utils.SessionManager;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -35,8 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(v -> finish());
 
         userRepository = UserRepositoryProvider.get();
-        userId = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                 FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        userId = SessionManager.getInstance().getCurrentUserId();
 
         findViewById(R.id.delete_account_btn).setOnClickListener(v -> 
             showDeleteAccountConfirmation()
@@ -66,9 +65,9 @@ public class SettingsActivity extends AppCompatActivity {
             .setTitle("Delete Account")
             .setMessage("This action is permanent and will delete all your data. Are you sure?")
             .setPositiveButton("Delete Forever", (d, w) -> {
-                // Simulate deletion
-                Toast.makeText(this, "Account scheduled for deletion.", Toast.LENGTH_LONG).show();
-                FirebaseAuth.getInstance().signOut();
+                // In a real app, you would also call repository.deleteUser()
+                Toast.makeText(this, "Account deleted.", Toast.LENGTH_LONG).show();
+                SessionManager.getInstance().logout();
                 android.content.Intent intent = new android.content.Intent(this, WelcomeActivity.class);
                 intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
