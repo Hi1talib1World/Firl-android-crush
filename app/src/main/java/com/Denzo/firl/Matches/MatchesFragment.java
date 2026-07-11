@@ -24,7 +24,7 @@ import com.Denzo.firl.Utils.ActivityTracker;
 import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
-import com.google.firebase.auth.FirebaseAuth;
+import com.Denzo.firl.Utils.SessionManager;
 
 public class MatchesFragment extends Fragment {
 
@@ -55,8 +55,7 @@ public class MatchesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
 
         userRepository = UserRepositoryProvider.get();
-        currentUid = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                     FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        currentUid = com.Denzo.firl.Utils.SessionManager.getInstance().getCurrentUserId();
 
         matchHistory = new ArrayList<>();
         likesYouList = new ArrayList<>();
