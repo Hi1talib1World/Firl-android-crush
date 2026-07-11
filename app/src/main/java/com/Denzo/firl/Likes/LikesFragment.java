@@ -31,7 +31,8 @@ import com.Denzo.firl.Model.ActivityLog;
 import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.google.android.material.slider.RangeSlider;
-import com.google.firebase.auth.FirebaseAuth;
+import com.Denzo.firl.Utils.SessionManager;
+import com.Denzo.firl.Utils.PulsatorLayout;
 
 public class LikesFragment extends Fragment {
 
@@ -45,6 +46,8 @@ public class LikesFragment extends Fragment {
     private UserRepository userRepository;
     private String currentUid;
     private View loadingOverlay;
+    private TextView loadingText;
+    private Button resetFiltersBtn;
     private SwipeFlingAdapterView flingContainer;
     private ImageButton likeBtn, dislikeBtn, rewindBtn, superLikeBtn, commentBtn;
     private User currentUserObject;
@@ -64,6 +67,8 @@ public class LikesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_swipe, container, false);
 
         loadingOverlay = view.findViewById(R.id.more_frame);
+        loadingText = view.findViewById(R.id.loading_text);
+        resetFiltersBtn = view.findViewById(R.id.reset_filters_btn);
         flingContainer = view.findViewById(R.id.frame);
         
         likeBtn = view.findViewById(R.id.likebtn);
@@ -73,8 +78,7 @@ public class LikesFragment extends Fragment {
         commentBtn = view.findViewById(R.id.commentbtn);
 
         userRepository = UserRepositoryProvider.get();
-        currentUid = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                     FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        currentUid = SessionManager.getInstance().getCurrentUserId();
 
         rowItems = new ArrayList<>();
         likesArrayAdapter = new LikesArrayAdapter(getContext(), R.layout.item, rowItems);
@@ -105,21 +109,45 @@ public class LikesFragment extends Fragment {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                Toast.makeText(getContext(), "Dislike!", Toast.LENGTH_SHORT).show();
                 LikeCard card = (LikeCard) dataObject;
+                userRepository.swipeUser(currentUid, card.getUserId(), "dislike", new UserRepository.Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean isMatch) {
+                        // Nothing to do for dislike match-wise
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e("LikesFragment", "Error swiping left", e);
+                    }
+                });
                 ActivityTracker.getInstance().log("Swipe Left", ActivityLog.Status.SUCCESS, "Disliked " + card.getName());
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
                 LikeCard card = (LikeCard) dataObject;
-                showMatchDialog(card);
+                userRepository.swipeUser(currentUid, card.getUserId(), "like", new UserRepository.Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean isMatch) {
+                        if (isMatch) {
+                            showMatchDialog(card);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e("LikesFragment", "Error swiping right", e);
+                    }
+                });
                 ActivityTracker.getInstance().log("Swipe Right", ActivityLog.Status.SUCCESS, "Liked " + card.getName());
             }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                // Potential to load more here
+                // If we're low on items and not already loading, we could fetch more
+                // For now, let's just log it.
+                Log.d("LikesFragment", "Adapter about to empty: " + itemsInAdapter);
             }
 
             @Override
@@ -160,7 +188,19 @@ public class LikesFragment extends Fragment {
         superLikeBtn.setOnClickListener(v -> {
             if (currentState == SwipeState.IDLE && !rowItems.isEmpty()) {
                 LikeCard card = rowItems.get(0);
-                showMatchDialog(card);
+                userRepository.swipeUser(currentUid, card.getUserId(), "superlike", new UserRepository.Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean isMatch) {
+                        if (isMatch) {
+                            showMatchDialog(card);
+                        }
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e("LikesFragment", "Error super-liking", e);
+                    }
+                });
                 flingContainer.getTopCardListener().selectRight();
             }
         });
@@ -173,6 +213,19 @@ public class LikesFragment extends Fragment {
 
         setupFilters(view);
 
+        resetFiltersBtn.setOnClickListener(v -> {
+            selectedGender = "All";
+            selectedZodiac = "Any";
+            selectedHabit = "Any";
+            selectedMinAge = 18;
+            selectedMaxAge = 100;
+            selectedDistance = 500;
+            
+            // Update chip texts if they are easily accessible, 
+            // but refreshData will at least reload with defaults.
+            refreshData();
+        });
+
         return view;
     }
 
@@ -180,19 +233,34 @@ public class LikesFragment extends Fragment {
         this.currentState = state;
         if (loadingOverlay == null || flingContainer == null) return;
 
+        PulsatorLayout pulsator = loadingOverlay.findViewById(R.id.pulsator);
+
         switch (state) {
             case LOADING:
                 loadingOverlay.setVisibility(View.VISIBLE);
+                if (pulsator != null) pulsator.start();
+                if (loadingText != null) {
+                    loadingText.setText("Finding people near you...");
+                    loadingText.setVisibility(View.VISIBLE);
+                }
+                if (resetFiltersBtn != null) resetFiltersBtn.setVisibility(View.GONE);
                 flingContainer.setVisibility(View.GONE);
                 setButtonsEnabled(false);
                 break;
             case IDLE:
                 loadingOverlay.setVisibility(View.GONE);
+                if (pulsator != null) pulsator.stop();
                 flingContainer.setVisibility(View.VISIBLE);
                 setButtonsEnabled(true);
                 break;
             case EMPTY:
                 loadingOverlay.setVisibility(View.VISIBLE);
+                if (pulsator != null) pulsator.stop();
+                if (loadingText != null) {
+                    loadingText.setText("No more profiles found matching your filters.");
+                    loadingText.setVisibility(View.VISIBLE);
+                }
+                if (resetFiltersBtn != null) resetFiltersBtn.setVisibility(View.VISIBLE);
                 flingContainer.setVisibility(View.GONE);
                 setButtonsEnabled(false);
                 rewindBtn.setEnabled(lastSwipedCard != null);
@@ -244,9 +312,7 @@ public class LikesFragment extends Fragment {
     private void fetchPotentialMatches() {
         if (currentUserObject == null) return;
         
-        String genderToFetch = selectedGender.equals("All") ? "Female" : selectedGender; 
-        
-        userRepository.getPotentialMatches(genderToFetch, new UserRepository.Callback<List<User>>() {
+        userRepository.getPotentialMatches(selectedGender, new UserRepository.Callback<List<User>>() {
             @Override
             public void onResponse(List<User> users) {
                 if (!isAdded()) return;
@@ -349,7 +415,11 @@ public class LikesFragment extends Fragment {
 
         sendMessageBtn.setOnClickListener(v -> {
             dialog.dismiss();
-            Toast.makeText(getContext(), "Send message to " + card.getName(), Toast.LENGTH_SHORT).show();
+            android.content.Intent intent = new android.content.Intent(getContext(), com.Denzo.firl.chat.ChatActivity.class);
+            intent.putExtra("matchId", card.getUserId());
+            intent.putExtra("matchName", card.getName());
+            intent.putExtra("matchImageUrl", card.getProfileImageUrl());
+            startActivity(intent);
         });
 
         keepSwiping.setOnClickListener(v -> dialog.dismiss());
@@ -473,8 +543,20 @@ public class LikesFragment extends Fragment {
         sendBtn.setOnClickListener(v -> {
             String comment = input.getText().toString();
             if (!comment.isEmpty()) {
-                Toast.makeText(getContext(), "Comment sent to " + card.getName(), Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+                com.Denzo.firl.Model.ChatMessage message = new com.Denzo.firl.Model.ChatMessage(comment, true, System.currentTimeMillis());
+                userRepository.sendMessage(currentUid, card.getUserId(), message, new UserRepository.Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean response) {
+                        Toast.makeText(getContext(), "Comment sent to " + card.getName(), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Toast.makeText(getContext(), "Failed to send comment", Toast.LENGTH_SHORT).show();
+                        Log.e("LikesFragment", "Error sending comment", e);
+                    }
+                });
             } else {
                 Toast.makeText(getContext(), "Please enter a message", Toast.LENGTH_SHORT).show();
             }
