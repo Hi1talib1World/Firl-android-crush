@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
+    android:background="@color/brand_dark">
 
-    <!-- Top Bar (M3 style) -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#1AFFFFFF">
+        android:background="@color/brand_dark"
+        app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -30,7 +30,8 @@
                     android:layout_height="40dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_chevron_left_black_24dp"
-                    app:tint="@color/white" />
+                    android:contentDescription="@string/back"
+                    app:tint="@color/brand_light" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/chat_user_image"
@@ -38,7 +39,8 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/monkey"
-                    app:civ_border_color="@color/white"
+                    android:contentDescription="@string/user_profile_picture"
+                    app:civ_border_color="@color/brand_light"
                     app:civ_border_width="1dp" />
 
                 <LinearLayout
@@ -52,15 +54,16 @@
                         android:id="@+id/chat_user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Victoria"
-                        android:textColor="@color/white"
+                        android:text="Name"
+                        android:textColor="@color/brand_light"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/user_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Online"
+                        android:text="@string/chat_online"
                         android:textColor="@color/likegreen"
                         android:textSize="11sp" />
 
@@ -68,7 +71,7 @@
                         android:id="@+id/typing_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="typing..."
+                        android:text="@string/chat_typing"
                         android:textColor="@color/likegreen"
                         android:textSize="11sp"
                         android:textStyle="italic"
@@ -76,12 +79,14 @@
                 </LinearLayout>
 
                 <ImageButton
+                    android:id="@+id/chat_settings"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginEnd="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_settings"
-                    app:tint="@color/white" />
+                    android:contentDescription="@string/settings"
+                    app:tint="@color/brand_light" />
 
             </LinearLayout>
 
@@ -89,7 +94,6 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Chat Messages -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyclerView"
         android:layout_width="match_parent"
@@ -99,7 +103,6 @@
         android:padding="12dp"
         android:clipToPadding="false" />
 
-    <!-- Input Bar (M3 style) -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/inputLayout"
         android:layout_width="match_parent"
@@ -108,7 +111,8 @@
         android:layout_margin="12dp"
         app:cardBackgroundColor="#1AFFFFFF"
         app:cardCornerRadius="24dp"
-        app:strokeWidth="0dp">
+        app:strokeWidth="0dp"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,7 +127,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_add_circle_black_24dp"
-                app:tint="@color/white"
+                android:contentDescription="@string/add_attachment"
+                app:tint="@color/brand_light"
                 android:alpha="0.6" />
 
             <EditText
@@ -132,9 +137,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="Type a message..."
+                android:hint="@string/chat_hint"
                 android:padding="12dp"
-                android:textColor="@color/white"
+                android:textColor="@color/brand_light"
                 android:textColorHint="#66FFFFFF"
                 android:textSize="14sp" />
 
@@ -144,7 +149,8 @@
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_play"
-                app:tint="@color/white"
+                android:contentDescription="@string/voice_message"
+                app:tint="@color/brand_light"
                 android:alpha="0.6"
                 android:rotation="-90" />
 
@@ -154,8 +160,9 @@
                 android:layout_height="wrap_content"
                 app:fabSize="mini"
                 android:src="@drawable/ic_send_black_24dp"
-                app:tint="@color/bg1main"
-                app:backgroundTint="@color/colorAccent"
+                android:contentDescription="@string/send_message"
+                app:tint="@color/brand_dark"
+                app:backgroundTint="@color/brand_primary"
                 app:elevation="0dp"/>
 
         </LinearLayout>
