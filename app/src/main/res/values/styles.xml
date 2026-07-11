@@ -3,18 +3,18 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Main colors -->
-        <item name="colorPrimary">@color/m3_primary</item>
-        <item name="colorOnPrimary">@color/m3_onPrimary</item>
+        <item name="colorPrimary">@color/brand_dark</item>
+        <item name="colorOnPrimary">@color/brand_light</item>
         <item name="colorPrimaryContainer">@color/m3_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/m3_onPrimaryContainer</item>
 
-        <item name="colorSecondary">@color/m3_secondary</item>
-        <item name="colorOnSecondary">@color/m3_onSecondary</item>
+        <item name="colorSecondary">@color/brand_light</item>
+        <item name="colorOnSecondary">@color/brand_dark</item>
         <item name="colorSecondaryContainer">@color/m3_secondaryContainer</item>
         <item name="colorOnSecondaryContainer">@color/m3_onSecondaryContainer</item>
 
-        <item name="colorTertiary">@color/m3_tertiary</item>
-        <item name="colorOnTertiary">@color/m3_onTertiary</item>
+        <item name="colorTertiary">@color/brand_primary</item>
+        <item name="colorOnTertiary">@color/brand_light</item>
         <item name="colorTertiaryContainer">@color/m3_tertiaryContainer</item>
         <item name="colorOnTertiaryContainer">@color/m3_onTertiaryContainer</item>
 
@@ -23,9 +23,11 @@
         <item name="colorErrorContainer">@color/m3_errorContainer</item>
         <item name="colorOnErrorContainer">@color/m3_onErrorContainer</item>
 
-        <item name="android:windowBackground">@color/bg1main</item>
-        <item name="android:statusBarColor">@color/bg1main</item>
+        <item name="android:windowBackground">@color/brand_dark</item>
+        <item name="android:statusBarColor">@color/brand_dark</item>
         <item name="android:windowLightStatusBar">false</item>
+
+        <item name="colorAccent">@color/brand_primary</item>
 
         <item name="android:fontFamily">@font/calibri</item>
         <item name="android:windowContentTransitions">true</item>
