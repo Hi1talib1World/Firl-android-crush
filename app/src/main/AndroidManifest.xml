@@ -21,7 +21,8 @@
 
     <application
         android:name=".App"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        tools:replace="android:allowBackup"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo"
@@ -47,9 +48,7 @@
             android:exported="false"
             android:launchMode="singleTop" />
 
-        <activity
-            android:name=".Profile.Profile_Activity"
-            android:exported="false" />
+
 
         <activity
             android:name=".Profile.EditProfileActivity"
