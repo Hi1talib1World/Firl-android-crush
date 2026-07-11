@@ -16,9 +16,9 @@ import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.Denzo.firl.R;
 import com.Denzo.firl.SettingsActivity;
+import com.Denzo.firl.Utils.SessionManager;
 import com.Denzo.firl.WelcomeActivity;
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -90,8 +90,7 @@ public class ProfileFragment extends Fragment {
         mediaImg3 = view.findViewById(R.id.media_img_3);
 
         userRepository = UserRepositoryProvider.get();
-        currentUid = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                     FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        currentUid = SessionManager.getInstance().getCurrentUserId();
 
         setupPreferenceListeners();
 
@@ -246,7 +245,7 @@ public class ProfileFragment extends Fragment {
             .setTitle("Logout")
             .setMessage("Are you sure you want to log out?")
             .setPositiveButton("Logout", (d, w) -> {
-                FirebaseAuth.getInstance().signOut();
+                SessionManager.getInstance().logout();
                 Intent intent = new Intent(getContext(), WelcomeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
