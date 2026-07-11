@@ -13,6 +13,9 @@ public interface UserRepository {
     void getPotentialMatches(String sex, Callback<List<User>> callback);
     void getMatches(String uid, Callback<List<User>> callback);
     void getUsersByInterest(String interest, Callback<List<User>> callback);
+    void resetPassword(String email, Callback<Boolean> callback);
+    void swipeUser(String currentUid, String targetUid, String type, Callback<Boolean> callback);
+    void sendMessage(String senderUid, String receiverUid, com.Denzo.firl.Model.ChatMessage message, Callback<Boolean> callback);
     
     interface Callback<T> {
         void onResponse(T response);
