@@ -28,63 +28,58 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
-
-        bottomNav.setOnItemSelectedListener(navListener);
+        bottomNav.setOnItemSelectedListener(this::onNavigationItemSelected);
 
         // Set the default fragment
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, getLikesFragment()).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, getFragment(LikesFragment.class))
+                    .commit();
         }
     }
 
-    private LikesFragment getLikesFragment() {
-        if (likesFragment == null) likesFragment = new LikesFragment();
-        return likesFragment;
+    private boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment selectedFragment = null;
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.Home) {
+            selectedFragment = getFragment(LikesFragment.class);
+        } else if (itemId == R.id.Discover) {
+            selectedFragment = getFragment(DiscoverFragment.class);
+        } else if (itemId == R.id.Swipe) {
+            selectedFragment = getFragment(ConversationsFragment.class);
+        } else if (itemId == R.id.Chat) {
+            selectedFragment = getFragment(MatchesFragment.class);
+        } else if (itemId == R.id.Profile) {
+            selectedFragment = getFragment(ProfileFragment.class);
+        }
+
+        if (selectedFragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, selectedFragment)
+                    .commit();
+            return true;
+        }
+        return false;
     }
 
-    private DiscoverFragment getDiscoverFragment() {
-        if (discoverFragment == null) discoverFragment = new DiscoverFragment();
-        return discoverFragment;
+    private Fragment getFragment(Class<? extends Fragment> fragmentClass) {
+        if (fragmentClass == LikesFragment.class) {
+            if (likesFragment == null) likesFragment = new LikesFragment();
+            return likesFragment;
+        } else if (fragmentClass == DiscoverFragment.class) {
+            if (discoverFragment == null) discoverFragment = new DiscoverFragment();
+            return discoverFragment;
+        } else if (fragmentClass == MatchesFragment.class) {
+            if (matchesFragment == null) matchesFragment = new MatchesFragment();
+            return matchesFragment;
+        } else if (fragmentClass == ConversationsFragment.class) {
+            if (conversationsFragment == null) conversationsFragment = new ConversationsFragment();
+            return conversationsFragment;
+        } else if (fragmentClass == ProfileFragment.class) {
+            if (profileFragment == null) profileFragment = new ProfileFragment();
+            return profileFragment;
+        }
+        return null;
     }
-
-    private MatchesFragment getMatchesFragment() {
-        if (matchesFragment == null) matchesFragment = new MatchesFragment();
-        return matchesFragment;
-    }
-
-    private ConversationsFragment getConversationsFragment() {
-        if (conversationsFragment == null) conversationsFragment = new ConversationsFragment();
-        return conversationsFragment;
-    }
-
-    private ProfileFragment getProfileFragment() {
-        if (profileFragment == null) profileFragment = new ProfileFragment();
-        return profileFragment;
-    }
-
-    private BottomNavigationView.OnItemSelectedListener navListener =
-            new BottomNavigationView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    int itemId = item.getItemId();
-                    if (itemId == R.id.Home) {
-                        selectedFragment = getLikesFragment();
-                    } else if (itemId == R.id.Discover) {
-                        selectedFragment = getDiscoverFragment();
-                    } else if (itemId == R.id.Swipe) {
-                        selectedFragment = getConversationsFragment();
-                    } else if (itemId == R.id.Chat) {
-                        selectedFragment = getMatchesFragment();
-                    } else if (itemId == R.id.Profile) {
-                        selectedFragment = getProfileFragment();
-                    }
-
-                    if (selectedFragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, selectedFragment).commit();
-                    }
-                    return true;
-                }
-            };
 }
