@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Firl"
-            android:textColor="@color/white"
+            android:textColor="@color/brand_light"
             android:textSize="48sp"
             android:fontFamily="serif"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="60dp"
             android:text="Discover meaningful connections"
-            android:textColor="@color/white"
+            android:textColor="@color/brand_light"
             android:alpha="0.8"
             android:textSize="16sp" />
 
@@ -57,7 +57,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="12dp"
             android:text="Sign In"
-            android:textColor="@color/white"
+            android:textColor="@color/brand_light"
             android:textStyle="bold" />
 
         <com.google.android.material.button.MaterialButton
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="By continuing, you agree to our Terms and Privacy Policy"
-            android:textColor="@color/white"
+            android:textColor="@color/brand_light"
             android:alpha="0.5"
             android:textSize="12sp"
             android:gravity="center" />
