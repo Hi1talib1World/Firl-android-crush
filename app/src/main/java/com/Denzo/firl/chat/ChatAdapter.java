@@ -17,6 +17,11 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int TYPE_THEIRS = 0;
+    private static final int TYPE_MINE = 1;
+    private static final int TYPE_DATE_INVITE = 2;
+    private static final int TYPE_ICEBREAKER = 3;
+
     private List<ChatMessage> messages;
 
     public ChatAdapter(List<ChatMessage> messages) {
@@ -26,9 +31,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemViewType(int position) {
         ChatMessage msg = messages.get(position);
-        if (msg.getType() == ChatMessage.MessageType.DATE_INVITE) return 2;
-        if (msg.getType() == ChatMessage.MessageType.ICEBREAKER) return 3;
-        return msg.isMine() ? 1 : 0;
+        switch (msg.getType()) {
+            case DATE_INVITE:
+                return TYPE_DATE_INVITE;
+            case ICEBREAKER:
+                return TYPE_ICEBREAKER;
+            default:
+                return msg.isMine() ? TYPE_MINE : TYPE_THEIRS;
+        }
     }
 
     @NonNull
@@ -36,12 +46,13 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         switch (viewType) {
-            case 2:
+            case TYPE_DATE_INVITE:
                 return new DateInviteViewHolder(inflater.inflate(R.layout.item_chat_date_invite, parent, false));
-            case 3:
+            case TYPE_ICEBREAKER:
                 return new IcebreakerViewHolder(inflater.inflate(R.layout.item_chat_icebreaker, parent, false));
-            case 1:
+            case TYPE_MINE:
                 return new ChatViewHolder(inflater.inflate(R.layout.item_chat_mine, parent, false));
+            case TYPE_THEIRS:
             default:
                 return new ChatViewHolder(inflater.inflate(R.layout.item_chat_theirs, parent, false));
         }
@@ -52,25 +63,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ChatMessage msg = messages.get(position);
         
         if (holder instanceof ChatViewHolder) {
-            ((ChatViewHolder) holder).messageText.setText(msg.getMessage());
+            ((ChatViewHolder) holder).bind(msg);
         } else if (holder instanceof DateInviteViewHolder) {
-            DateInviteViewHolder vh = (DateInviteViewHolder) holder;
-            vh.title.setText(msg.getMessage());
-            vh.message.setText(msg.getExtraInfo());
-            
-            if (msg.getMessage().contains("Coffee")) {
-                vh.icon.setImageResource(R.drawable.ic_location);
-            } else {
-                vh.icon.setImageResource(R.drawable.love);
-            }
-
-            vh.accept.setOnClickListener(v -> Toast.makeText(v.getContext(), "Invitation Accepted!", Toast.LENGTH_SHORT).show());
-            vh.decline.setOnClickListener(v -> Toast.makeText(v.getContext(), "Maybe next time.", Toast.LENGTH_SHORT).show());
-
+            ((DateInviteViewHolder) holder).bind(msg);
         } else if (holder instanceof IcebreakerViewHolder) {
-            IcebreakerViewHolder vh = (IcebreakerViewHolder) holder;
-            vh.prompt.setText(msg.getMessage());
-            vh.reply.setOnClickListener(v -> Toast.makeText(v.getContext(), "Opening reply keyboard...", Toast.LENGTH_SHORT).show());
+            ((IcebreakerViewHolder) holder).bind(msg);
         }
     }
 
@@ -85,6 +82,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             messageText = itemView.findViewById(R.id.message_text);
+        }
+
+        void bind(ChatMessage msg) {
+            messageText.setText(msg.getMessage());
         }
     }
 
@@ -101,6 +102,17 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             accept = itemView.findViewById(R.id.invite_accept);
             decline = itemView.findViewById(R.id.invite_decline);
         }
+
+        void bind(ChatMessage msg) {
+            title.setText(msg.getMessage());
+            message.setText(msg.getExtraInfo());
+            
+            int iconRes = msg.getMessage().contains("Coffee") ? R.drawable.ic_location : R.drawable.love;
+            icon.setImageResource(iconRes);
+
+            accept.setOnClickListener(v -> Toast.makeText(v.getContext(), "Invitation Accepted!", Toast.LENGTH_SHORT).show());
+            decline.setOnClickListener(v -> Toast.makeText(v.getContext(), "Maybe next time.", Toast.LENGTH_SHORT).show());
+        }
     }
 
     static class IcebreakerViewHolder extends RecyclerView.ViewHolder {
@@ -111,6 +123,11 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             super(itemView);
             prompt = itemView.findViewById(R.id.icebreaker_prompt);
             reply = itemView.findViewById(R.id.icebreaker_reply);
+        }
+
+        void bind(ChatMessage msg) {
+            prompt.setText(msg.getMessage());
+            reply.setOnClickListener(v -> Toast.makeText(v.getContext(), "Opening reply keyboard...", Toast.LENGTH_SHORT).show());
         }
     }
 }
