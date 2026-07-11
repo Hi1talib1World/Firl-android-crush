@@ -23,10 +23,10 @@ import com.Denzo.firl.Model.UserRepository;
 import com.Denzo.firl.Model.UserRepositoryProvider;
 import com.Denzo.firl.R;
 import com.Denzo.firl.Utils.Constants;
+import com.Denzo.firl.Utils.SessionManager;
 import com.bumptech.glide.Glide;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +52,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         userRepository = UserRepositoryProvider.get();
-        currentUid = FirebaseAuth.getInstance().getCurrentUser() != null ? 
-                     FirebaseAuth.getInstance().getCurrentUser().getUid() : "mock_uid";
+        currentUid = SessionManager.getInstance().getCurrentUserId();
 
         initViews();
         loadUserData();
