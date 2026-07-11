@@ -105,8 +105,21 @@ public class LikesArrayAdapter extends ArrayAdapter<LikeCard> {
         reportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), card.getName() + " has been reported. We will review this profile.", Toast.LENGTH_LONG).show();
-                bottomSheetDialog.dismiss();
+                com.Denzo.firl.Model.UserRepository repository = com.Denzo.firl.Model.UserRepositoryProvider.get();
+                String currentUid = com.Denzo.firl.Utils.SessionManager.getInstance().getCurrentUserId();
+                
+                repository.reportUser(currentUid, card.getUserId(), "Reported by user", new com.Denzo.firl.Model.UserRepository.Callback<Boolean>() {
+                    @Override
+                    public void onResponse(Boolean response) {
+                        Toast.makeText(getContext(), card.getName() + " has been reported. We will review this profile.", Toast.LENGTH_LONG).show();
+                        bottomSheetDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        Toast.makeText(getContext(), "Failed to report user.", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
