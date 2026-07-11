@@ -1,11 +1,19 @@
 package com.Denzo.firl.Model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.List;
 import java.util.Map;
 
+@Entity(tableName = "users")
 public class User {
 
-    private String uid;
+    @PrimaryKey
+    @NonNull
+    private String uid = "";
     private String name;
     private String email;
     private String profileImageUrl;
@@ -14,16 +22,12 @@ public class User {
     private String phone;
     private int age;
 
-    // Stage 1: New fields for Matching & Verification
     private List<String> interests;
-    private Map<String, Object> preferences;
     private boolean isVerified;
     private String verificationLevel;
 
-    // Location intelligence
-    private double latitude;
-    private double longitude;
-    private String city;
+    @Embedded
+    private UserLocation location = new UserLocation();
 
     // Demographics & Lifestyle
     private String job;
@@ -38,14 +42,20 @@ public class User {
     private Map<String, String> prompts;
     private List<String> mediaUrls;
 
-    // Discovery Preferences
-    private int minAgePreference = 18;
-    private int maxAgePreference = 50;
-    private int distancePreference = 50;
+    @Embedded
+    private DiscoveryPreferences discoveryPreferences = new DiscoveryPreferences();
 
     // Privacy
     private boolean isIncognito = false;
     private boolean isHidden = false;
+
+    // Constants for Profile Completeness
+    public static final double WEIGHT_IMAGE = 20.0;
+    public static final double WEIGHT_BIO = 20.0;
+    public static final double WEIGHT_INTERESTS = 20.0;
+    public static final double WEIGHT_JOB = 10.0;
+    public static final double WEIGHT_SCHOOL = 10.0;
+    public static final double WEIGHT_VERIFIED = 20.0;
 
     public User() {}
 
@@ -82,109 +92,81 @@ public class User {
     public List<String> getMediaUrls() { return mediaUrls; }
     public void setMediaUrls(List<String> mediaUrls) { this.mediaUrls = mediaUrls; }
 
-    public int getMinAgePreference() { return minAgePreference; }
-    public void setMinAgePreference(int minAgePreference) { this.minAgePreference = minAgePreference; }
+    public int getMinAgePreference() { return discoveryPreferences.getMinAge(); }
+    public void setMinAgePreference(int minAge) { discoveryPreferences.setMinAge(minAge); }
 
-    public int getMaxAgePreference() { return maxAgePreference; }
-    public void setMaxAgePreference(int maxAgePreference) { this.maxAgePreference = maxAgePreference; }
+    public int getMaxAgePreference() { return discoveryPreferences.getMaxAge(); }
+    public void setMaxAgePreference(int maxAge) { discoveryPreferences.setMaxAge(maxAge); }
 
-    public int getDistancePreference() { return distancePreference; }
-    public void setDistancePreference(int distancePreference) { this.distancePreference = distancePreference; }
+    public int getDistancePreference() { return discoveryPreferences.getDistance(); }
+    public void setDistancePreference(int distance) { discoveryPreferences.setDistance(distance); }
 
-    public double getLatitude() { return latitude; }
-    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public double getLatitude() { return location.getLatitude(); }
+    public void setLatitude(double latitude) { location.setLatitude(latitude); }
 
-    public double getLongitude() { return longitude; }
-    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public double getLongitude() { return location.getLongitude(); }
+    public void setLongitude(double longitude) { location.setLongitude(longitude); }
 
-    public String getUid() {
-        return uid;
-    }
+    public String getCity() { return location.getCity(); }
+    public void setCity(String city) { location.setCity(city); }
 
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
+    public String getUid() { return uid; }
+    public void setUid(@NonNull String uid) { this.uid = uid; }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getProfileImageUrl() { return profileImageUrl; }
+    public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getSex() { return sex; }
+    public void setSex(String sex) { this.sex = sex; }
 
-    public String getProfileImageUrl() {
-        return profileImageUrl;
-    }
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
+    public String getBio() { return bio; }
+    public void setBio(String bio) { this.bio = bio; }
 
-    public String getSex() {
-        return sex;
-    }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+    public List<String> getInterests() { return interests; }
+    public void setInterests(List<String> interests) { this.interests = interests; }
 
-    public String getPhone() {
-        return phone;
-    }
+    public boolean isVerified() { return isVerified; }
+    public void setVerified(boolean verified) { isVerified = verified; }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    public String getVerificationLevel() { return verificationLevel; }
+    public void setVerificationLevel(String verificationLevel) { this.verificationLevel = verificationLevel; }
 
-    public String getBio() {
-        return bio;
-    }
+    public boolean isIncognito() { return isIncognito; }
+    public void setIncognito(boolean incognito) { isIncognito = incognito; }
 
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
+    public boolean isHidden() { return isHidden; }
+    public void setHidden(boolean hidden) { isHidden = hidden; }
 
-    public int getAge() {
-        return age;
-    }
+    public UserLocation getLocation() { return location; }
+    public void setLocation(UserLocation location) { this.location = location; }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public List<String> getInterests() {
-        return interests;
-    }
-
-    public void setInterests(List<String> interests) {
-        this.interests = interests;
-    }
-
-    public boolean isVerified() {
-        return isVerified;
-    }
-
-    public void setVerified(boolean verified) {
-        isVerified = verified;
-    }
+    public DiscoveryPreferences getDiscoveryPreferences() { return discoveryPreferences; }
+    public void setDiscoveryPreferences(DiscoveryPreferences discoveryPreferences) { this.discoveryPreferences = discoveryPreferences; }
 
     public double calculateProfileCompleteness() {
         double completeness = 0;
-        if (profileImageUrl != null && !profileImageUrl.isEmpty() && !profileImageUrl.equals("default")) completeness += 20;
-        if (bio != null && !bio.isEmpty()) completeness += 20;
-        if (interests != null && !interests.isEmpty()) completeness += 20;
-        if (job != null && !job.isEmpty()) completeness += 10;
-        if (school != null && !school.isEmpty()) completeness += 10;
-        if (isVerified) completeness += 20;
+        if (isNotBlank(profileImageUrl) && !profileImageUrl.equals("default")) completeness += WEIGHT_IMAGE;
+        if (isNotBlank(bio)) completeness += WEIGHT_BIO;
+        if (interests != null && !interests.isEmpty()) completeness += WEIGHT_INTERESTS;
+        if (isNotBlank(job)) completeness += WEIGHT_JOB;
+        if (isNotBlank(school)) completeness += WEIGHT_SCHOOL;
+        if (isVerified) completeness += WEIGHT_VERIFIED;
         return completeness;
+    }
+
+    private boolean isNotBlank(String str) {
+        return str != null && !str.trim().isEmpty();
     }
 }
