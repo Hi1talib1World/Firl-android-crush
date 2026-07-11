@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#23395B</color>
-    <color name="colorPrimaryDark">#23395B</color>
-    <color name="colorAccent">#FFFD98</color>
+    <!-- Brand Colors -->
+    <color name="brand_primary">#FF4653</color>
+    <color name="brand_dark">#0F1923</color>
+    <color name="brand_light">#FCFEFE</color>
+
+    <color name="colorPrimary">@color/brand_dark</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">@color/brand_primary</color>
 
     <color name="graylight">#fafafa</color>
     <color name="startblue">#09c6df</color>
@@ -13,18 +18,18 @@
     <color name="secondary_text">#434343</color>
     <color name="secondary_light">#979797</color>
 
-    <color name="icons">#FFFFFF</color>
+    <color name="icons">@color/brand_light</color>
     <color name="divider">#BDBDBD</color>
 
     <color name="custom_divider_color">#dfdfdf</color>
-    <color name="highlight_text">#17a1d7</color>
+    <color name="highlight_text">@color/brand_primary</color>
 
-    <color name="send_button_color">#FF5252</color>
+    <color name="send_button_color">@color/brand_primary</color>
 
     <color name="light_gray">#d8d6d5</color>
     <color name="posts_counter_bg">#df3e3e3e</color>
 
-    <color name="like_icon_activated">#FF5252</color>
+    <color name="like_icon_activated">@color/brand_primary</color>
     <color name="icons_counter_color">#828181</color>
     <color name="circle_image_shadow">#8b8b8b</color>
 
@@ -40,32 +45,32 @@
     <color name="follow_button_pressed_color">#0087BC</color>
     <color name="follow_button_light_color">@color/white</color>
     <color name="follow_button_light_pressed_color">#f7f7f7</color>
-    <color name="bg_login">#26ae90</color>
-    <color name="bg_register">#2e3237</color>
-    <color name="bg_main">#428bca</color>
+    <color name="bg_login">@color/brand_dark</color>
+    <color name="bg_register">@color/brand_dark</color>
+    <color name="bg_main">@color/brand_dark</color>
     <color name="input_login">#222222</color>
     <color name="input_login_hint">#999999</color>
     <color name="input_register">#888888</color>
     <color name="input_register_bg">#3b4148</color>
     <color name="input_register_hint">#5e6266</color>
-    <color name="btn_login">#26ae90</color>
+    <color name="btn_login">@color/brand_primary</color>
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
-    <color name="btn_logut_bg">#ff6861</color>
+    <color name="btn_logut_bg">@color/brand_primary</color>
     <color name="bottomNavigationTextColor">#B2B2B2</color>
     <color name="bottomNavigationTintColor">#B2B2B2</color>
-    <color name="bottomNavigationSelectedColor">#FC4926</color>
-    <color name="statusBarColor">#000</color>
-    <color name="whiteBodyColor">#FCFCFC</color>
-    <color name="darkTextColor">#020000</color>
-    <color name="primaryTextColor">#019AE8</color>
-    <color name="whiteTextColor">#fff</color>
+    <color name="bottomNavigationSelectedColor">@color/brand_primary</color>
+    <color name="statusBarColor">@color/brand_dark</color>
+    <color name="whiteBodyColor">@color/brand_light</color>
+    <color name="darkTextColor">@color/brand_dark</color>
+    <color name="primaryTextColor">@color/brand_primary</color>
+    <color name="whiteTextColor">@color/brand_light</color>
     <color name="frutorial_title">#4c4c4c</color>
     <color name="dashboard_subtitle">#B7B7CC</color>
-    <!--colors for light mode-->
-    <color name="contentBodyColor">#FCFCFC</color>
-    <color name="contentTextColor">#020000</color>
-    <color name="bottomNavigationBackground">#F7F7F7</color>
+
+    <color name="contentBodyColor">@color/brand_light</color>
+    <color name="contentTextColor">@color/brand_dark</color>
+    <color name="bottomNavigationBackground">@color/brand_dark</color>
 
     <!--    color items-->
     <color name="color1">#F1755B</color>
@@ -76,11 +81,11 @@
     <color name="back_courses">#f8fafb</color>
 
     <!--    colors play game-->
-    <color name="black_transparent">#CC003366</color>
+    <color name="black_transparent">#CC0F1923</color>
 
     <color name="orange">#FE940D</color>
     <color name="dark_blue">#5d3369</color>
-    <color name="coolor">#C7F459</color>
+    <color name="coolor">@color/brand_primary</color>
     <color name="coolor2">#7C38E7</color>
     <color name="red_light">#33D32F2F</color>
     <color name="nav_bar_color">#33CFCFCF</color>
@@ -89,9 +94,9 @@
     <color name="option3">#E34B4A</color>
     <color name="option4">#FF8033</color>
 
-    <color name="colorPrimaryText">@android:color/white</color>
-    <color name="bg1main">#1C2736</color>
-    <color name="bg2main">#00FF00</color>
+    <color name="colorPrimaryText">@color/brand_light</color>
+    <color name="bg1main">@color/brand_dark</color>
+    <color name="bg2main">@color/brand_primary</color>
 
 
     <color name="transparentPink">#99FF4081</color>
@@ -169,13 +174,13 @@
     <color name="grey_light">#E0E0E0</color>
 
     <!-- Screens background color-->
-    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen1">@color/brand_dark</color>
 
     <!-- dots inactive colors -->
-    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen1">@color/brand_primary</color>
 
     <!-- dots active colors -->
-    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen1">@color/brand_light</color>
 
     <!-- Placeholder colors-->
     <color name="stay_color">#999999</color>
@@ -186,7 +191,7 @@
 
 
     <color name="colordevider">#f1f2f4</color>
-    <color name="colorbutton">#ff5254</color>
+    <color name="colorbutton">@color/brand_primary</color>
     <color name="iconcolour">#9ba4ab</color>
     <color name="strok">#e4e5ea</color>
 
@@ -207,11 +212,11 @@
     <color name="smoke_pink">#C51162</color>
     <color name="smoke_green">#1B5E20</color>
 
-    <color name="dpnamecolor">#fff</color>
-    <color name="weekcolor">#fff</color>
+    <color name="dpnamecolor">@color/brand_light</color>
+    <color name="weekcolor">@color/brand_light</color>
     <color name="agendacolor">#8E9097</color>
-    <color name="timecolor">#000</color>
-    <color name="schedulecolor">#000</color>
+    <color name="timecolor">@color/brand_light</color>
+    <color name="schedulecolor">@color/brand_light</color>
     <color name="statementcolor">#778AA6</color>
 
 
@@ -224,54 +229,54 @@
     <color name="color">#767578</color>
 
     <!-- Material 3 Colors -->
-    <color name="m3_primary">#23395B</color>
-    <color name="m3_onPrimary">#FFFFFF</color>
-    <color name="m3_primaryContainer">#D7E2FF</color>
-    <color name="m3_onPrimaryContainer">#001B3F</color>
+    <color name="m3_primary">@color/brand_primary</color>
+    <color name="m3_onPrimary">@color/brand_light</color>
+    <color name="m3_primaryContainer">#4DFF4653</color>
+    <color name="m3_onPrimaryContainer">@color/brand_light</color>
 
-    <color name="m3_secondary">#535F70</color>
-    <color name="m3_onSecondary">#FFFFFF</color>
-    <color name="m3_secondaryContainer">#D7E3F7</color>
-    <color name="m3_onSecondaryContainer">#101C2B</color>
+    <color name="m3_secondary">@color/brand_light</color>
+    <color name="m3_onSecondary">@color/brand_dark</color>
+    <color name="m3_secondaryContainer">#4DFFFFFF</color>
+    <color name="m3_onSecondaryContainer">@color/brand_light</color>
 
-    <color name="m3_tertiary">#FC4926</color>
-    <color name="m3_onTertiary">#FFFFFF</color>
-    <color name="m3_tertiaryContainer">#FFDAD4</color>
-    <color name="m3_onTertiaryContainer">#3D0600</color>
+    <color name="m3_tertiary">@color/brand_primary</color>
+    <color name="m3_onTertiary">@color/brand_light</color>
+    <color name="m3_tertiaryContainer">#4DFF4653</color>
+    <color name="m3_onTertiaryContainer">@color/brand_light</color>
 
     <color name="m3_error">#BA1A1A</color>
     <color name="m3_onError">#FFFFFF</color>
     <color name="m3_errorContainer">#FFDAD6</color>
     <color name="m3_onErrorContainer">#410002</color>
 
-    <color name="m3_background">#FDFBFF</color>
-    <color name="m3_onBackground">#1A1C1E</color>
-    <color name="m3_surface">#FDFBFF</color>
-    <color name="m3_onSurface">#1A1C1E</color>
-    <color name="m3_surfaceVariant">#E0E2EC</color>
-    <color name="m3_onSurfaceVariant">#44474E</color>
+    <color name="m3_background">@color/brand_dark</color>
+    <color name="m3_onBackground">@color/brand_light</color>
+    <color name="m3_surface">@color/brand_dark</color>
+    <color name="m3_onSurface">@color/brand_light</color>
+    <color name="m3_surfaceVariant">#253140</color>
+    <color name="m3_onSurfaceVariant">@color/brand_light</color>
     <color name="m3_outline">#74777F</color>
 
     <!-- Dark Mode Material 3 Colors -->
-    <color name="m3_dark_primary">#ABC7FF</color>
-    <color name="m3_dark_onPrimary">#002F64</color>
-    <color name="m3_dark_primaryContainer">#00468B</color>
-    <color name="m3_dark_onPrimaryContainer">#D7E2FF</color>
+    <color name="m3_dark_primary">@color/brand_primary</color>
+    <color name="m3_dark_onPrimary">@color/brand_light</color>
+    <color name="m3_dark_primaryContainer">#4DFF4653</color>
+    <color name="m3_dark_onPrimaryContainer">@color/brand_light</color>
 
-    <color name="m3_dark_secondary">#BBC7DB</color>
-    <color name="m3_dark_onSecondary">#253140</color>
-    <color name="m3_dark_secondaryContainer">#3B4858</color>
-    <color name="m3_dark_onSecondaryContainer">#D7E3F7</color>
+    <color name="m3_dark_secondary">@color/brand_light</color>
+    <color name="m3_dark_onSecondary">@color/brand_dark</color>
+    <color name="m3_dark_secondaryContainer">#4DFFFFFF</color>
+    <color name="m3_dark_onSecondaryContainer">@color/brand_light</color>
 
-    <color name="m3_dark_tertiary">#FFB4A8</color>
-    <color name="m3_dark_onTertiary">#690000</color>
-    <color name="m3_dark_tertiaryContainer">#930000</color>
-    <color name="m3_dark_onTertiaryContainer">#FFDAD4</color>
+    <color name="m3_dark_tertiary">@color/brand_primary</color>
+    <color name="m3_dark_onTertiary">@color/brand_light</color>
+    <color name="m3_dark_tertiaryContainer">#4DFF4653</color>
+    <color name="m3_dark_onTertiaryContainer">@color/brand_light</color>
 
-    <color name="m3_dark_background">#1A1C1E</color>
-    <color name="m3_dark_onBackground">#E2E2E6</color>
-    <color name="m3_dark_surface">#1A1C1E</color>
-    <color name="m3_dark_onSurface">#E2E2E6</color>
+    <color name="m3_dark_background">@color/brand_dark</color>
+    <color name="m3_dark_onBackground">@color/brand_light</color>
+    <color name="m3_dark_surface">@color/brand_dark</color>
+    <color name="m3_dark_onSurface">@color/brand_light</color>
     <color name="m3_dark_surfaceVariant">#44474E</color>
     <color name="m3_dark_onSurfaceVariant">#C4C6D0</color>
     <color name="m3_dark_outline">#8E9099</color>
