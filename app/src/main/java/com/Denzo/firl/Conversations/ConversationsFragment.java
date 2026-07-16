@@ -31,9 +31,9 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
     private ActiveUserAdapter activeAdapter;
     private MatchesAdapter matchesAdapter;
     private List<ActiveUser> activeUsers;
-    private List<MatchPerson> conversations;
     private UserRepository userRepository;
     private TextView emptyText;
+    private androidx.swiperefreshlayout.widget.SwipeRefreshLayout swipeRefreshLayout;
     private String currentUid;
     private View convProgress;
     private boolean isLoading = false;
@@ -52,10 +52,13 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
         currentUid = com.Denzo.firl.Utils.SessionManager.getInstance().getCurrentUserId();
 
         activeUsers = new ArrayList<>();
-        conversations = new ArrayList<>();
 
         convProgress = view.findViewById(R.id.conv_progress);
         emptyText = view.findViewById(R.id.conv_empty_text);
+        swipeRefreshLayout = view.findViewById(R.id.conv_swipe_refresh);
+
+        swipeRefreshLayout.setOnRefreshListener(this::loadConversations);
+
         activeRecyclerView = view.findViewById(R.id.active_recycler_view);
         activeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         activeAdapter = new ActiveUserAdapter(activeUsers, this);
@@ -63,7 +66,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
 
         matchesRecyclerView = view.findViewById(R.id.matche_recycler_view);
         matchesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        matchesAdapter = new MatchesAdapter(getContext(), conversations);
+        matchesAdapter = new MatchesAdapter(getContext());
         matchesRecyclerView.setAdapter(matchesAdapter);
 
         if (currentUid != null) {
@@ -82,16 +85,17 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
             @Override
             public void onResponse(List<User> users) {
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
                     if (convProgress != null) convProgress.setVisibility(View.GONE);
                     activeUsers.clear();
-                    conversations.clear();
+                    List<MatchPerson> convs = new ArrayList<>();
                     for (User user : users) {
                         activeUsers.add(new ActiveUser(user.getName(), user.getProfileImageUrl()));
-                        conversations.add(new MatchPerson(0, user.getName(), "No messages yet", user.getProfileImageUrl()));
+                        convs.add(new MatchPerson(0, user.getName(), "No messages yet", user.getProfileImageUrl()));
                     }
                     activeAdapter.notifyDataSetChanged();
-                    matchesAdapter.notifyDataSetChanged();
+                    matchesAdapter.submitList(convs);
 
                     if (emptyText != null) {
                         emptyText.setVisibility(users.isEmpty() ? View.VISIBLE : View.GONE);
@@ -102,6 +106,7 @@ public class ConversationsFragment extends Fragment implements ActiveUserAdapter
             @Override
             public void onError(Exception e) {
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
                     if (convProgress != null) convProgress.setVisibility(View.GONE);
                     Log.e("ConversationsFragment", "Error loading conversations", e);
