@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/interest_card"
-    android:layout_width="160dp"
-    android:layout_height="220dp"
+    android:layout_width="140dp"
+    android:layout_height="200dp"
     android:layout_marginEnd="16dp"
     app:cardCornerRadius="24dp"
     app:cardElevation="0dp"
@@ -25,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bottom_gradient"
-            android:alpha="0.85" />
+            android:alpha="0.7" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,25 +39,24 @@
                 android:id="@+id/interest_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DISCOVER"
+                android:text="EXPLORE"
                 android:textColor="@color/white"
                 android:background="@drawable/rounded_corners"
-                android:backgroundTint="#80000000"
+                android:backgroundTint="#4DFFFFFF"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="2dp"
-                android:textSize="9sp"
+                android:textSize="8sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.1"
-                android:alpha="0.9" />
+                android:letterSpacing="0.1" />
 
             <TextView
                 android:id="@+id/interest_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Long Term"
+                android:layout_marginTop="4dp"
+                tools:text="Long Term"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
