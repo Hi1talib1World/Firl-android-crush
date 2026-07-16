@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/welcome_bg">
+    android:background="@color/bg_main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,15 +17,14 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@drawable/logo"
-            android:layout_marginBottom="24dp" />
-
-
+            android:layout_marginBottom="24dp"
+            android:contentDescription="App Logo" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Firl"
-            android:textColor="@color/brand_light"
+            android:textColor="@color/white"
             android:textSize="48sp"
             android:fontFamily="serif"
             android:textStyle="bold" />
@@ -36,29 +35,30 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="60dp"
             android:text="Discover meaningful connections"
-            android:textColor="@color/brand_light"
-            android:alpha="0.8"
+            android:textColor="@color/text_secondary"
             android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_register_btn"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="64dp"
             android:text="Create Account"
-            android:textColor="@color/bg1main"
-            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/bg_main"
+            android:backgroundTint="@color/brand_primary"
             android:textStyle="bold"
-            app:cornerRadius="16dp" />
+            app:cornerRadius="32dp"
+            android:textSize="18sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_login_btn"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="64dp"
             android:layout_marginTop="12dp"
             android:text="Sign In"
-            android:textColor="@color/brand_light"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/welcome_skip_btn"
@@ -75,8 +75,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="By continuing, you agree to our Terms and Privacy Policy"
-            android:textColor="@color/brand_light"
-            android:alpha="0.5"
+            android:textColor="@color/text_secondary"
+            android:alpha="0.6"
             android:textSize="12sp"
             android:gravity="center" />
 
