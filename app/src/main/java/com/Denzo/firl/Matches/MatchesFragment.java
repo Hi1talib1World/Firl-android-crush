@@ -34,7 +34,6 @@ public class MatchesFragment extends Fragment {
     private LikesYouAdapter likesYouAdapter;
     private FeaturedAdapter featuredAdapter;
     private ActivityLogAdapter activityAdapter;
-    private List<MatchPerson> matchHistory;
     private List<User> likesYouList;
     private List<User> featuredList;
     private List<ActivityLog> activityLogs;
@@ -42,6 +41,7 @@ public class MatchesFragment extends Fragment {
     private TextView emptyMatchesText;
     private String currentUid;
     private View progressBar;
+    private androidx.swiperefreshlayout.widget.SwipeRefreshLayout swipeRefreshLayout;
     private boolean isLoading = false;
 
     public MatchesFragment() {
@@ -57,7 +57,6 @@ public class MatchesFragment extends Fragment {
         userRepository = UserRepositoryProvider.get();
         currentUid = com.Denzo.firl.Utils.SessionManager.getInstance().getCurrentUserId();
 
-        matchHistory = new ArrayList<>();
         likesYouList = new ArrayList<>();
         featuredList = new ArrayList<>();
         activityLogs = new ArrayList<>(ActivityTracker.getInstance().getLogs());
@@ -68,9 +67,12 @@ public class MatchesFragment extends Fragment {
         viewPager = view.findViewById(R.id.view_pager);
         progressBar = view.findViewById(R.id.matches_progress);
         emptyMatchesText = view.findViewById(R.id.empty_matches_text);
+        swipeRefreshLayout = view.findViewById(R.id.matches_swipe_refresh);
+
+        swipeRefreshLayout.setOnRefreshListener(this::loadMatches);
         
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MatchesAdapter(getContext(), matchHistory);
+        adapter = new MatchesAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
         likesYouRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -110,9 +112,9 @@ public class MatchesFragment extends Fragment {
             @Override
             public void onResponse(List<User> users) {
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
-                    matchHistory.clear();
                     likesYouList.clear();
                     featuredList.clear();
                     
@@ -123,6 +125,7 @@ public class MatchesFragment extends Fragment {
                         featuredList.addAll(users);
                     }
 
+                    List<MatchPerson> matches = new ArrayList<>();
                     for (User user : users) {
                         MatchPerson match = new MatchPerson(
                                 0, 
@@ -130,13 +133,13 @@ public class MatchesFragment extends Fragment {
                                 "Matched recently",
                                 user.getProfileImageUrl()
                         );
-                        matchHistory.add(match);
+                        matches.add(match);
                     }
-                    adapter.notifyDataSetChanged();
+                    adapter.submitList(matches);
                     likesYouAdapter.notifyDataSetChanged();
                     featuredAdapter.notifyDataSetChanged();
                     
-                    if (matchHistory.isEmpty()) {
+                    if (matches.isEmpty()) {
                         emptyMatchesText.setVisibility(View.VISIBLE);
                     } else {
                         emptyMatchesText.setVisibility(View.GONE);
@@ -149,6 +152,7 @@ public class MatchesFragment extends Fragment {
             @Override
             public void onError(Exception e) {
                 isLoading = false;
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     Log.e("MatchesFragment", "Error loading matches", e);
