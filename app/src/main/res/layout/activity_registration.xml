@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
+    android:background="@color/bg_main">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="32dp">
 
             <ImageButton
                 android:id="@+id/register_back_btn"
@@ -24,7 +24,8 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chevron_left_black_24dp"
                 app:tint="@color/white"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="24dp"
+                android:contentDescription="Back" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -40,9 +41,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="40dp"
                 android:text="Find your lifestyle partner"
-                android:textColor="@color/white"
-                android:alpha="0.6"
-                android:textSize="16sp" />
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -50,16 +50,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Full Name"
-                app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                android:textColorHint="@color/text_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/rname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -68,16 +72,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Email"
-                app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                android:textColorHint="@color/text_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/remail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -86,9 +94,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:hint="Password"
-                app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                android:textColorHint="@color/text_secondary"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/white">
 
@@ -97,7 +108,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:imeOptions="actionDone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -106,10 +118,10 @@
                 android:text="GENDER"
                 android:textColor="@color/white"
                 android:alpha="0.6"
-                android:textSize="12sp"
                 android:textStyle="bold"
                 android:letterSpacing="0.1"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="12dp"
+                android:textSize="12sp" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -125,7 +137,7 @@
                     android:layout_weight="1"
                     android:text="Man"
                     android:textColor="@color/white"
-                    android:buttonTint="@color/colorAccent" />
+                    android:buttonTint="@color/brand_primary" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFemale"
@@ -134,19 +146,20 @@
                     android:layout_weight="1"
                     android:text="Woman"
                     android:textColor="@color/white"
-                    android:buttonTint="@color/colorAccent" />
+                    android:buttonTint="@color/brand_primary" />
 
             </RadioGroup>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/rbutton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="64dp"
                 android:text="Complete Sign Up"
-                android:textColor="@color/bg1main"
-                android:backgroundTint="@color/colorAccent"
+                android:textColor="@color/bg_main"
+                android:backgroundTint="@color/brand_primary"
                 android:textStyle="bold"
-                app:cornerRadius="16dp" />
+                android:textSize="18sp"
+                app:cornerRadius="32dp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -155,7 +168,7 @@
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#99000000"
+        android:background="#CC000000"
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true">
@@ -164,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            app:indicatorColor="@color/colorAccent" />
+            app:indicatorColor="@color/brand_primary" />
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
