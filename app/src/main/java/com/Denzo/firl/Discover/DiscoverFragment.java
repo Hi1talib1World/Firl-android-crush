@@ -39,9 +39,11 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     private EditText searchBar;
     private ImageButton viewToggleBtn;
     private TextView emptyText;
-    private List<User> discoveredUsers = new ArrayList<>();
+    private View skeletonView;
+    private androidx.swiperefreshlayout.widget.SwipeRefreshLayout swipeRefreshLayout;
     private boolean isGridView = false;
     private UserRepository userRepository;
+    private String currentInterest = "Long Term Relationship";
     private View searchProgress;
     private boolean isSearching = false;
 
@@ -79,6 +81,10 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         searchBar = view.findViewById(R.id.discover_search_bar);
         emptyText = view.findViewById(R.id.discover_empty_text);
         viewToggleBtn = view.findViewById(R.id.discover_view_toggle);
+        skeletonView = view.findViewById(R.id.discover_skeleton);
+        swipeRefreshLayout = view.findViewById(R.id.discover_swipe_refresh);
+
+        swipeRefreshLayout.setOnRefreshListener(() -> onInterestClick(currentInterest));
     }
 
     private void setupSearch() {
@@ -116,8 +122,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         if (isSearching) return;
         
         showProgress(true);
-        discoveredUsers.clear();
-        userAdapter.notifyDataSetChanged();
+        userAdapter.submitList(null);
 
         userRepository.getPotentialMatches("Female", new UserRepository.Callback<List<User>>() {
             @Override
@@ -137,6 +142,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
 
     private void filterAndDisplayUsers(List<User> users, String query) {
         String lowerQuery = query.toLowerCase();
+        List<User> filteredUsers = new ArrayList<>();
         for (User user : users) {
             boolean matchName = user.getName() != null && user.getName().toLowerCase().contains(lowerQuery);
             boolean matchInterest = false;
@@ -150,12 +156,12 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
             }
             
             if (matchName || matchInterest) {
-                discoveredUsers.add(user);
+                filteredUsers.add(user);
             }
         }
         
-        userAdapter.notifyDataSetChanged();
-        updateEmptyState();
+        userAdapter.submitList(filteredUsers);
+        updateEmptyState(filteredUsers.isEmpty());
     }
 
     private void showProgress(boolean show) {
@@ -163,11 +169,15 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
         if (searchProgress != null) {
             searchProgress.setVisibility(show ? View.VISIBLE : View.GONE);
         }
+        if (skeletonView != null) {
+            skeletonView.setVisibility(show ? View.VISIBLE : View.GONE);
+            userRecyclerView.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
     }
 
-    private void updateEmptyState() {
+    private void updateEmptyState(boolean isEmpty) {
         if (emptyText != null) {
-            emptyText.setVisibility(discoveredUsers.isEmpty() ? View.VISIBLE : View.GONE);
+            emptyText.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         }
     }
 
@@ -178,7 +188,7 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
 
     private void setupUserList() {
         userRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        userAdapter = new DiscoverUserAdapter(getContext(), discoveredUsers, this);
+        userAdapter = new DiscoverUserAdapter(getContext(), this);
         userRecyclerView.setAdapter(userAdapter);
     }
 
@@ -186,24 +196,25 @@ public class DiscoverFragment extends Fragment implements InterestAdapter.OnInte
     public void onInterestClick(String interest) {
         if (isSearching) return;
         
+        currentInterest = interest;
         showProgress(true);
-        discoveredUsers.clear();
-        userAdapter.notifyDataSetChanged();
+        userAdapter.submitList(null);
 
         userRepository.getUsersByInterest(interest, new UserRepository.Callback<List<User>>() {
             @Override
             public void onResponse(List<User> users) {
                 showProgress(false);
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
-                    discoveredUsers.addAll(users);
-                    userAdapter.notifyDataSetChanged();
-                    updateEmptyState();
+                    userAdapter.submitList(users);
+                    updateEmptyState(users.isEmpty());
                 }
             }
 
             @Override
             public void onError(Exception e) {
                 showProgress(false);
+                swipeRefreshLayout.setRefreshing(false);
                 if (isAdded()) {
                     Toast.makeText(getContext(), "Error loading users", Toast.LENGTH_SHORT).show();
                 }
