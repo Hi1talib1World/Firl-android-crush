@@ -16,13 +16,13 @@ public class MatchingEngineTest {
 
     @Test
     public void testCalculateScore_PerfectMatch() {
-        LikeCard user1 = new LikeCard("1", "User 1", "url", 25, Arrays.asList("Music", "Coding"));
+        LikeCard user1 = new LikeCard("1", "User 1", "url", 25, Arrays.asList("Music", "Coding", "Travel", "Food", "Art"));
         user1.setLatitude(40.7128);
         user1.setLongitude(-74.0060);
         user1.setActivityLevel(8);
         user1.setDistancePreference(100);
 
-        LikeCard user2 = new LikeCard("2", "User 2", "url", 25, Arrays.asList("music", "coding")); // Case insensitive
+        LikeCard user2 = new LikeCard("2", "User 2", "url", 25, Arrays.asList("music", "coding", "travel", "food", "art")); // Case insensitive
         user2.setLatitude(40.7128);
         user2.setLongitude(-74.0060);
         user2.setActivityLevel(8);
