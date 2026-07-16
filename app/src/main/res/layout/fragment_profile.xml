@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
+    android:background="@color/bg_main">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,78 +19,83 @@
             android:textSize="28sp"
             android:textStyle="bold" />
 
-        <FrameLayout
+        <!-- Header Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:src="@drawable/logo"
-                android:contentDescription="@string/profile_image"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="3dp" />
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/edit_profile_btn"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:layout_marginStart="50dp"
-                app:cardBackgroundColor="@color/colorAccent"
-                app:cardCornerRadius="18dp"
-                app:strokeWidth="0dp"
-                app:elevation="4dp"
-                android:contentDescription="@string/edit_profile"
-                android:clickable="true"
-                android:focusable="true">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_edit"
-                    app:tint="@color/bg1main"
-                    android:importantForAccessibility="no" />
-            </com.google.android.material.card.MaterialCardView>
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/profile_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:text="My Name"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/profile_job_school"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:text="Software Engineer | NYU"
-            android:textColor="@color/white"
-            android:alpha="0.6"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/profile_bio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:gravity="center"
-            android:text="Tell us about yourself..."
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
-            android:alpha="0.8" />
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/logo"
+                    android:contentDescription="@string/profile_image"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="3dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/edit_profile_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardBackgroundColor="@color/colorAccent"
+                    app:cardCornerRadius="20dp"
+                    app:strokeWidth="0dp"
+                    app:elevation="4dp"
+                    android:contentDescription="@string/edit_profile"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_edit"
+                        app:tint="@color/bg_main"
+                        android:importantForAccessibility="no" />
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="My Name"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/profile_job_school"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Software Engineer | NYU"
+                android:textColor="@color/white"
+                android:alpha="0.6"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/profile_bio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Tell us about yourself..."
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:alpha="0.8" />
+
+        </LinearLayout>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/lifestyle_badges"
@@ -100,56 +105,66 @@
             android:gravity="center"
             app:chipSpacingHorizontal="6dp" />
 
-        <LinearLayout
+        <!-- Profile Strength Card -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:orientation="vertical"
-            android:background="@drawable/card_bg_dark"
-            android:padding="20dp">
+            app:cardBackgroundColor="@color/white_transparent_20"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile Strength"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/profile_strength_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="75%"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/profile_strength_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:indicatorColor="@color/colorAccent"
+                    app:trackColor="#20FFFFFF"
+                    app:trackThickness="10dp"
+                    app:trackCornerRadius="5dp"
+                    android:progress="75" />
+
                 <TextView
+                    android:id="@+id/profile_strength_subtext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Profile Strength"
+                    android:layout_marginTop="12dp"
+                    android:text="Add a bio to reach 100%"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:alpha="0.9" />
-                <TextView
-                    android:id="@+id/profile_strength_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:text="0%"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    android:alpha="0.5"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.progressindicator.LinearProgressIndicator
-                android:id="@+id/profile_strength_progress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:indicatorColor="@color/colorAccent"
-                app:trackColor="#20FFFFFF"
-                app:trackThickness="10dp"
-                app:trackCornerRadius="5dp"
-                android:progress="0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="Add a bio to reach 100%"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:alpha="0.5" />
-        </LinearLayout>
-
+        <!-- Media Gallery Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -165,7 +180,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:columnCount="3"
-            android:rowCount="2"
             android:useDefaultMargins="true">
 
             <com.google.android.material.card.MaterialCardView
@@ -174,10 +188,7 @@
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:strokeWidth="0dp">
                 <ImageView android:id="@+id/media_img_1" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img1" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
@@ -187,10 +198,7 @@
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:strokeWidth="0dp">
                 <ImageView android:id="@+id/media_img_2" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img2" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
@@ -200,10 +208,7 @@
                 android:layout_height="120dp"
                 android:layout_columnWeight="1"
                 app:cardCornerRadius="12dp"
-                app:strokeWidth="0dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?android:attr/selectableItemBackground">
+                app:strokeWidth="0dp">
                 <ImageView android:id="@+id/media_img_3" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/img3" android:scaleType="centerCrop" android:contentDescription="@string/media_gallery_image"/>
             </com.google.android.material.card.MaterialCardView>
 
@@ -216,6 +221,7 @@
             android:layout_marginTop="32dp"
             android:orientation="vertical" />
 
+        <!-- Lifestyle Tags -->
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/lifestyle_tags"
             android:layout_width="match_parent"
@@ -223,74 +229,118 @@
             android:layout_marginTop="32dp"
             app:chipSpacingHorizontal="8dp" />
 
-        <View
+        <!-- Discovery Preferences Section -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:background="@color/white"
-            android:alpha="0.1" />
+            app:cardBackgroundColor="@color/white_transparent_20"
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="0dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Discovery Preferences"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/pref_save_progress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="invisible"
-            app:indicatorColor="@color/colorAccent"
-            app:trackColor="?attr/colorSurfaceVariant"
-            android:indeterminate="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discovery Preferences"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            android:importantForAccessibility="noHideDescendants">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/age_range" android:textColor="@color/white" android:alpha="0.8"/>
-            <TextView android:id="@+id/age_range_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18 - 35" android:textColor="@color/colorAccent" android:textStyle="bold"/>
-        </LinearLayout>
-        <com.google.android.material.slider.RangeSlider
-            android:id="@+id/age_range_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="18.0"
-            android:valueTo="100.0"
-            android:contentDescription="@string/age_range"
-            app:values="@array/initial_age_range" />
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/pref_save_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:visibility="invisible"
+                    app:indicatorColor="@color/colorAccent"
+                    app:trackColor="#1AFFFFFF"
+                    android:indeterminate="true" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:importantForAccessibility="noHideDescendants">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/distance_radius" android:textColor="@color/white" android:alpha="0.8"/>
-            <TextView android:id="@+id/distance_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="50 km" android:textColor="@color/colorAccent" android:textStyle="bold"/>
-        </LinearLayout>
-        <com.google.android.material.slider.Slider
-            android:id="@+id/distance_slider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:valueFrom="1.0"
-            android:valueTo="500.0"
-            android:contentDescription="@string/distance_radius" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Age Range"
+                        android:textColor="@color/white"
+                        android:alpha="0.7"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/age_range_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 - 35"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/age_range_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:valueFrom="18.0"
+                    android:valueTo="100.0"
+                    app:values="@array/initial_age_range"
+                    app:thumbColor="@color/white"
+                    app:trackColorActive="@color/colorAccent"
+                    app:trackColorInactive="#33FFFFFF"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Distance Radius"
+                        android:textColor="@color/white"
+                        android:alpha="0.7"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/distance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50 km"
+                        android:textColor="@color/colorAccent"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/distance_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:valueFrom="1.0"
+                    android:valueTo="500.0"
+                    app:thumbColor="@color/white"
+                    app:trackColorActive="@color/colorAccent"
+                    app:trackColorInactive="#33FFFFFF"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/settings_btn"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             android:layout_marginTop="48dp"
-            android:text="@string/account_settings"
+            android:text="Account Settings"
             app:cornerRadius="16dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -299,7 +349,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="8dp"
-            android:text="@string/logout"
+            android:text="Logout"
             android:textColor="@color/dislikered" />
 
         <View android:layout_width="match_parent" android:layout_height="64dp" />
