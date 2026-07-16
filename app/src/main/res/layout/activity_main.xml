@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main"
+    android:background="@color/bg_main"
     tools:context=".MainActivity">
 
     <!-- Container for Fragments -->
@@ -25,7 +25,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        style="@style/Widget.Material3.BottomNavigationView" />
+        app:menu="@menu/bottom_nav_menu"
+        style="@style/BottomNavigationStyle"
+        app:labelVisibilityMode="unlabeled" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
