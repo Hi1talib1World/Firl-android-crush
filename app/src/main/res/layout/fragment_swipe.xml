@@ -4,87 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
+    android:background="@color/bg_main">
 
+    <!-- Top Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/btn_back_main"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_chevron_left_black_24dp"
+                    app:tint="@color/white"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Dating App"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/btn_settings_main"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/white" />
+            </RelativeLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Filter Bar -->
     <HorizontalScrollView
         android:id="@+id/filter_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:layout_below="@id/appBarLayout"
         android:scrollbars="none"
-        android:clipToPadding="false"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp">
+        android:paddingVertical="8dp">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
             app:singleLine="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_sex"
-                style="@style/Widget.Material3.Chip.Assist"
+                style="@style/FilterChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="All Genders"
-                android:textColor="@color/m3_onSecondaryContainer"
-                app:chipIcon="@drawable/ic_user"
-                app:chipIconTint="@color/m3_onSecondaryContainer"
-                app:chipBackgroundColor="@color/m3_secondaryContainer"
-                app:chipStrokeWidth="0dp" />
+                android:text="All Genders" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_age"
-                style="@style/Widget.Material3.Chip.Assist"
+                style="@style/FilterChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Age: 18-35"
-                android:textColor="@color/m3_onSecondaryContainer"
-                app:chipIcon="@drawable/ic_age"
-                app:chipIconTint="@color/m3_onSecondaryContainer"
-                app:chipBackgroundColor="@color/m3_secondaryContainer"
-                app:chipStrokeWidth="0dp" />
+                android:text="Age: 18-35" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_distance"
-                style="@style/Widget.Material3.Chip.Assist"
+                style="@style/FilterChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Distance: 50km"
-                android:textColor="@color/m3_onSecondaryContainer"
-                app:chipIcon="@drawable/ic_location"
-                app:chipIconTint="@color/m3_onSecondaryContainer"
-                app:chipBackgroundColor="@color/m3_secondaryContainer"
-                app:chipStrokeWidth="0dp" />
+                android:text="Distance: 50km" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/filter_zodiac"
-                style="@style/Widget.Material3.Chip.Assist"
+                style="@style/FilterChipStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Any Zodiac"
-                android:textColor="@color/m3_onSecondaryContainer"
-                app:chipIcon="@drawable/ic_play"
-                app:chipIconTint="@color/m3_onSecondaryContainer"
-                app:chipBackgroundColor="@color/m3_secondaryContainer"
-                app:chipStrokeWidth="0dp" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/filter_habits"
-                style="@style/Widget.Material3.Chip.Assist"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Any Habits"
-                android:textColor="@color/m3_onSecondaryContainer"
-                app:chipIcon="@drawable/topic"
-                app:chipIconTint="@color/m3_onSecondaryContainer"
-                app:chipBackgroundColor="@color/m3_secondaryContainer"
-                app:chipStrokeWidth="0dp" />
+                android:text="Any Zodiac" />
 
         </com.google.android.material.chip.ChipGroup>
     </HorizontalScrollView>
@@ -95,83 +111,58 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/controls_layout"
         android:layout_below="@+id/filter_bar"
-        android:layout_marginTop="0dp">
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp">
 
         <com.lorentzos.flingswipe.SwipeFlingAdapterView
             android:id="@+id/frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:rotation_degrees="15.5" />
+            app:rotation_degrees="15" />
 
     </FrameLayout>
 
+    <!-- Action Buttons -->
     <LinearLayout
         android:id="@+id/controls_layout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingBottom="10dp">
+        android:paddingBottom="24dp">
 
-        <ImageButton
-            android:id="@+id/rewindbtn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/ripple_white"
-            android:elevation="4dp"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/rotate"
-            app:tint="@color/orange" />
-
+        <!-- Dislike Button -->
         <ImageButton
             android:id="@+id/dislikebtn"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/ripple_white"
-            android:elevation="4dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_dislike"
+            style="@style/CircleActionButton"
+            android:src="@drawable/ic_close_black_24dp"
             app:tint="@color/dislikered" />
 
+        <!-- Rewind Button -->
+        <ImageButton
+            android:id="@+id/rewindbtn"
+            style="@style/CircleActionButton.Small"
+            android:layout_marginHorizontal="16dp"
+            android:src="@drawable/rotate"
+            app:tint="@color/white"
+            android:alpha="0.6" />
+
+        <!-- Superlike Button -->
         <ImageButton
             android:id="@+id/superlikebtn"
-            android:layout_width="54dp"
-            android:layout_height="54dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/ripple_white"
-            android:elevation="4dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/love"
-            app:tint="@color/link_blue" />
+            style="@style/CircleActionButton"
+            android:src="@drawable/ic_check_select"
+            app:tint="@color/superlikeblue"
+            android:padding="20dp" />
 
+        <!-- Like Button -->
         <ImageButton
             android:id="@+id/likebtn"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/ripple_white"
-            android:elevation="4dp"
-            android:padding="12dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_like1"
+            style="@style/CircleActionButton"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/love"
             app:tint="@color/likegreen" />
-
-        <ImageButton
-            android:id="@+id/commentbtn"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/ripple_white"
-            android:elevation="4dp"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_comment"
-            app:tint="@color/colorAccent" />
 
     </LinearLayout>
 
@@ -185,42 +176,26 @@
             android:id="@+id/pulsator"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:pulse_color="@color/colorAccent"
-            app:pulse_count="4"
-            app:pulse_duration="4000"
-            app:pulse_repeat="0">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/post"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/monkey"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp" />
-
-        </com.Denzo.firl.Utils.PulsatorLayout>
+            app:pulse_color="@color/brand_primary" />
 
         <TextView
             android:id="@+id/loading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
             android:text="Finding people near you..."
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:alpha="0.7"/>
+            android:alpha="0.7" />
 
         <Button
             android:id="@+id/reset_filters_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="150dp"
             android:text="Reset Filters"
-            android:visibility="gone"
-            style="@style/Widget.Material3.Button.TonalButton"/>
+            android:visibility="gone" />
 
     </FrameLayout>
 
