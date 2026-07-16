@@ -67,13 +67,33 @@ public class SignupActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(email)) {
             emailInput.setError("Email is required");
             return;
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailInput.setError("Please enter a valid email address");
+            return;
         }
+
         if (TextUtils.isEmpty(name)) {
             nameInput.setError("Name is required");
             return;
+        } else if (name.length() < 2) {
+            nameInput.setError("Name is too short");
+            return;
+        } else if (name.length() > 50) {
+            nameInput.setError("Name is too long");
+            return;
         }
-        if (TextUtils.isEmpty(password) || password.length() < 6) {
-            passwordInput.setError("Password must be at least 6 characters");
+
+        if (TextUtils.isEmpty(password)) {
+            passwordInput.setError("Password is required");
+            return;
+        } else if (password.length() < 8) {
+            passwordInput.setError("Password must be at least 8 characters");
+            return;
+        } else if (!password.matches(".*[A-Z].*")) {
+            passwordInput.setError("Password must contain at least one uppercase letter");
+            return;
+        } else if (!password.matches(".*[0-9].*")) {
+            passwordInput.setError("Password must contain at least one number");
             return;
         }
 
