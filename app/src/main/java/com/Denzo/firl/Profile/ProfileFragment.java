@@ -280,6 +280,23 @@ public class ProfileFragment extends Fragment {
                     int strength = (int) user.calculateProfileCompleteness();
                     profileStrengthText.setText(strength + "%");
                     profileStrengthProgress.setProgress(strength);
+                    
+                    TextView strengthSubtext = getView().findViewById(R.id.profile_strength_subtext);
+                    if (strengthSubtext != null) {
+                        if (strength == 100) {
+                            strengthSubtext.setText("Your profile is perfect!");
+                            profileStrengthProgress.setIndicatorColor(getContext().getColor(R.color.likegreen));
+                        } else if (strength >= 80) {
+                            strengthSubtext.setText("Almost there! Add more interests to shine.");
+                            profileStrengthProgress.setIndicatorColor(getContext().getColor(R.color.colorAccent));
+                        } else if (strength >= 50) {
+                            strengthSubtext.setText("Good start. Adding a job or school helps matches.");
+                            profileStrengthProgress.setIndicatorColor(getContext().getColor(R.color.orange));
+                        } else {
+                            strengthSubtext.setText("Complete your profile to get 5x more matches!");
+                            profileStrengthProgress.setIndicatorColor(getContext().getColor(R.color.dislikered));
+                        }
+                    }
 
                     setupLifestyleBadges(user);
                     setupPrompts(user);
@@ -287,22 +304,44 @@ public class ProfileFragment extends Fragment {
                     lifestyleTags.removeAllViews();
                     if (user.getLifestyleTags() != null) {
                         for (String tag : user.getLifestyleTags()) {
-                            Chip chip = new Chip(getContext());
-                            chip.setText(tag);
-                            // Apply consistent high-contrast styling
-                            chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.m3_secondaryContainer)));
-                            chip.setTextColor(getContext().getColor(R.color.m3_onSecondaryContainer));
-                            chip.setChipStrokeWidth(0f);
-                            lifestyleTags.addView(chip);
+                            if (tag != null && !tag.trim().isEmpty()) {
+                                Chip chip = new Chip(getContext());
+                                chip.setText(tag);
+                                // Apply consistent high-contrast styling
+                                chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.m3_secondaryContainer)));
+                                chip.setTextColor(getContext().getColor(R.color.m3_onSecondaryContainer));
+                                chip.setChipStrokeWidth(0f);
+                                lifestyleTags.addView(chip);
+                            }
                         }
                     }
 
                     // Load Preferences
-                    ageRangeSlider.setValues((float)user.getMinAgePreference(), (float)user.getMaxAgePreference());
-                    distanceSlider.setValue((float)user.getDistancePreference());
+                    if (user.getMinAgePreference() >= 18 && user.getMaxAgePreference() <= 100) {
+                        ageRangeSlider.setValues((float)user.getMinAgePreference(), (float)user.getMaxAgePreference());
+                    } else if (user.getMinAgePreference() < 18) {
+                        ageRangeSlider.setValues(18f, (float)user.getMaxAgePreference());
+                    } else if (user.getMaxAgePreference() > 100) {
+                        ageRangeSlider.setValues((float)user.getMinAgePreference(), 100f);
+                    } else {
+                        ageRangeSlider.setValues(18f, 50f);
+                    }
+                    
+                    if (user.getDistancePreference() > 200) {
+                        distanceSlider.setValue((float)user.getDistancePreference());
+                        // Highlight high distance
+                    } else if (user.getDistancePreference() > 50) {
+                        distanceSlider.setValue((float)user.getDistancePreference());
+                    } else if (user.getDistancePreference() > 0) {
+                        distanceSlider.setValue((float)user.getDistancePreference());
+                    } else {
+                        distanceSlider.setValue(50f);
+                    }
 
                     if (user.getProfileImageUrl() != null && !user.getProfileImageUrl().equals("default")) {
                         Glide.with(ProfileFragment.this).load(user.getProfileImageUrl()).into(profileImage);
+                    } else {
+                        profileImage.setImageResource(R.drawable.monkey);
                     }
                 }
             }
