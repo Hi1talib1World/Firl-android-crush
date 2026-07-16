@@ -156,14 +156,54 @@ public class User {
     public void setDiscoveryPreferences(DiscoveryPreferences discoveryPreferences) { this.discoveryPreferences = discoveryPreferences; }
 
     public double calculateProfileCompleteness() {
-        double completeness = 0;
-        if (isNotBlank(profileImageUrl) && !profileImageUrl.equals("default")) completeness += WEIGHT_IMAGE;
-        if (isNotBlank(bio)) completeness += WEIGHT_BIO;
-        if (interests != null && !interests.isEmpty()) completeness += WEIGHT_INTERESTS;
-        if (isNotBlank(job)) completeness += WEIGHT_JOB;
-        if (isNotBlank(school)) completeness += WEIGHT_SCHOOL;
-        if (isVerified) completeness += WEIGHT_VERIFIED;
-        return completeness;
+        double score = 0;
+        
+        // Base Info (Image + Bio)
+        if (isNotBlank(profileImageUrl) && !profileImageUrl.equals("default")) {
+            score += WEIGHT_IMAGE;
+        } else {
+            // No profile image
+        }
+
+        if (isNotBlank(bio)) {
+            if (bio.length() > 100) {
+                score += WEIGHT_BIO;
+            } else if (bio.length() > 50) {
+                score += (WEIGHT_BIO * 0.75);
+            } else {
+                score += (WEIGHT_BIO * 0.5);
+            }
+        }
+
+        // Connections & Social
+        if (interests != null) {
+            if (interests.size() >= 5) {
+                score += WEIGHT_INTERESTS;
+            } else if (interests.size() >= 3) {
+                score += (WEIGHT_INTERESTS * 0.6);
+            } else if (interests.size() > 0) {
+                score += (WEIGHT_INTERESTS * 0.3);
+            }
+        }
+
+        // Professional/Education
+        if (isNotBlank(job)) {
+            score += WEIGHT_JOB;
+        }
+        if (isNotBlank(school)) {
+            score += WEIGHT_SCHOOL;
+        }
+
+        // Verification
+        if (isVerified) {
+            score += WEIGHT_VERIFIED;
+        } else if (isNotBlank(verificationLevel)) {
+            if (verificationLevel.equals("PENDING")) {
+                score += (WEIGHT_VERIFIED * 0.5);
+            }
+        }
+        
+        return Math.min(100.0, score);
     }
 
     private boolean isNotBlank(String str) {
