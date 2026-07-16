@@ -43,320 +43,408 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="100dp">
 
-            <!-- Media Grid -->
-            <LinearLayout
+            <!-- Media Section -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:orientation="horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="240dp"
-                    android:layout_weight="1.2"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="16dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#1AFFFFFF">
-                    <ImageView
-                        android:id="@+id/image_view_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/logo"
-                        android:alpha="0.5" />
-                </com.google.android.material.card.MaterialCardView>
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="#0DFFFFFF"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="240dp"
-                    android:layout_weight="0.8"
-                    android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:layout_marginBottom="8dp"
+                        android:layout_width="0dp"
+                        android:layout_height="240dp"
+                        android:layout_weight="1.2"
+                        android:layout_marginEnd="8dp"
                         app:cardCornerRadius="16dp"
-                        app:strokeWidth="0dp"
-                        app:cardBackgroundColor="#1AFFFFFF">
+                        app:strokeWidth="0dp">
                         <ImageView
-                            android:id="@+id/image_view_2"
+                            android:id="@+id/image_view_1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
                             android:src="@drawable/logo"
-                            android:alpha="0.3" />
+                            android:alpha="0.8"
+                            android:contentDescription="Main Photo" />
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        app:cardCornerRadius="16dp"
-                        app:strokeWidth="0dp"
-                        app:cardBackgroundColor="#1AFFFFFF">
-                        <ImageView
-                            android:id="@+id/image_view_3"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="240dp"
+                        android:layout_weight="0.8"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/logo"
-                            android:alpha="0.3" />
-                    </com.google.android.material.card.MaterialCardView>
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="8dp"
+                            app:cardCornerRadius="16dp"
+                            app:strokeWidth="0dp">
+                            <ImageView
+                                android:id="@+id/image_view_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/logo"
+                                android:alpha="0.6"
+                                android:contentDescription="Photo 2" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="16dp"
+                            app:strokeWidth="0dp">
+                            <ImageView
+                                android:id="@+id/image_view_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/logo"
+                                android:alpha="0.6"
+                                android:contentDescription="Photo 3" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
-
-            <!-- Profile Content -->
-            <LinearLayout
+            <!-- Basic Info Section -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="RELATIONSHIP GOAL"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/goal_chip_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    app:singleSelection="true"
-                    app:chipSpacingHorizontal="8dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="ABOUT ME"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
-
-                <EditText
-                    android:id="@+id/about_me"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/card_bg_dark"
-                    android:padding="16dp"
-                    android:textColor="@color/white"
-                    android:hint="Write a short bio..."
-                    android:textColorHint="#4DFFFFFF"
-                    android:minLines="3"
-                    android:gravity="top"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="INTERESTS"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/edit_interests_chip_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    app:chipSpacingHorizontal="8dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="PROFILE PROMPTS"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#0DFFFFFF"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
-                    android:id="@+id/edit_prompts_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="8dp" />
+                    android:padding="20dp">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/add_prompt_btn"
-                    style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+ Add Prompt"
-                    android:textColor="@color/colorAccent" />
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABOUT ME"
+                        android:textColor="@color/white"
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="LIFESTYLE"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxStrokeColor="@color/white"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        android:hint="Bio">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/about_me"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:minLines="3"
+                            android:gravity="top"
+                            android:textSize="15sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="PROFESSION"
+                        android:textColor="@color/white"
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:boxStrokeColor="@color/white"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        android:hint="Job Title">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/job_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="GENDER"
+                        android:textColor="@color/white"
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+                    <RadioGroup
+                        android:id="@+id/edit_gender_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        <RadioButton
+                            android:id="@+id/radio_man"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Man"
+                            android:textColor="@color/white" />
+                        <RadioButton
+                            android:id="@+id/radio_woman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="24dp"
+                            android:text="Woman"
+                            android:textColor="@color/white" />
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        app:boxStrokeColor="@color/white"
+                        app:boxCornerRadiusTopStart="12dp"
+                        app:boxCornerRadiusTopEnd="12dp"
+                        app:boxCornerRadiusBottomStart="12dp"
+                        app:boxCornerRadiusBottomEnd="12dp"
+                        android:hint="School">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/school"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:singleLine="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Prompts Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#0DFFFFFF"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="12dp"
-                    android:weightSum="3">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp"
-                        android:hint="Zodiac"
-                        app:hintTextColor="@color/white"
-                        app:boxStrokeColor="@color/white"
-                        android:textColorHint="#99FFFFFF">
-                        <AutoCompleteTextView
-                            android:id="@+id/zodiac_dropdown"
-                            android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            style="@style/TextAppearance.Material3.LabelLarge"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:textColor="@color/white" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:text="PROMPTS"
+                            android:textColor="@color/white"
+                            android:alpha="0.6"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.1" />
+                        <TextView
+                            android:id="@+id/add_prompt_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:text="+ Add"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold"
+                            android:padding="4dp" />
+                    </RelativeLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/edit_prompts_container"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginEnd="8dp"
-                        android:hint="Smoke"
-                        app:hintTextColor="@color/white"
-                        app:boxStrokeColor="@color/white"
-                        android:textColorHint="#99FFFFFF">
-                        <AutoCompleteTextView
-                            android:id="@+id/smoking_dropdown"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:textColor="@color/white" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="Drink"
-                        app:hintTextColor="@color/white"
-                        app:boxStrokeColor="@color/white"
-                        android:textColorHint="#99FFFFFF">
-                        <AutoCompleteTextView
-                            android:id="@+id/drinking_dropdown"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="none"
-                            android:textColor="@color/white" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" />
 
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="JOB &amp; EDUCATION"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
+            <!-- Interests & Goals Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#0DFFFFFF"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="0dp">
 
-                <EditText
-                    android:id="@+id/job_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/card_bg_dark"
-                    android:paddingHorizontal="16dp"
-                    android:textColor="@color/white"
-                    android:hint="Job Title"
-                    android:textColorHint="#4DFFFFFF"
-                    android:singleLine="true"
-                    android:textSize="15sp" />
-
-                <EditText
-                    android:id="@+id/school"
-                    android:layout_width="match_parent"
-                    android:layout_height="56dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/card_bg_dark"
-                    android:paddingHorizontal="16dp"
-                    android:textColor="@color/white"
-                    android:hint="School"
-                    android:textColorHint="#4DFFFFFF"
-                    android:singleLine="true"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="GENDER"
-                    android:textColor="@color/white"
-                    android:alpha="0.6"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:letterSpacing="0.1" />
-
-                <RadioGroup
-                    android:id="@+id/edit_gender_group"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="8dp">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <RadioButton
-                        android:id="@+id/radio_man"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:text="Man"
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="RELATIONSHIP GOAL"
                         android:textColor="@color/white"
-                        android:buttonTint="@color/colorAccent" />
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
 
-                    <RadioButton
-                        android:id="@+id/radio_woman"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_weight="1"
-                        android:text="Woman"
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/goal_chip_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:singleSelection="true"
+                        app:chipSpacingHorizontal="8dp" />
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="INTERESTS"
                         android:textColor="@color/white"
-                        android:buttonTint="@color/colorAccent" />
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
 
-                </RadioGroup>
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/edit_interests_chip_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        app:chipSpacingHorizontal="8dp" />
 
-                <View android:layout_width="match_parent" android:layout_height="100dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
+            <!-- Lifestyle Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#0DFFFFFF"
+                app:cardCornerRadius="20dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.LabelLarge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LIFESTYLE"
+                        android:textColor="@color/white"
+                        android:alpha="0.6"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp"
+                        android:weightSum="3">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Zodiac"
+                            app:boxStrokeColor="@color/white">
+                            <AutoCompleteTextView
+                                android:id="@+id/zodiac_dropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:hint="Smoke"
+                            app:boxStrokeColor="@color/white">
+                            <AutoCompleteTextView
+                                android:id="@+id/smoking_dropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="Drink"
+                            app:boxStrokeColor="@color/white">
+                            <AutoCompleteTextView
+                                android:id="@+id/drinking_dropdown"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none"
+                                android:textColor="@color/white"
+                                android:textSize="12sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -364,7 +452,7 @@
         android:id="@+id/edit_loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#99000000"
+        android:background="#CC000000"
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true">
