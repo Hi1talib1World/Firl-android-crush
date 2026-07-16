@@ -31,61 +31,93 @@ public class LikesArrayAdapter extends ArrayAdapter<LikeCard> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item, parent, false);
         }
 
-        TextView name = (TextView) convertView.findViewById(R.id.name);
-        ImageView image = (ImageView) convertView.findViewById(R.id.image);
+        TextView name = convertView.findViewById(R.id.name);
+        ImageView image = convertView.findViewById(R.id.image);
         View infoBtn = convertView.findViewById(R.id.checkInfoBeforeMatched);
         TextView scoreText = convertView.findViewById(R.id.compatibility_score);
         ImageView verifiedBadge = convertView.findViewById(R.id.verified_badge);
-        TextView jobSchool = (TextView) convertView.findViewById(R.id.card_job_school);
-        ChipGroup lifestyleTags = (ChipGroup) convertView.findViewById(R.id.card_lifestyle_tags);
+        TextView jobSchool = convertView.findViewById(R.id.card_job_school);
+        ChipGroup lifestyleTags = convertView.findViewById(R.id.card_lifestyle_tags);
 
-        name.setText(card_item.getName() + (card_item.getAge() > 0 ? ", " + card_item.getAge() : ""));
+        if (card_item != null) {
+            name.setText(card_item.getName() + (card_item.getAge() > 0 ? " " + card_item.getAge() : ""));
 
-        if (card_item.getCompatibilityScore() > 0) {
-            scoreText.setVisibility(View.VISIBLE);
-            scoreText.setText(Math.round(card_item.getCompatibilityScore()) + "% Match");
-        } else {
-            scoreText.setVisibility(View.GONE);
-        }
-
-        verifiedBadge.setVisibility(card_item.isVerified() ? View.VISIBLE : View.GONE);
-
-        // Populate Lifestyle Tags with premium styling
-        lifestyleTags.removeAllViews();
-        if (card_item.getInterests() != null) {
-            for (String tag : card_item.getInterests()) {
-                Chip chip = new Chip(getContext());
-                chip.setText(tag);
-                chip.setChipMinHeight(0f);
-                // Use a semi-transparent dark background for better contrast against profile images
-                chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(0x60000000));
-                chip.setTextColor(getContext().getColor(android.R.color.white));
-                chip.setChipStrokeColor(android.content.res.ColorStateList.valueOf(0x80FFFFFF));
-                chip.setChipStrokeWidth(2f);
-                chip.setTextSize(12f);
-                lifestyleTags.addView(chip);
+            if (card_item.getCompatibilityScore() > 0) {
+                scoreText.setVisibility(View.VISIBLE);
+                double score = card_item.getCompatibilityScore();
+                if (score >= 90) {
+                    scoreText.setText("Amazing Match " + Math.round(score) + "%");
+                    scoreText.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.likegreen)));
+                } else if (score >= 75) {
+                    scoreText.setText("Great Match " + Math.round(score) + "%");
+                    scoreText.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.superlikeblue)));
+                } else if (score >= 50) {
+                    scoreText.setText("Good Match " + Math.round(score) + "%");
+                    scoreText.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0x80000000));
+                } else {
+                    scoreText.setText(Math.round(score) + "% Match");
+                    scoreText.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0x80000000));
+                }
+            } else {
+                scoreText.setVisibility(View.GONE);
             }
-        }
 
-        String job = card_item.getJob() != null ? card_item.getJob() : "Professional";
-        String school = card_item.getSchool() != null ? card_item.getSchool() : "University";
-        jobSchool.setText(String.format("%s at %s", job, school));
+            View statusIndicator = convertView.findViewById(R.id.status_chip);
+            if (statusIndicator != null) {
+                TextView statusText = statusIndicator.findViewById(R.id.status_text);
+                View statusDot = statusIndicator.findViewById(R.id.status_dot);
 
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showBottomSheet(card_item);
+                if (card_item.getActivityLevel() >= 8) {
+                    if (statusText != null) statusText.setText("Popular");
+                    if (statusDot != null) statusDot.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.brand_primary)));
+                    statusIndicator.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0x66000000));
+                } else if (card_item.getActivityLevel() >= 5) {
+                    if (statusText != null) statusText.setText("Active");
+                    if (statusDot != null) statusDot.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.likegreen)));
+                    statusIndicator.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0x4D000000));
+                } else {
+                    if (statusText != null) statusText.setText("Recently Active");
+                    if (statusDot != null) statusDot.setBackgroundTintList(android.content.res.ColorStateList.valueOf(getContext().getColor(R.color.grey_icon)));
+                    statusIndicator.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0x33000000));
+                }
             }
-        });
 
-        switch (card_item.getProfileImageUrl()) {
-            case "default":
-                Glide.with(convertView.getContext()).load(R.mipmap.ic_launcher).into(image);
-                break;
-            default:
-                Glide.with(convertView.getContext()).clear(image);
-                Glide.with(convertView.getContext()).load(card_item.getProfileImageUrl()).into(image);
-                break;
+            verifiedBadge.setVisibility(card_item.isVerified() ? View.VISIBLE : View.GONE);
+
+            lifestyleTags.removeAllViews();
+            if (card_item.getInterests() != null) {
+                for (String tag : card_item.getInterests()) {
+                    Chip chip = new Chip(getContext());
+                    chip.setText(tag);
+                    chip.setChipMinHeight(0f);
+                    chip.setChipBackgroundColor(android.content.res.ColorStateList.valueOf(0x60000000));
+                    chip.setTextColor(getContext().getColor(android.R.color.white));
+                    chip.setChipStrokeColor(android.content.res.ColorStateList.valueOf(0x80FFFFFF));
+                    chip.setChipStrokeWidth(2f);
+                    chip.setTextSize(12f);
+                    lifestyleTags.addView(chip);
+                }
+            }
+
+            String job = card_item.getJob() != null ? card_item.getJob() : "Professional";
+            String school = card_item.getSchool() != null ? card_item.getSchool() : "University";
+            jobSchool.setText(String.format("%s at %s", job, school));
+
+            infoBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showBottomSheet(card_item);
+                }
+            });
+
+            if (card_item.getProfileImageUrl() != null) {
+                if (card_item.getProfileImageUrl().equals("default")) {
+                    Glide.with(convertView.getContext()).load(R.mipmap.ic_launcher).into(image);
+                } else {
+                    Glide.with(convertView.getContext()).clear(image);
+                    Glide.with(convertView.getContext()).load(card_item.getProfileImageUrl()).into(image);
+                }
+            }
         }
 
         return convertView;
@@ -99,7 +131,7 @@ public class LikesArrayAdapter extends ArrayAdapter<LikeCard> {
         TextView name = bottomSheetView.findViewById(R.id.detail_name);
         TextView reportBtn = bottomSheetView.findViewById(R.id.report_user);
 
-        name.setText(card.getName() + ", 22"); // Sample age
+        name.setText(card.getName() + ", " + card.getAge());
         reportBtn.setText("Report and Block " + card.getName());
 
         reportBtn.setOnClickListener(new View.OnClickListener() {
