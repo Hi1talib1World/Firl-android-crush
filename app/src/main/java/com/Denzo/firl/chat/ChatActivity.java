@@ -171,10 +171,18 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void sendMessage() {
-        if (isSending) return;
+        if (isSending) {
+            return;
+        }
         
         String text = messageInput.getText().toString().trim();
-        if (text.isEmpty()) return;
+        if (text.isEmpty()) {
+            Toast.makeText(this, "Empty message", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (text.length() > 255) {
+            Toast.makeText(this, "Message too long (max 255 chars)", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         isSending = true;
         sendBtn.setEnabled(false);
@@ -190,9 +198,32 @@ public class ChatActivity extends AppCompatActivity {
             ActivityTracker.getInstance().log("Send Message", ActivityLog.Status.SUCCESS, "To " + userNameTitle.getText());
             
             showTypingIndicator(true);
+            
+            String reply;
+            String lower = text.toLowerCase();
+            if (lower.contains("hello") || lower.contains("hi") || lower.contains("hey")) {
+                reply = "Hey! How are you doing today?";
+            } else if (lower.contains("how are you")) {
+                reply = "I'm doing great, thanks for asking! You?";
+            } else if (lower.contains("date") || lower.contains("meet")) {
+                reply = "That sounds fun! Let's talk more about it.";
+            } else if (lower.contains("bye") || lower.contains("see ya")) {
+                reply = "Talk to you later!";
+            } else if (lower.contains("interest") || lower.contains("hobby")) {
+                reply = "I love traveling and trying new food! What about you?";
+            } else if (lower.contains("job") || lower.contains("work")) {
+                reply = "I work in design! It's really creative. And you?";
+            } else if (text.endsWith("?")) {
+                reply = "That's a good question... Let me think about it.";
+            } else if (text.length() < 3) {
+                reply = "Haha, bit short! Tell me more.";
+            } else {
+                reply = "Cool! Tell me more.";
+            }
+
             handler.postDelayed(() -> {
                 showTypingIndicator(false);
-                addMessage(new ChatMessage("That sounds cool! Tell me more.", false, System.currentTimeMillis()));
+                addMessage(new ChatMessage(reply, false, System.currentTimeMillis()));
             }, MOCK_REPLY_DELAY);
             
         }, MOCK_SEND_DELAY);
