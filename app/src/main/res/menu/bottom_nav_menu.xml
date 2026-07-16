@@ -1,14 +1,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_swipe"
         android:title="Home"
-        android:icon="@drawable/home" />
+        android:icon="@drawable/ic_main"
+        android:contentDescription="Home Screen" />
     <item
-        android:id="@+id/navigation_dashboard"
-        android:title="Chat"
-        android:icon="@drawable/chat" />
+        android:id="@+id/navigation_discover"
+        android:title="Explore"
+        android:icon="@drawable/ic_search"
+        android:contentDescription="Discover Screen" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:title="Likes"
-        android:icon="@drawable/rotate" />
+        android:id="@+id/navigation_matches"
+        android:title="Matches"
+        android:icon="@drawable/love"
+        android:contentDescription="My Matches" />
+    <item
+        android:id="@+id/navigation_chat"
+        android:title="Messages"
+        android:icon="@drawable/message"
+        android:contentDescription="My Messages" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_user"
+        android:contentDescription="My Profile" />
 </menu>
