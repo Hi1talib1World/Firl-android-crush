@@ -7,16 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.Denzo.firl.Model.User;
 import com.Denzo.firl.R;
 import com.bumptech.glide.Glide;
-import java.util.List;
 
-public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapter.ViewHolder> {
+public class DiscoverUserAdapter extends ListAdapter<User, DiscoverUserAdapter.ViewHolder> {
 
     private Context context;
-    private List<User> userList;
     private OnUserClickListener listener;
     private boolean isGridView = false;
 
@@ -24,9 +24,24 @@ public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapte
         void onUserClick(User user);
     }
 
-    public DiscoverUserAdapter(Context context, List<User> userList, OnUserClickListener listener) {
+    private static final DiffUtil.ItemCallback<User> DIFF_CALLBACK = new DiffUtil.ItemCallback<User>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull User oldItem, @NonNull User newItem) {
+            return oldItem.getUid().equals(newItem.getUid());
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull User oldItem, @NonNull User newItem) {
+            return oldItem.getName().equals(newItem.getName()) &&
+                   oldItem.getAge() == newItem.getAge() &&
+                   (oldItem.getProfileImageUrl() == null ? newItem.getProfileImageUrl() == null : 
+                    oldItem.getProfileImageUrl().equals(newItem.getProfileImageUrl()));
+        }
+    };
+
+    public DiscoverUserAdapter(Context context, OnUserClickListener listener) {
+        super(DIFF_CALLBACK);
         this.context = context;
-        this.userList = userList;
         this.listener = listener;
     }
 
@@ -45,7 +60,7 @@ public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User user = userList.get(position);
+        User user = getItem(position);
         holder.name.setText(user.getName() + ", " + user.getAge());
         holder.profession.setText(user.getJob() != null ? user.getJob() : "Professional");
 
@@ -60,11 +75,6 @@ public class DiscoverUserAdapter extends RecyclerView.Adapter<DiscoverUserAdapte
                 listener.onUserClick(user);
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return userList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
