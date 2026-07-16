@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg1main">
+    android:background="@color/bg_main">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="32dp">
 
             <ImageButton
                 android:id="@+id/login_back_btn"
@@ -24,24 +24,35 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chevron_left_black_24dp"
                 app:tint="@color/white"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="24dp"
+                android:contentDescription="Back" />
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                android:contentDescription="App Logo" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginTop="48dp"
                 android:gravity="center"
                 android:text="Welcome Back"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="48dp"
+                android:gravity="center"
+                android:text="Sign in to continue your journey"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
@@ -49,16 +60,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Email"
-                app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF">
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                android:textColorHint="@color/text_secondary">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/lemail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:imeOptions="actionNext" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -67,9 +82,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:hint="Password"
-                app:hintTextColor="@color/white"
                 app:boxStrokeColor="@color/white"
-                android:textColorHint="#99FFFFFF"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusBottomEnd="16dp"
+                android:textColorHint="@color/text_secondary"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/white">
 
@@ -78,7 +96,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:imeOptions="actionDone" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -86,21 +105,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="40dp"
                 android:text="Forgot Password?"
-                android:textColor="@color/colorAccent"
-                android:textSize="14sp" />
+                android:textColor="@color/brand_primary"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:textStyle="bold" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/llogin"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="64dp"
                 android:text="Login"
-                app:cornerRadius="16dp"
-                android:backgroundTint="@color/colorAccent"
-                android:textColor="@color/bg1main"
+                app:cornerRadius="32dp"
+                android:backgroundTint="@color/brand_primary"
+                android:textColor="@color/bg_main"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/link_signup"
@@ -109,10 +131,10 @@
                 android:layout_marginTop="32dp"
                 android:gravity="center"
                 android:text="New user? Create an account"
-                android:textColor="@color/white"
-                android:alpha="0.7"
-                android:textSize="14sp"
-                android:padding="8dp" />
+                android:textColor="@color/text_secondary"
+                android:padding="12dp"
+                android:clickable="true"
+                android:focusable="true" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
@@ -121,7 +143,7 @@
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#99000000"
+        android:background="#CC000000"
         android:visibility="gone"
         android:clickable="true"
         android:focusable="true">
@@ -130,7 +152,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminate="true"
-            app:indicatorColor="@color/colorAccent" />
+            app:indicatorColor="@color/brand_primary" />
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
