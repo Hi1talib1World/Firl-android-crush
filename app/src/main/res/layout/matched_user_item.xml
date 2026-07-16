@@ -1,48 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-   * DatingApp
-    * https://github.com/quintuslabs/DatingApp
-    * Created on 25-sept-2018.
-    * Created by : Santosh Kumar Dash:- http://santoshdash.epizy.com
-    -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/mui_image"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="@dimen/_5dp"
-        android:src="@drawable/monkey"
-        app:civ_border_color="@color/devider"
-        app:civ_border_width="1dp" />
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/white_transparent_20"
+    app:cardCornerRadius="16dp"
+    app:strokeWidth="0dp"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
-        <TextView
-            android:id="@+id/mui_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="santosh Dash"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mui_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/monkey"
+            app:civ_border_color="@color/white_transparent_50"
+            app:civ_border_width="1dp" />
 
-        <TextView
-            android:id="@+id/mui_profession"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Student"
-            android:textColor="@color/white"
-            android:alpha="0.6"
-            android:textSize="16dp" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mui_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Victoria"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/mui_profession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                tools:text="Product Designer"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/message"
+            app:tint="@color/brand_primary"
+            android:padding="8dp"
+            android:scaleType="fitCenter" />
 
     </LinearLayout>
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
