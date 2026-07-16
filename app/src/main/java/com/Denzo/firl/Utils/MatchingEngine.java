@@ -24,7 +24,10 @@ public class MatchingEngine {
     }
 
     private static double calculateInterestScore(List<String> interests1, List<String> interests2) {
-        if (interests1 == null || interests2 == null || interests1.isEmpty() || interests2.isEmpty()) return 0;
+        if (interests1 == null || interests2 == null || interests1.isEmpty() || interests2.isEmpty()) {
+            return 0;
+        }
+        
         int sharedCount = 0;
         for (String interest : interests1) {
             for (String targetInterest : interests2) {
@@ -34,7 +37,18 @@ public class MatchingEngine {
                 }
             }
         }
-        return (double) sharedCount / Math.max(interests1.size(), 1) * 100;
+
+        if (sharedCount >= 5) {
+            return 100;
+        } else if (sharedCount >= 3) {
+            return 85;
+        } else if (sharedCount == 2) {
+            return 60;
+        } else if (sharedCount == 1) {
+            return 35;
+        } else {
+            return 0;
+        }
     }
 
     public static double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
@@ -53,33 +67,77 @@ public class MatchingEngine {
                 targetUser.getLatitude(), targetUser.getLongitude());
         
         int pref = currentUser.getDistancePreference();
-        if (pref <= 0) pref = 50; // Default fallback
+        if (pref <= 0) {
+            pref = 50; 
+        }
 
-        if (dist <= 1.0) return 100; // Extremely close
-        double score = 100 - (dist / pref * 100);
-        return Math.max(0, score);
+        if (dist <= 1.0) {
+            return 100;
+        } else if (dist <= 5.0) {
+            return 90;
+        } else if (dist <= 10.0) {
+            return 80;
+        } else if (dist > pref) {
+            return 0;
+        } else {
+            double score = 100 - (dist / pref * 100);
+            return Math.max(0, score);
+        }
     }
 
     private static double calculateAgeScore(int age1, int age2) {
         int diff = Math.abs(age1 - age2);
-        if (diff <= 2) return 100;
-        if (diff <= 5) return 80;
-        if (diff <= 10) return 50;
-        return 20;
+        if (diff <= 2) {
+            return 100;
+        } else if (diff <= 5) {
+            return 80;
+        } else if (diff <= 8) {
+            return 60;
+        } else if (diff <= 12) {
+            return 40;
+        } else if (diff <= 15) {
+            return 20;
+        } else {
+            return 0;
+        }
     }
 
     private static double calculateActivityScore(int level1, int level2) {
         int diff = Math.abs(level1 - level2);
-        return Math.max(0, 100 - (diff * 15));
+        if (diff == 0) {
+            return 100;
+        } else if (diff <= 2) {
+            return 80;
+        } else if (diff <= 4) {
+            return 50;
+        } else if (diff <= 6) {
+            return 20;
+        } else {
+            return 0;
+        }
     }
 
     public static void rankProfiles(LikeCard currentUser, List<LikeCard> profiles) {
-        for (LikeCard profile : profiles) {
-            profile.setCompatibilityScore(calculateScore(currentUser, profile));
+        if (profiles == null || profiles.isEmpty()) {
+            return;
         }
+
+        if (currentUser == null) {
+            return;
+        }
+
+        for (LikeCard profile : profiles) {
+            if (profile != null) {
+                profile.setCompatibilityScore(calculateScore(currentUser, profile));
+            }
+        }
+        
         Collections.sort(profiles, new Comparator<LikeCard>() {
             @Override
             public int compare(LikeCard o1, LikeCard o2) {
+                if (o1 == null || o2 == null) {
+                    return 0;
+                }
                 return Double.compare(o2.getCompatibilityScore(), o1.getCompatibilityScore());
             }
         });
