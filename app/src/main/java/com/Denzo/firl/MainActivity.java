@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setOnItemSelectedListener(this::onNavigationItemSelected);
 
-        // Set the default fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, getFragment(LikesFragment.class))
@@ -42,15 +41,15 @@ public class MainActivity extends AppCompatActivity {
         Fragment selectedFragment = null;
         int itemId = item.getItemId();
 
-        if (itemId == R.id.Home) {
+        if (itemId == R.id.navigation_swipe) {
             selectedFragment = getFragment(LikesFragment.class);
-        } else if (itemId == R.id.Discover) {
+        } else if (itemId == R.id.navigation_discover) {
             selectedFragment = getFragment(DiscoverFragment.class);
-        } else if (itemId == R.id.Swipe) {
-            selectedFragment = getFragment(ConversationsFragment.class);
-        } else if (itemId == R.id.Chat) {
+        } else if (itemId == R.id.navigation_matches) {
             selectedFragment = getFragment(MatchesFragment.class);
-        } else if (itemId == R.id.Profile) {
+        } else if (itemId == R.id.navigation_chat) {
+            selectedFragment = getFragment(ConversationsFragment.class);
+        } else if (itemId == R.id.navigation_profile) {
             selectedFragment = getFragment(ProfileFragment.class);
         }
 
