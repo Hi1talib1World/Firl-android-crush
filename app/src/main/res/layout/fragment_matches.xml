@@ -1,255 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/matches_swipe_refresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    >
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:background="@color/bg_main">
 
-        <!-- Wrap all your content inside a single layout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="40dp">
 
-
-            <!-- ConstraintLayout with its content -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Header Section -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/normalPadding"
-                android:paddingRight="@dimen/normalPadding"
-                android:background="@color/bg1main">
+                android:orientation="vertical"
+                android:padding="24dp">
 
-                <!-- Your ConstraintLayout content -->
                 <TextView
-                    android:id="@+id/tv_find_title"
-                    style="@style/viewParent.headerText"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:textColor="@color/coolor"
-                    android:text="Find your \nmatches persons"
+                    android:text="Your Connections"
+                    android:textColor="@color/white"
                     android:textSize="28sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_user"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/normalPadding"
-                    android:layout_marginBottom="@dimen/normalPadding"
-                    android:text="10 matches available"
-                    android:textColor="#fff"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_find_title" />
+                    android:layout_marginTop="4dp"
+                    android:text="See who you\'ve matched with"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Featured / Top Matches ViewPager -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_marginTop="8dp"
+                android:clipToPadding="false"
+                android:clipChildren="false" />
+
+            <!-- Progress Indicator -->
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/matches_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:indicatorColor="@color/colorAccent"
+                android:indeterminate="true" />
+
+            <!-- Likes You (Gold) Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/likes_you_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="@color/white_transparent_20"
+                app:cardCornerRadius="24dp"
+                app:strokeWidth="0dp">
 
                 <LinearLayout
-                    android:id="@+id/likes_you_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+                    android:padding="20dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Likes You (Gold)"
+                        android:text="Likes You (Premium)"
                         android:textColor="@color/orange"
                         android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="10dp"/>
+                        android:textSize="16sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/likes_you_recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/item_likes_you" />
-                </LinearLayout>
-
-                <!-- Your ViewPager2 -->
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/view_pager"
-                    android:layout_width="0dp"
-                    android:layout_height="320dp"
-                    android:layout_marginTop="@dimen/normalPadding"
-                    android:clipToPadding="false"
-                    android:overScrollMode="never"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/likes_you_container" />
-
-                <!-- Your LinearLayout with popular items -->
-                <LinearLayout
-                    android:id="@+id/ll_popular"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:orientation="vertical"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view_pager">
-
-                    <!-- Your popular items -->
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            style="@style/viewParent.headerText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#fff"
-                            android:layout_marginTop="@dimen/activity_horizontal_margin"
-                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                            android:text="Latest matches" />
-
-                    </RelativeLayout>
-
-                    <com.google.android.material.progressindicator.LinearProgressIndicator
-                        android:id="@+id/matches_progress"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:visibility="gone"
-                        app:indicatorColor="@color/colorAccent"
-                        android:indeterminate="true" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/matches_recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:nestedScrollingEnabled="false"
-                        tools:listitem="@layout/matched_user_item" />
-
-                    <TextView
-                        android:id="@+id/empty_matches_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:gravity="center"
-                        android:text="No matches yet. Keep swiping!"
-                        android:textColor="@color/white"
-                        android:alpha="0.4"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/tv_find_title3"
-                        style="@style/viewParent.headerText"
-                        android:layout_marginTop="24dp"
-                        android:textColor="@color/white"
-                        android:text="Exclusive Events"
-                        android:textSize="28sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="40dp"
-                        app:cardCornerRadius="16dp"
-                        app:strokeWidth="0dp">
-
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/profile_bg"
-                                android:alpha="0.4" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:background="@drawable/bottom_gradient" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="bottom"
-                                android:orientation="vertical"
-                                android:padding="20dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Firl Gold Exclusive"
-                                    android:textColor="@color/orange"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold"
-                                    android:letterSpacing="0.1" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Friday Night Mixer"
-                                    android:textColor="@color/white"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Join 50+ matches in Manhattan"
-                                    android:textColor="@color/white"
-                                    android:alpha="0.7"
-                                    android:textSize="13sp" />
-
-                            </LinearLayout>
-
-                        </FrameLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <TextView
-                        style="@style/viewParent.headerText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginBottom="16dp"
-                        android:text="System Activity" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/activity_stream_recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="40dp"
-                        android:nestedScrollingEnabled="false"
-                        tools:listitem="@layout/item_activity_log" />
-
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
                 </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Latest Matches List -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:text="Latest Matches"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/matches_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/empty_matches_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="No matches yet. Keep swiping!"
+                android:textColor="@color/white"
+                android:alpha="0.4"
+                android:visibility="gone" />
+
+            <!-- Activity Stream -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="12dp"
+                android:text="System Activity"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/activity_stream_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:nestedScrollingEnabled="false" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
