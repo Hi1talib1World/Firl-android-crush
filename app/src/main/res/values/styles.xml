@@ -2,35 +2,27 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Main colors -->
-        <item name="colorPrimary">@color/brand_dark</item>
-        <item name="colorOnPrimary">@color/brand_light</item>
-        <item name="colorPrimaryContainer">@color/m3_primaryContainer</item>
-        <item name="colorOnPrimaryContainer">@color/m3_onPrimaryContainer</item>
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/brand_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">#33FF4653</item>
+        <item name="colorOnPrimaryContainer">@color/brand_primary</item>
 
         <item name="colorSecondary">@color/brand_light</item>
         <item name="colorOnSecondary">@color/brand_dark</item>
-        <item name="colorSecondaryContainer">@color/m3_secondaryContainer</item>
-        <item name="colorOnSecondaryContainer">@color/m3_onSecondaryContainer</item>
 
-        <item name="colorTertiary">@color/brand_primary</item>
-        <item name="colorOnTertiary">@color/brand_light</item>
-        <item name="colorTertiaryContainer">@color/m3_tertiaryContainer</item>
-        <item name="colorOnTertiaryContainer">@color/m3_onTertiaryContainer</item>
+        <item name="colorSurface">@color/brand_background</item>
+        <item name="colorOnSurface">@color/brand_light</item>
+        <item name="colorSurfaceVariant">#1AFFFFFF</item>
+        <item name="colorOnSurfaceVariant">#99FFFFFF</item>
 
-        <item name="colorError">@color/m3_error</item>
-        <item name="colorOnError">@color/m3_onError</item>
-        <item name="colorErrorContainer">@color/m3_errorContainer</item>
-        <item name="colorOnErrorContainer">@color/m3_onErrorContainer</item>
-
-        <item name="android:windowBackground">@color/brand_dark</item>
-        <item name="android:statusBarColor">@color/brand_dark</item>
+        <item name="android:windowBackground">@color/bg_main</item>
+        <item name="android:statusBarColor">@color/bg_main</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
 
-        <item name="colorAccent">@color/brand_primary</item>
-
-        <item name="android:fontFamily">@font/calibri</item>
-        <item name="android:windowContentTransitions">true</item>
+        <!-- Components -->
+        <item name="materialCardViewStyle">@style/Widget.Material3.CardView.Elevated</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -38,31 +30,39 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Search Text Style. -->
-    <style name="SearchTextStyle">
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:enabled">true</item>
-        <item name="android:hint">Search</item>
-        <item name="android:imeOptions">actionSearch</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:maxLength">15</item>
-        <item name="android:inputType">textCapSentences</item>
-        <item name="android:textColorHint">#80999999</item>
-        <item name="android:textColor">@color/coolor</item>
+    <!-- Filter Chip Style -->
+    <style name="FilterChipStyle" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/white_transparent_20</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="chipStrokeWidth">0dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
     </style>
 
-    <style name="CardViewStyle" parent="Widget.Material3.CardView.Elevated">
+    <!-- Main Action Button Style (Large Circle) -->
+    <style name="CircleActionButton">
+        <item name="android:layout_width">66dp</item>
+        <item name="android:layout_height">66dp</item>
+        <item name="android:background">@drawable/circle_background</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:elevation">8dp</item>
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
-        <item name="cardCornerRadius">12dp</item>
-        <item name="cardElevation">2dp</item>
+    </style>
+
+    <!-- Secondary Action Button Style (Smaller Circle) -->
+    <style name="CircleActionButton.Small">
+        <item name="android:layout_width">44dp</item>
+        <item name="android:layout_height">44dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
     <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView">
-        <item name="backgroundTint">@color/bg1main</item>
-        <item name="itemIconTint">@color/white</item>
-        <item name="itemTextColor">@color/white</item>
+        <item name="backgroundTint">@color/nav_background</item>
+        <item name="itemIconTint">@color/grey_icon</item>
+        <item name="itemTextColor">@color/grey_icon</item>
+        <item name="itemActiveIndicatorStyle">@null</item>
     </style>
 
     <!-- UI Parent Styles -->
@@ -70,14 +70,10 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="parent">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-    </style>
 
     <style name="viewParent.headerText">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
