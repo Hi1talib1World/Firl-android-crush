@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Denzo.firl.Model.MatchPerson;
@@ -16,16 +18,27 @@ import com.Denzo.firl.R;
 import com.Denzo.firl.chat.ChatActivity;
 import com.bumptech.glide.Glide;
 
-import java.util.List;
-
-public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHolder> {
+public class MatchesAdapter extends ListAdapter<MatchPerson, MatchesAdapter.ViewHolder> {
 
     private Context context;
-    private List<MatchPerson> matchesList;
 
-    public MatchesAdapter(Context context, List<MatchPerson> matchesList) {
+    private static final DiffUtil.ItemCallback<MatchPerson> DIFF_CALLBACK = new DiffUtil.ItemCallback<MatchPerson>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull MatchPerson oldItem, @NonNull MatchPerson newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull MatchPerson oldItem, @NonNull MatchPerson newItem) {
+            return oldItem.getName().equals(newItem.getName()) &&
+                   oldItem.getNumberOfPersons().equals(newItem.getNumberOfPersons()) &&
+                   (oldItem.getImageUrl() == null ? newItem.getImageUrl() == null : oldItem.getImageUrl().equals(newItem.getImageUrl()));
+        }
+    };
+
+    public MatchesAdapter(Context context) {
+        super(DIFF_CALLBACK);
         this.context = context;
-        this.matchesList = matchesList;
     }
 
     @NonNull
@@ -37,7 +50,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final MatchPerson match = matchesList.get(position);
+        final MatchPerson match = getItem(position);
         holder.name.setText(match.getName());
         holder.profession.setText(match.getNumberOfPersons());
         
@@ -57,11 +70,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return matchesList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
