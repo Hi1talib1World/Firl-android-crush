@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/brand_dark">
+    android:background="@color/bg_main">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/brand_dark"
+        android:background="#0DFFFFFF"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -30,8 +30,8 @@
                     android:layout_height="40dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_chevron_left_black_24dp"
-                    android:contentDescription="@string/back"
-                    app:tint="@color/brand_light" />
+                    android:contentDescription="Back"
+                    app:tint="@color/white" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/chat_user_image"
@@ -39,8 +39,8 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/monkey"
-                    android:contentDescription="@string/user_profile_picture"
-                    app:civ_border_color="@color/brand_light"
+                    android:contentDescription="Profile Picture"
+                    app:civ_border_color="@color/white"
                     app:civ_border_width="1dp" />
 
                 <LinearLayout
@@ -55,15 +55,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name"
-                        android:textColor="@color/brand_light"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/user_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/chat_online"
+                        android:text="Online"
                         android:textColor="@color/likegreen"
                         android:textSize="11sp" />
 
@@ -71,11 +71,11 @@
                         android:id="@+id/typing_indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/chat_typing"
+                        android:text="typing..."
                         android:textColor="@color/likegreen"
-                        android:textSize="11sp"
                         android:textStyle="italic"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        android:textSize="11sp" />
                 </LinearLayout>
 
                 <ImageButton
@@ -85,8 +85,8 @@
                     android:layout_marginEnd="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_settings"
-                    android:contentDescription="@string/settings"
-                    app:tint="@color/brand_light" />
+                    android:contentDescription="Settings"
+                    app:tint="@color/white" />
 
             </LinearLayout>
 
@@ -100,7 +100,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/inputLayout"
         android:layout_below="@+id/appBarLayout"
-        android:padding="12dp"
+        android:padding="16dp"
         android:clipToPadding="false" />
 
     <com.google.android.material.card.MaterialCardView
@@ -108,9 +108,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="12dp"
-        app:cardBackgroundColor="#1AFFFFFF"
-        app:cardCornerRadius="24dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/white_transparent_20"
+        app:cardCornerRadius="28dp"
         app:strokeWidth="0dp"
         app:cardElevation="0dp">
 
@@ -123,12 +123,12 @@
 
             <ImageButton
                 android:id="@+id/plusBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_add_circle_black_24dp"
-                android:contentDescription="@string/add_attachment"
-                app:tint="@color/brand_light"
+                android:contentDescription="Add attachment"
+                app:tint="@color/white"
                 android:alpha="0.6" />
 
             <EditText
@@ -137,20 +137,22 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="@string/chat_hint"
+                android:hint="Type a message..."
                 android:padding="12dp"
-                android:textColor="@color/brand_light"
+                android:textColor="@color/white"
                 android:textColorHint="#66FFFFFF"
-                android:textSize="14sp" />
+                android:textSize="15sp"
+                android:maxLines="4"
+                android:inputType="textShortMessage|textAutoCorrect|textCapSentences" />
 
             <ImageButton
                 android:id="@+id/micBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_play"
-                android:contentDescription="@string/voice_message"
-                app:tint="@color/brand_light"
+                android:contentDescription="Voice Message"
+                app:tint="@color/white"
                 android:alpha="0.6"
                 android:rotation="-90" />
 
@@ -160,10 +162,11 @@
                 android:layout_height="wrap_content"
                 app:fabSize="mini"
                 android:src="@drawable/ic_send_black_24dp"
-                android:contentDescription="@string/send_message"
-                app:tint="@color/brand_dark"
-                app:backgroundTint="@color/brand_primary"
-                app:elevation="0dp"/>
+                android:contentDescription="Send"
+                app:tint="@color/bg_main"
+                app:backgroundTint="@color/colorAccent"
+                app:elevation="0dp"
+                android:layout_marginStart="4dp" />
 
         </LinearLayout>
 
