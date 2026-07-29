@@ -6,6 +6,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +38,21 @@ public class FirebaseUserRepository implements UserRepository {
                     getUser(authResult.getUser().getUid(), callback);
                 } else {
                     callback.onError(new Exception("Login failed: User is null"));
+                }
+            })
+            .addOnFailureListener(e -> callback.onError(e));
+    }
+
+    @Override
+    public void registerUser(User user, String password, final Callback<Boolean> callback) {
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(user.getEmail(), password)
+            .addOnSuccessListener(authResult -> {
+                if (authResult.getUser() != null) {
+                    String uid = authResult.getUser().getUid();
+                    user.setUid(uid);
+                    createUser(user, callback);
+                } else {
+                    callback.onError(new Exception("Registration failed: User is null"));
                 }
             })
             .addOnFailureListener(e -> callback.onError(e));
@@ -280,6 +297,16 @@ public class FirebaseUserRepository implements UserRepository {
 
         mDatabase.child("chats").child(chatId).child(messageId).setValue(message)
             .addOnSuccessListener(aVoid -> callback.onResponse(true))
+            .addOnFailureListener(e -> callback.onError(e));
+    }
+
+    @Override
+    public void uploadProfileImage(String uid, android.net.Uri imageUri, Callback<String> callback) {
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("profiles").child(uid).child("profile_main.jpg");
+        storageRef.putFile(imageUri)
+            .addOnSuccessListener(taskSnapshot -> storageRef.getDownloadUrl()
+                .addOnSuccessListener(uri -> callback.onResponse(uri.toString()))
+                .addOnFailureListener(e -> callback.onError(e)))
             .addOnFailureListener(e -> callback.onError(e));
     }
 
