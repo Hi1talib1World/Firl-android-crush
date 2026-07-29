@@ -5,9 +5,8 @@ import com.Denzo.firl.BuildConfig;
 public class UserRepositoryProvider {
     
     public static UserRepository get() {
-        if (BuildConfig.DEBUG) {
-            return new MockUserRepository();
-        }
+        // We now use Firebase by default. 
+        // You can switch back to MockUserRepository() manually if needed for offline UI testing.
         return new FirebaseUserRepository();
     }
 }
