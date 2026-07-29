@@ -1,26 +1,21 @@
 {
   "project_info": {
-    "project_number": "1234567890",
-    "project_id": "dummy-project-id",
-    "storage_bucket": "dummy-project-id.appspot.com"
+    "project_number": "728901403456",
+    "project_id": "firl-3e4ea",
+    "storage_bucket": "firl-3e4ea.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1234567890:android:abcdef1234567890",
+        "mobilesdk_app_id": "1:728901403456:android:a6445b04e93e05270eb0a5",
         "android_client_info": {
-          "package_name": "com.Denzo.firl"
+          "package_name": "com.cft.firl"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "dummy-client-id.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "dummy-api-key"
+          "current_key": "AIzaSyCv5s8wsqEAMyLnEJl-7Cy-ANaE2MFLAlE"
         }
       ],
       "services": {
