@@ -39,6 +39,15 @@ public class MockUserRepository implements UserRepository {
     }
 
     @Override
+    public void registerUser(User user, String password, Callback<Boolean> callback) {
+        handler.postDelayed(() -> {
+            user.setUid("mock_uid_" + System.currentTimeMillis());
+            executor.execute(() -> userDao.insert(user));
+            callback.onResponse(true);
+        }, LATENCY_MS);
+    }
+
+    @Override
     public void createUser(User user, Callback<Boolean> callback) {
         handler.postDelayed(() -> {
             executor.execute(() -> userDao.insert(user));
@@ -205,5 +214,10 @@ public class MockUserRepository implements UserRepository {
     @Override
     public void sendMessage(String senderUid, String receiverUid, com.Denzo.firl.Model.ChatMessage message, Callback<Boolean> callback) {
         handler.postDelayed(() -> callback.onResponse(true), 500);
+    }
+
+    @Override
+    public void uploadProfileImage(String uid, android.net.Uri imageUri, Callback<String> callback) {
+        handler.postDelayed(() -> callback.onResponse("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80"), LATENCY_MS);
     }
 }
