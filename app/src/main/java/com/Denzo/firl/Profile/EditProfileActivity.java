@@ -3,6 +3,9 @@ package com.Denzo.firl.Profile;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.net.Uri;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private UserRepository userRepository;
     private String currentUid;
     private User currentUser;
+    private ActivityResultLauncher<String> imagePickerLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,59 @@ public class EditProfileActivity extends AppCompatActivity {
         currentUid = SessionManager.getInstance().getCurrentUserId();
 
         initViews();
+        setupImagePicker();
         loadUserData();
+    }
+
+    private void setupImagePicker() {
+        imagePickerLauncher = registerForActivityResult(
+            new ActivityResultContracts.GetContent(),
+            uri -> {
+                if (uri != null) {
+                    uploadImage(uri);
+                }
+            }
+        );
+
+        imageView1.setOnClickListener(v -> imagePickerLauncher.launch("image/*"));
+    }
+
+    private void uploadImage(Uri uri) {
+        setLoading(true);
+        userRepository.uploadProfileImage(currentUid, uri, new UserRepository.Callback<String>() {
+            @Override
+            public void onResponse(String downloadUrl) {
+                if (currentUser != null) {
+                    currentUser.setProfileImageUrl(downloadUrl);
+                    Glide.with(EditProfileActivity.this).load(downloadUrl).into(imageView1);
+                    saveProfileSilently();
+                } else {
+                    setLoading(false);
+                }
+            }
+
+            @Override
+            public void onError(Exception e) {
+                setLoading(false);
+                Toast.makeText(EditProfileActivity.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void saveProfileSilently() {
+        userRepository.updateProfile(currentUser, new UserRepository.Callback<Boolean>() {
+            @Override
+            public void onResponse(Boolean response) {
+                setLoading(false);
+                Toast.makeText(EditProfileActivity.this, "Profile image updated", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                setLoading(false);
+                Toast.makeText(EditProfileActivity.this, "Failed to update profile data", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initViews() {
