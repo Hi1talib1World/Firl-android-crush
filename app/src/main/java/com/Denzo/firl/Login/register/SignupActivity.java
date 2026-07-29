@@ -100,13 +100,12 @@ public class SignupActivity extends AppCompatActivity {
         setLoading(true);
 
         User newUser = new User();
-        newUser.setUid("mock_new_uid"); // In real app, this comes from Auth
         newUser.setEmail(email);
         newUser.setName(name);
         newUser.setSex(gender);
         newUser.setProfileImageUrl("default");
 
-        userRepository.createUser(newUser, new UserRepository.Callback<Boolean>() {
+        userRepository.registerUser(newUser, password, new UserRepository.Callback<Boolean>() {
             @Override
             public void onResponse(Boolean response) {
                 setLoading(false);
